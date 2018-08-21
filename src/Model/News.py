@@ -1,4 +1,3 @@
-from src.postagem.lexical_analyzer import lexical
 
 class News(object):
 
@@ -9,6 +8,7 @@ class News(object):
         self.date = date
         self.link = link
         self.media = media
+        self.categories = None
 
-    def set_categories(self):
-        self._categories = lexical(self.news)
+    def set_categories(self, categories):
+        self.categories = categories

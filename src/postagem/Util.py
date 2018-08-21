@@ -126,3 +126,23 @@ def get_noticia_comercio(link):
     #        noticia += str(div.contents[0])
 
     return article.text
+
+# def get_noticia_comercio(link):
+#     req = requests.get(link)
+#     bs = BeautifulSoup(req.text).find('div', class_='noticia espacamento claro').find_all('div')
+#     noticia = ""
+#     for div in bs:
+# #         noticia += str(div.contents[0].encode('utf-8'))
+#         if len(div.contents) > 0:
+#             noticia += str(div.contents[0])
+
+    return noticia
+
+def join_categories(categories):
+    str_categories = ', '.join(str(c) for c in categories)
+    return str_categories
+
+def categories_db_to_categories(categories_db):
+    categories = categories_db.split(', ')
+    return categories
+

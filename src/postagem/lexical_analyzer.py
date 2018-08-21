@@ -32,12 +32,6 @@ CAPITAIS = ['rio branco', 'maceió', 'macapá', 'manaus', 'brasília',  'goiâni
 #             'cuiabá', 'campo grande', 'belo horizonte', 'belém', 'joão pessoa', 'curitiba', 'recife', 'teresina', 'rio de janeiro',
 #             'porto alegre', 'porto velho', 'boa vista', 'florianópolis', 'são paulo', 'aracaju', 'palmas']
 
-# CAPITAL_NATAL = 'Natal'
-# CAPITAL_SALVADOR = 'Salvador'
-# CAPITAL_FORTALEZA = 'Fortaleza'
-# CAPITAL_VITORIA = 'Vitória'
-# CAPITAL_PALMAS =  'Palmas'
-
 CAPITAIS_CASE_SENSITIVE = ['Natal', 'Salvador', 'Fortaleza', 'Vitória', 'Palmas']
 
 SIGLAS_ESTADOS = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA','PB', 'PR', 
@@ -63,16 +57,19 @@ PARTIDOS = ['democracia cristã', 'democratas', 'movimento democrático brasilei
             'partido socialista brasileiro', 'partido social cristão', 'partido social democrático', 
             'partido da social democracia brasileira', 'partido socialismo e liberdade', 
             'partido socialista dos trabalhadores unificado', 'partido dos trabalhadores', 'partido trabalhista brasileiro', 
-            'partido trabalhista cristão', 'partido verde', 'rede sustentabilidade', 'solidariedade']
+            'partido trabalhista cristão', 'partido verde']
 
 # prep is the PARTIDO DA REPUBLICA (PR) -> conflict with PR from PARANA
 SIGLAS_PARTIDOS = ['dc','dem', 'mdb',  'psl', 'pcb', 'pcdob', 'pco', 'pdt', 'phs', 'pmb', 
                    'pmn',  'pp', 'ppl', 'pps', 'prep', 'prb', 'pros', 'prp', 'prtb', 'psb', 'psc', 'psd', 'psdb', 
-                   'psol', 'pstu', 'pt', 'ptb', 'ptc', 'pv', 'rede', 'sd']
+                   'psol', 'pstu', 'pt', 'ptb', 'ptc', 'pv']
 
-PARTIDOS_CASE_SENSITIVE = ['Avante', 'Partido Novo', 'Podemos', 'Patriota']
+PARTIDO_REDE = 'rede sustentabilidade'
+SIGLA_PARTIDO_REDE = 'Rede'
 
-SIGLAS_PARTIDOS_CASE_SENSITIVE = ['AVANTE', 'NOVO', 'PODE', 'PATRI']
+PARTIDOS_CASE_SENSITIVE = ['Avante', 'Partido Novo', 'Podemos', 'Patriota', 'Solidariedade']
+
+SIGLAS_PARTIDOS_CASE_SENSITIVE = ['AVANTE', 'NOVO', 'PODE', 'PATRI', 'SD']
 
 def remove_punctuation(input_text):
     """
@@ -98,7 +95,7 @@ def remove_punctuation(input_text):
     return input_text.translate(trantab)
 
 
-def set_stations_and_categories(df):
+def get_categories(df):
     """
     Set the categories for the noticias.
     Adds the 'categorias' column to the dataframe
@@ -127,24 +124,7 @@ def set_stations_and_categories(df):
             for word in words:
                 if word in SIGLAS_ESTADOS:
                     states_by_text.append(word.lower())
-
-#             # Natal, caso a parte, para evitar o erro de 'indulto natalino'
-#             if CAPITAL_NATAL in text:
-#                 states_by_text.append('rn')
-#                 
-#             if CAPITAL_SALVADOR in text:
-#                 states_by_text.append('ba')
-#             
-#             if CAPITAL_FORTALEZA in text:
-#                 states_by_text.append('ce')
-#             
-#             if CAPITAL_VITORIA in text:
-#                 states_by_text.append('es')
-#                 
-#             if CAPITAL_PALMAS in text:
-#                 states_by_text.append('to')
                 
-            
             for idx_capitais in range(len(CAPITAIS_CASE_SENSITIVE)):
                 if CAPITAIS_CASE_SENSITIVE[idx_capitais] in text:
                     cats_by_text.append(SIGLAS_ESTADOS_CASE_SENSITIVE[idx_capitais].lower())
@@ -156,6 +136,10 @@ def set_stations_and_categories(df):
             # Acre, caso a parte, para evitar o erro de verbo acreditar    
             if ESTADO_ACRE in text:
                 states_by_text.append('ac')
+                
+            # Partido Rede 
+            if SIGLA_PARTIDO_REDE in text:
+                cats_by_text.append('rede')
 
             # Seek for PARTIDOS_CASE_SENSITIVE name
             for idx_partidos in range(len(PARTIDOS_CASE_SENSITIVE)):
@@ -185,12 +169,17 @@ def set_stations_and_categories(df):
             for idx_partidos in range(len(PARTIDOS)):
                 if PARTIDOS[idx_partidos] in text:
                     cats_by_text.append(SIGLAS_PARTIDOS[idx_partidos])
+                    
+            # Partido Rede 
+            if PARTIDO_REDE in text:
+                cats_by_text.append('rede')
 
             # Seek for PARTIDOS sigla
             words = text.split()
             for word in words:
                 if word in SIGLAS_PARTIDOS:
                     cats_by_text.append(word)
+                    
             # correcting the acronym for party PR
             cats_by_text = ['pr' if x=='prep' else x for x in cats_by_text]
             cats_concat = cats_by_text + states_by_text
@@ -204,36 +193,40 @@ def set_stations_and_categories(df):
     return df, set_cats
 
 def lexical(df):
-#     # columns = Unnamed: 0, Unnamed: 0.1, imagem, links, noticia, titulos, categorias   
-#     df = pd.read_csv('../Data/news/resultados-uol2.csv', index_col=False)    
-#     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)  
+    df, categories = get_categories(df)
+    return df, categories
+
+# 
+# #     # columns = Unnamed: 0, Unnamed: 0.1, imagem, links, noticia, titulos, categorias   
+# #     df = pd.read_csv('../Data/news/resultados-uol2.csv', index_col=False)    
+# #     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)  
+# #     df, set_cats = set_stations_and_categories(df)
+# #     # columns = image, links, noticia, titulos, categorias   
+# #     df.to_csv('../Data/news/resultados-categorias-tag.csv', encoding='utf-8')
+#     
+#     # columns = ['Unnamed: 0', 'titulos', 'links', 'noticia', 'image', 'abstract'])
+# #     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)
 #     df, set_cats = set_stations_and_categories(df)
 #     # columns = image, links, noticia, titulos, categorias   
-#     df.to_csv('../Data/news/resultados-categorias-tag.csv', encoding='utf-8')
-    
-    # columns = ['Unnamed: 0', 'titulos', 'links', 'noticia', 'image', 'abstract'])
-#     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)
-    df, set_cats = set_stations_and_categories(df)
-    # columns = image, links, noticia, titulos, categorias   
-    df.to_csv('results.csv', encoding='utf-8')
-
-    name_file = 'categorias-tag.txt' 
-    print('Writing table file')
-    f = open(name_file, 'w')
-    for idx_cats in range(len(set_cats)):
-        f.write('\n' + str(idx_cats) + ' - categorias: ' + str(set_cats[idx_cats]))
-    f.close() 
-    print('End file')
-    return df
-     
-#     # Testing
-#     noticias = df['noticia']
-#     print(noticias[27])
-        
-#     df = pd.read_csv('../Data/resultados-categorias-tag.csv', index_col=0)
-#     news = df['noticia']
-#     estacoes = df['estacoes']
-#     categorias = df['categorias']
-#     print(news[4])
-#     print(estacoes[4])
-#     print(categorias[4])   
+#     df.to_csv('results.csv', encoding='utf-8')
+# 
+#     name_file = 'categorias-tag.txt' 
+#     print('Writing table file')
+#     f = open(name_file, 'w')
+#     for idx_cats in range(len(set_cats)):
+#         f.write('\n' + str(idx_cats) + ' - categorias: ' + str(set_cats[idx_cats]))
+#     f.close() 
+#     print('End file')
+#     return df
+#      
+# #     # Testing
+# #     noticias = df['noticia']
+# #     print(noticias[27])
+#         
+# #     df = pd.read_csv('../Data/resultados-categorias-tag.csv', index_col=0)
+# #     news = df['noticia']
+# #     estacoes = df['estacoes']
+# #     categorias = df['categorias']
+# #     print(news[4])
+# #     print(estacoes[4])
+# #     print(categorias[4])   
