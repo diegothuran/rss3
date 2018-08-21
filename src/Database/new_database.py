@@ -1,8 +1,8 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from Model import News
-from Database import connection
+from src.Model import News
+from src.Database import connection
 import datetime
 from dateutil import parser
 
@@ -29,7 +29,7 @@ def save_news(news=News):
     cnx.close()
 
 
-def select_news(news = News):
+def select_news(news =News):
     cnx = connection.connection()
     try:
         cursor = cnx.cursor()
@@ -43,7 +43,7 @@ def select_news(news = News):
     except Exception as e:
         print(e)
 
-def check_news(news = News):
+def check_news(news =News):
     cnx = connection.connection()
     
     cursor = cnx.cursor()

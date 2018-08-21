@@ -6,13 +6,12 @@
 
 import feedparser
 import pandas as pd
-import tldextract
-from postagem.Util import download_image, extract_domain, downlaod_and_move_image, get_noticia_uol, get_noticia_comercio
-import os
-from postagem.lexical_analyzer import lexical
-from postagem.site_wordpress import post_news
-from Model.News import News
-from Database.new_database import save_news, select_news, check_news
+from src.postagem.Util import extract_domain, downlaod_and_move_image, get_noticia_comercio
+from src.postagem.lexical_analyzer import lexical
+from src.postagem.site_wordpress import post_news
+from src.Model.News import News
+from src.Database.new_database import save_news, check_news
+from newsplease import NewsPlease
 
 # In[2]:
 # hit_list = ["https://www.jornaldocomercio.com/_conteudo/politica/rss.xml",
@@ -23,7 +22,7 @@ from Database.new_database import save_news, select_news, check_news
 #            "http://pox.globo.com/rss/g1/politica/", "https://feeds.folha.uol.com.br/poder/rss091.xml"]
 
 ''' sem a folha '''
-hit_list = ["https://www.jornaldocomercio.com/_conteudo/politica/rss.xml", "http://pox.globo.com/rss/g1/politica/"]
+hit_list = ["http://rss.uol.com.br/feed/noticias.xml"]
 
 future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
 
@@ -71,8 +70,19 @@ for entrie in entries:
                 row['image'].append(0)
         else:
             row['image'].append(0)
-    elif domain == 'folha':
-        pass
+    elif domain == 'uol':
+        link = entrie['link']
+        article = NewsPlease.from_url(link)
+        row['titulos'].append(article.title)
+        row['noticia'].append(article.text)
+        row['links'].append(article.url)
+        row['abstract'].append(article.text)
+        row['date'].append(article.date_publish)
+        path_image = article.image_url
+        if path_image == '' or path_image == None:
+            pass
+        else:
+            row['image'].append(downlaod_and_move_image(article.image_url))
 
     news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
 #     if select_news(news) is None:

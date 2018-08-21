@@ -261,8 +261,8 @@ def post_news(df):
             
             # date now        
             date_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-#             date_df = str(row['date'])
-            date_df = datetime.datetime.strptime(row['date'], '%a, %d %b %Y %H:%M:%S %z').strftime("%Y-%m-%d %H:%M:%S")
+            date_df = str(row['date'])
+            #date_df = datetime.datetime.strptime(row['date'], '%a, %d %b %Y %H:%M:%S %z').strftime("%Y-%m-%d %H:%M:%S")
             
             if(date_df < date_now):
                 date = date_df

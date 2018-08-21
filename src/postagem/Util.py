@@ -5,8 +5,8 @@ import tldextract
 import os
 import wget
 from bs4 import BeautifulSoup
-from selenium import webdriver
 import requests
+from newsplease import NewsPlease
 
 def download_image(url, path_to_save_image):
     http = urllib3.PoolManager()
@@ -114,12 +114,15 @@ def clean_join_strings(list_of_strings):
     return "".join(list_of_strings)
 
 def get_noticia_comercio(link):
-    req = requests.get(link)
-    bs = BeautifulSoup(req.text).find('div', class_='noticia espacamento claro').find_all('div')
-    noticia = ""
-    for div in bs:
-#         noticia += str(div.contents[0].encode('utf-8'))
-        if len(div.contents) > 0:
-            noticia += str(div.contents[0])
+    print(link)
+    article = NewsPlease.from_url(link)
+    #req = requests.get(link)
 
-    return noticia
+    #bs = BeautifulSoup(req.text).find('div', class_='noticia espacamento claro').find_all('div')
+    #noticia = ""
+    #for div in bs:
+#   #      noticia += str(div.contents[0].encode('utf-8'))
+    #    if len(div.contents) > 0:
+    #        noticia += str(div.contents[0])
+
+    return article.text
