@@ -7,6 +7,8 @@ import wget
 from bs4 import BeautifulSoup
 import requests
 from newsplease import NewsPlease
+import pandas as pd
+from selenium import webdriver
 
 def download_image(url, path_to_save_image):
     http = urllib3.PoolManager()
@@ -30,6 +32,8 @@ def downlaod_and_move_image(path_to_image):
     try:
         file_name = wget.download(path_to_image)
     #     destination = os.path.join('/home/diego/Documentos/rss_reader/Untitled Folder/Images', file_name)
+        if not os.path.exists('../Data/download'):
+            os.mkdir('../Data/download')
         destination = os.path.join('../Data/download', file_name)
         os.rename(file_name, destination)
     #     print(file_name)
@@ -145,4 +149,3 @@ def join_categories(categories):
 def categories_db_to_categories(categories_db):
     categories = categories_db.split(', ')
     return categories
-
