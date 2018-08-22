@@ -94,139 +94,139 @@ def remove_punctuation(input_text):
     trantab = str.maketrans(punct, len(punct)*' ')  # Every punctuation symbol will be replaced by a space
     return input_text.translate(trantab)
 
-
-def get_categories(df):
+def get_categories(input_text):
     """
     Set the categories for the noticias.
     Adds the 'categorias' column to the dataframe
     
     Parameters
     ----------
-    df : dataframe containing all the data
+    input_text : in rss input_text is just from the 'noticias' in soup_globo from both 'noticia' and 'titulo' 
     
     Return
     ------
         Dataframe with the new 'categorias' column added
         set_cats: list of set of categories (now all is category)
     """
+    cats, states_by_text, cats_by_text = [], [], []
+    try:
+        text = remove_punctuation(input_text)
+
+        # CASE_SENSITIVE VERIFICATION
+        # Seek for SIGLAS_ESTADOS sigla
+        words = text.split()
+        for word in words:
+            if word in SIGLAS_ESTADOS:
+                states_by_text.append(word.lower())
+            
+        for idx_capitais in range(len(CAPITAIS_CASE_SENSITIVE)):
+            if CAPITAIS_CASE_SENSITIVE[idx_capitais] in text:
+                cats_by_text.append(SIGLAS_ESTADOS_CASE_SENSITIVE[idx_capitais].lower())
+
+        # Pará, caso a parte, para evitar o erro de verbo no futuro 'parará'
+        if ESTADO_PARA in text:
+            states_by_text.append('pa')
+        
+        # Acre, caso a parte, para evitar o erro de verbo acreditar    
+        if ESTADO_ACRE in text:
+            states_by_text.append('ac')
+            
+        # Partido Rede 
+        if SIGLA_PARTIDO_REDE in text:
+            cats_by_text.append('rede')
+
+        # Seek for PARTIDOS_CASE_SENSITIVE name
+        for idx_partidos in range(len(PARTIDOS_CASE_SENSITIVE)):
+            if PARTIDOS_CASE_SENSITIVE[idx_partidos] in text:
+                cats_by_text.append(SIGLAS_PARTIDOS_CASE_SENSITIVE[idx_partidos].lower())
+
+        # Seek for SIGLAS_PARTIDOS_CASE_SENSITIVE sigla
+        words = text.split()
+        for word in words:
+            if word in SIGLAS_PARTIDOS_CASE_SENSITIVE:
+                cats_by_text.append(word.lower())
+
+        # LOWER_CASE VERIFICATION: text to lower case
+        text = text.lower()
+
+        # seek for ESTADOS name
+        for idx_estado in range(len(ESTADOS)):
+            if ESTADOS[idx_estado] in text:
+                states_by_text.append(SIGLAS_ESTADOS_SEM_PA_AC[idx_estado].lower())
+
+        # seek for CAPITAIS name
+        for idx_capitais in range(len(CAPITAIS)):
+            if CAPITAIS[idx_capitais] in text:
+                states_by_text.append(SIGLAS_ESTADOS_SEM_CASE_SENSITIVE[idx_capitais].lower())
+
+        # Seek for PARTIDOS name
+        for idx_partidos in range(len(PARTIDOS)):
+            if PARTIDOS[idx_partidos] in text:
+                cats_by_text.append(SIGLAS_PARTIDOS[idx_partidos])
+                
+        # Partido Rede 
+        if PARTIDO_REDE in text:
+            cats_by_text.append('rede')
+
+        # Seek for PARTIDOS sigla
+        words = text.split()
+        for word in words:
+            if word in SIGLAS_PARTIDOS:
+                cats_by_text.append(word)
+                
+        # correcting the acronym for party PR
+#         cats_by_text = ['pr' if x=='prep' else x for x in cats_by_text]
+        cats_concat = cats_by_text + states_by_text
+        cats.append(cats_concat)
+    except:
+        cats.append([])
+    return cats
+
+
+def get_categories_rss(df):
+    """
+    categories from rss: input_text is just from the 'noticias'
+    """
     cats = []
     for idx in range(len(df)):
         row = df.iloc[idx]
         noticia = row['noticia']
-        states_by_text, cats_by_text = [], []
-        # Removing punctuation
-        try:
-            text = remove_punctuation(noticia)
+        cats = get_categories(noticia)
 
-            # CASE_SENSITIVE VERIFICATION
-            # Seek for SIGLAS_ESTADOS sigla
-            words = text.split()
-            for word in words:
-                if word in SIGLAS_ESTADOS:
-                    states_by_text.append(word.lower())
-                
-            for idx_capitais in range(len(CAPITAIS_CASE_SENSITIVE)):
-                if CAPITAIS_CASE_SENSITIVE[idx_capitais] in text:
-                    cats_by_text.append(SIGLAS_ESTADOS_CASE_SENSITIVE[idx_capitais].lower())
-
-            # Pará, caso a parte, para evitar o erro de verbo no futuro 'parará'
-            if ESTADO_PARA in text:
-                states_by_text.append('pa')
-            
-            # Acre, caso a parte, para evitar o erro de verbo acreditar    
-            if ESTADO_ACRE in text:
-                states_by_text.append('ac')
-                
-            # Partido Rede 
-            if SIGLA_PARTIDO_REDE in text:
-                cats_by_text.append('rede')
-
-            # Seek for PARTIDOS_CASE_SENSITIVE name
-            for idx_partidos in range(len(PARTIDOS_CASE_SENSITIVE)):
-                if PARTIDOS_CASE_SENSITIVE[idx_partidos] in text:
-                    cats_by_text.append(SIGLAS_PARTIDOS_CASE_SENSITIVE[idx_partidos].lower())
-
-            # Seek for SIGLAS_PARTIDOS_CASE_SENSITIVE sigla
-            words = text.split()
-            for word in words:
-                if word in SIGLAS_PARTIDOS_CASE_SENSITIVE:
-                    cats_by_text.append(word.lower())
-
-            # LOWER_CASE VERIFICATION: text to lower case
-            text = text.lower()
-
-            # seek for ESTADOS name
-            for idx_estado in range(len(ESTADOS)):
-                if ESTADOS[idx_estado] in text:
-                    states_by_text.append(SIGLAS_ESTADOS_SEM_PA_AC[idx_estado].lower())
-
-            # seek for CAPITAIS name
-            for idx_capitais in range(len(CAPITAIS)):
-                if CAPITAIS[idx_capitais] in text:
-                    states_by_text.append(SIGLAS_ESTADOS_SEM_CASE_SENSITIVE[idx_capitais].lower())
-
-            # Seek for PARTIDOS name
-            for idx_partidos in range(len(PARTIDOS)):
-                if PARTIDOS[idx_partidos] in text:
-                    cats_by_text.append(SIGLAS_PARTIDOS[idx_partidos])
-                    
-            # Partido Rede 
-            if PARTIDO_REDE in text:
-                cats_by_text.append('rede')
-
-            # Seek for PARTIDOS sigla
-            words = text.split()
-            for word in words:
-                if word in SIGLAS_PARTIDOS:
-                    cats_by_text.append(word)
-                    
-            # correcting the acronym for party PR
-            cats_by_text = ['pr' if x=='prep' else x for x in cats_by_text]
-            cats_concat = cats_by_text + states_by_text
-            cats.append(cats_concat)
-        except:
-            cats.append([])
     # Removing replicated items
     set_cats = [set(cat) for cat in cats]
 
     df = df.assign(categorias = set_cats)
     return df, set_cats
 
+def get_categories_soup_globo(df):
+    """
+    categories from soup_globo: in soup_globo input_text is from both 'noticia' and 'titulo' 
+    """
+    cats, cats_noticia, cats_title = [], [], []
+    for idx in range(len(df)):
+        row = df.iloc[idx]
+        noticia = row['noticia']
+        cats_noticia = get_categories(noticia)
+
+        title = row['titulos']
+        cats_title = get_categories(title)
+
+    cats_concat = cats_noticia[0] + cats_title[0]
+    cats.append(cats_concat)
+
+    # Removing replicated items
+    set_cats = [set(cat) for cat in cats]
+    
+    df = df.assign(categorias = set_cats)
+    return df, set_cats
+
 def lexical(df):
-    df, categories = get_categories(df)
+    df, categories = get_categories_rss(df)
     return df, categories
 
+def lexical_soup_globo(df):
+    df, categories = get_categories_soup_globo(df)
+    return df, categories
+    
 # 
-# #     # columns = Unnamed: 0, Unnamed: 0.1, imagem, links, noticia, titulos, categorias   
-# #     df = pd.read_csv('../Data/news/resultados-uol2.csv', index_col=False)    
-# #     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)  
-# #     df, set_cats = set_stations_and_categories(df)
-# #     # columns = image, links, noticia, titulos, categorias   
-# #     df.to_csv('../Data/news/resultados-categorias-tag.csv', encoding='utf-8')
-#     
-#     # columns = ['Unnamed: 0', 'titulos', 'links', 'noticia', 'image', 'abstract'])
-# #     df = df.drop(['Unnamed: 0', 'Unnamed: 0.1', 'imagem'], axis=1)
-#     df, set_cats = set_stations_and_categories(df)
-#     # columns = image, links, noticia, titulos, categorias   
-#     df.to_csv('results.csv', encoding='utf-8')
-# 
-#     name_file = 'categorias-tag.txt' 
-#     print('Writing table file')
-#     f = open(name_file, 'w')
-#     for idx_cats in range(len(set_cats)):
-#         f.write('\n' + str(idx_cats) + ' - categorias: ' + str(set_cats[idx_cats]))
-#     f.close() 
-#     print('End file')
-#     return df
-#      
-# #     # Testing
-# #     noticias = df['noticia']
-# #     print(noticias[27])
-#         
-# #     df = pd.read_csv('../Data/resultados-categorias-tag.csv', index_col=0)
-# #     news = df['noticia']
-# #     estacoes = df['estacoes']
-# #     categorias = df['categorias']
-# #     print(news[4])
-# #     print(estacoes[4])
-# #     print(categorias[4])   

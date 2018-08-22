@@ -1,16 +1,15 @@
 
 # coding: utf-8
 
-# In[1]:
-
-
 import feedparser
 import pandas as pd
-from src.postagem.Util import extract_domain, downlaod_and_move_image, get_noticia_comercio
-from src.postagem.lexical_analyzer import lexical
-from src.postagem.site_wordpress import post_news
-from src.Model.News import News
-from src.Database.new_database import save_news, check_news
+
+from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from postagem.lexical_analyzer import lexical
+from postagem.site_wordpress import post_news
+from Model.News import News
+from Database.new_database import save_news, check_news
+
 from newsplease import NewsPlease
 from bs4 import BeautifulSoup
 import requests
@@ -59,7 +58,7 @@ for entrie in entries:
         row['abstract'].append(entrie['summary_detail']['value'])
         if 'media_content' in entrie:
             path_image = entrie['media_content'][0]['url']
-            row['image'].append(downlaod_and_move_image(path_image))
+            row['image'].append(download_and_move_image(path_image))
         else:
             row['image'].append(0)
 
@@ -74,7 +73,7 @@ for entrie in entries:
         if 'media_content' in entrie:
             path_image = entrie['media_url']
             if path_image != '':
-                row['image'].append(downlaod_and_move_image(path_image))
+                row['image'].append(download_and_move_image(path_image))
             else:
                 row['image'].append(0)
         else:
@@ -123,7 +122,7 @@ for j in range(1, int(limite_links / 10) + 1):
         if path_image == '' or path_image == None:
             row['image'].append(0)
         else:
-            row['image'].append(downlaod_and_move_image(article.image_url))
+            row['image'].append(download_and_move_image(article.image_url))
         news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
         try:
             print(row['titulos'])

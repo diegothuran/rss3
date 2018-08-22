@@ -28,7 +28,7 @@ def extract_domain(link):
     ext = tldextract.extract(link)
     return ext.domain
 
-def downlaod_and_move_image(path_to_image):
+def download_and_move_image(path_to_image):
     try:
         file_name = wget.download(path_to_image)
     #     destination = os.path.join('/home/diego/Documentos/rss_reader/Untitled Folder/Images', file_name)
@@ -43,7 +43,7 @@ def downlaod_and_move_image(path_to_image):
 #     print(file_name)
     return file_name
 
-# def downlaod_and_move_image(path_to_image):
+# def download_and_move_image(path_to_image):
 #     file_name = wget.download(path_to_image)
 # #     destination = os.path.join('/home/diego/Documentos/rss_reader/Untitled Folder/Images', file_name)
 #     destination = os.path.join('../Data/download', file_name)
@@ -51,7 +51,7 @@ def downlaod_and_move_image(path_to_image):
 # #     print(file_name)
 #     return file_name
 
-# def downlaod_and_move_image(path_to_image):
+# def download_and_move_image(path_to_image):
 #     files_in_image_folder = os.listdir('../Data/download')
 #     file_name = wget.download(path_to_image)
 #     if file_name in files_in_image_folder:
@@ -139,8 +139,8 @@ def get_noticia_comercio(link):
 # #         noticia += str(div.contents[0].encode('utf-8'))
 #         if len(div.contents) > 0:
 #             noticia += str(div.contents[0])
-
-    return noticia
+# 
+#     return noticia
 
 def join_categories(categories):
     str_categories = ', '.join(str(c) for c in categories)

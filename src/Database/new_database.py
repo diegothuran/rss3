@@ -1,11 +1,11 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-from src.Model import News
-from src.Database import connection
+from Model import News
+from Database import connection
 import datetime
 from dateutil import parser
-import src.postagem.Util as Util
+import postagem.Util as Util
 
 
 def save_news(news=News):
