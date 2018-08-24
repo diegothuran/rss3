@@ -95,6 +95,10 @@ for entrie in entries:
     except:
         print('Empty News')
 
+
+
+
+# ---------------------------------- UOL --------------------------------
 limit_links = 50
 start_url = 'https://noticias.uol.com.br/politica/eleicoes/ultimas/'
 lista_links = []
