@@ -4,11 +4,11 @@
 import feedparser
 import pandas as pd
 
-from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
-from postagem.lexical_analyzer import lexical
-from postagem.site_wordpress import post_news
-from Model.News import News
-from Database.new_database import save_news, check_news
+from src.postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from src.postagem.lexical_analyzer import lexical
+from src.postagem.site_wordpress import post_news
+from src.Model.News import News
+from src.Database.new_database import save_news, check_news
 
 from newsplease import NewsPlease
 from bs4 import BeautifulSoup
