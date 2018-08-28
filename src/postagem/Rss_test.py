@@ -1,14 +1,15 @@
-
 # coding: utf-8
 
+import sys
+sys.path.insert(0, '../../src')
 import feedparser
 import pandas as pd
 
-from src.postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
-from src.postagem.lexical_analyzer import lexical
-from src.postagem.site_wordpress import post_news
-from src.Model.News import News
-from src.Database.new_database import save_news, check_news
+from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from postagem.lexical_analyzer import lexical
+from postagem.site_wordpress import post_news
+from Model.News import News
+from Database.new_database import save_news, check_news
 
 from newsplease import NewsPlease
 from bs4 import BeautifulSoup
@@ -49,6 +50,8 @@ for entrie in entries:
     row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
     domain = extract_domain(entrie['link'])
     path_image = ""
+
+    '''
     if  domain == 'globo':
         row['titulos'].append(entrie['title'])
         row['links'].append(entrie['link'])
@@ -61,8 +64,8 @@ for entrie in entries:
             row['image'].append(download_and_move_image(path_image))
         else:
             row['image'].append(0)
-
-    elif domain == 'jornaldocomercio':
+    '''
+    if domain == 'jornaldocomercio':
         row['titulos'].append(entrie['title'])
         row['links'].append(entrie['link'])
         formated_date = format_date(entrie['published'])
@@ -98,7 +101,7 @@ for entrie in entries:
 
 
 
-# ---------------------------------- UOL --------------------------------
+print("---------------------------------- UOL --------------------------------")
 limit_links = 50
 start_url = 'https://noticias.uol.com.br/politica/eleicoes/ultimas/'
 lista_links = []
