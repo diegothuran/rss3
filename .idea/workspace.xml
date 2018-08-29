@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/postagem/post_from_bbc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/postagem/post_from_bbc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/postagem/soup_elpais.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/postagem/soup_elpais.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/postagem/soup_globo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/postagem/soup_globo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/postagem/job.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/postagem/job.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,23 +39,27 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="py" value="29" />
+          <entry key="sh" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Bash" value="1" />
           <entry key="Python" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="734" />
-          <entry key="txt" value="71" />
+          <entry key="py" value="735" />
+          <entry key="sh" value="141" />
+          <entry key="txt" value="85" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="71" />
-          <entry key="Python" value="734" />
+          <entry key="Bash" value="141" />
+          <entry key="PLAIN_TEXT" value="85" />
+          <entry key="Python" value="735" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -91,11 +93,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
-              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/postagem/job.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="24">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -131,11 +142,12 @@
         <option value="$PROJECT_DIR$/src/postagem/site_wordpress.py" />
         <option value="$PROJECT_DIR$/src/postagem/Util.py" />
         <option value="$PROJECT_DIR$/src/Database/new_database.py" />
-        <option value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
         <option value="$PROJECT_DIR$/src/postagem/soup_globo.py" />
         <option value="$PROJECT_DIR$/src/postagem/post_from_bbc.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/src/postagem/Rss_test.py" />
+        <option value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
+        <option value="$PROJECT_DIR$/src/postagem/job.sh" />
       </list>
     </option>
   </component>
@@ -192,15 +204,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/Model" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Database" />
       <recent name="$PROJECT_DIR$/src/postagem" />
       <recent name="$PROJECT_DIR$/src/Utilities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/postagem" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/Model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -403,14 +416,28 @@
       <option name="project" value="LOCAL" />
       <updated>1535467270575</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Adding requirements">
+      <created>1535552815327</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1535552815327</updated>
+    </task>
+    <task id="LOCAL-00009" summary="adding sh file">
+      <created>1535553975491</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1535553975491</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="406" y="1080" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39350373" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.39350373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -424,7 +451,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33764833" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33764833" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -444,7 +471,8 @@
     <MESSAGE value="adding src. in the imports" />
     <MESSAGE value="Adding src to pythonpath" />
     <MESSAGE value="Adding requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding requirements" />
+    <MESSAGE value="adding sh file" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding sh file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -597,7 +625,14 @@
     <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/postagem/job.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
