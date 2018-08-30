@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-a = 1;
-until [$_done]; do
+until 1; do
     python Rss_test.py;
     python post_from_bbc.py;
     python soup_elpais.py;
