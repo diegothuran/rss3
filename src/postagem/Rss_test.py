@@ -122,7 +122,7 @@ for j in range(1, int(limite_links / 10) + 1):
     for titulo, link in zip(links_coletados, links_links):
         row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
         article = NewsPlease.from_url(link.get('href'))
-        row['titulos'].append('titulo: ' + str(i))
+        row['titulos'].append(article.title)
         row['noticia'].append(article.text)
         news_url = article.url 
         row['links'].append(news_url)
