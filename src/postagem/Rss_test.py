@@ -5,6 +5,8 @@ sys.path.insert(0, '../../src')
 import feedparser
 import pandas as pd
 
+import urllib
+
 from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
 from postagem.lexical_analyzer import lexical
 from postagem.site_wordpress import post_news
@@ -50,7 +52,7 @@ for entrie in entries:
     row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
     domain = extract_domain(entrie['link'])
     path_image = ""
-
+ 
     '''
     if  domain == 'globo':
         row['titulos'].append(entrie['title'])
@@ -81,9 +83,9 @@ for entrie in entries:
                 row['image'].append(0)
         else:
             row['image'].append(0)
-
+ 
     news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
-
+ 
     try:
         print(row['titulos'])
         news_in_db = check_news(news)
@@ -98,7 +100,6 @@ for entrie in entries:
                 post_news(df)
     except:
         print('Empty News')
-
 
 
 
@@ -121,16 +122,70 @@ for j in range(1, int(limite_links / 10) + 1):
     for titulo, link in zip(links_coletados, links_links):
         row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
         article = NewsPlease.from_url(link.get('href'))
-        row['titulos'].append(article.title)
+        row['titulos'].append('titulo: ' + str(i))
         row['noticia'].append(article.text)
-        row['links'].append(article.url)
+        news_url = article.url 
+        row['links'].append(news_url)
         row['abstract'].append(article.text)
-        row['date'].append(article.date_publish)
+    #         row['date'].append(article.date_publish)
+
+        try:
+            if('ne10' in news_url):
+                # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                page_time = urllib.request.urlopen(news_url)
+                soup_date = BeautifulSoup(page_time, 'html.parser')
+                time = soup_date.find_all('p', attrs={'class': 'data-materia'})
+                raw_date = time[0].text 
+                raw_date = raw_date.replace(',', '')
+                raw_date = raw_date.split()
+                public_date = raw_date[2] + ' ' + raw_date[4]
+                formated_date = datetime.datetime.strptime(public_date, '%d/%m/%Y %Hh%M').strftime("%Y-%m-%d %H:%M:%S")
+                row['date'].append(formated_date)
+            elif('band' in news_url):
+                # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                page_time = urllib.request.urlopen(news_url)
+                soup_date = BeautifulSoup(page_time, 'html.parser')
+                time = soup_date.find_all('meta', attrs={'itemprop': 'datePublished'})
+                raw_date = time[0].text 
+                raw_date = raw_date.split()
+                public_date = raw_date[0] + ' ' + raw_date[2]
+                formated_date = datetime.datetime.strptime(public_date, '%d/%m/%Y %H:%M').strftime("%Y-%m-%d %H:%M:%S")
+                row['date'].append(formated_date)
+            elif('folha' in news_url):
+                # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                page_time = urllib.request.urlopen(news_url)
+                soup_date = BeautifulSoup(page_time, 'html.parser')
+                time = soup_date.find_all('time', attrs={'class': 'c-more-options__published-date'})
+                formated_date = time[0]['datetime']
+                row['date'].append(formated_date)          
+            elif('congressoemfoco' in news_url):
+                print(' --- congressoemfoco --- ')
+                # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                page_time = urllib.request.urlopen(news_url)
+                soup_date = BeautifulSoup(page_time, 'html.parser')
+                time = soup_date.find_all('time', attrs={'class': 'post-published updated'})
+                public_date = time[0]['datetime']
+                formated_date = datetime.datetime.strptime(public_date, '%Y-%m-%dT%H:%M:%S+00:00').strftime("%Y-%m-%d %H:%M:%S")
+                row['date'].append(formated_date)
+    
+            # if no case is caught: This happens in the case of the 'noticias.uol.com.br' page
+            else:
+                print(' --- noticias.uol.com.br ---')
+                # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                # The BeautifulSoup cannot get the actual date of the news, so I'll set the time now.
+                formated_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                row['date'].append(formated_date)
+        except:
+            formated_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            row['date'].append(formated_date)
+            
+        # image
         path_image = article.image_url
         if path_image == '' or path_image == None:
             row['image'].append(0)
         else:
             row['image'].append(download_and_move_image(article.image_url))
+                 
         news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
         try:
             print(row['titulos'])
