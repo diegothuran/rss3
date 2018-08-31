@@ -257,99 +257,99 @@ def post_news(df):
           
     for idx in range(len(df)):
         row = df.iloc[idx]
-        if(row['categorias'] != set()):
+#         if(row['categorias'] != set()):
             
-            # date now        
-            date_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            date_df = str(row['date'])
-            #date_df = datetime.datetime.strptime(row['date'], '%a, %d %b %Y %H:%M:%S %z').strftime("%Y-%m-%d %H:%M:%S")
+        # date now        
+        date_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        date_df = str(row['date'])
+        #date_df = datetime.datetime.strptime(row['date'], '%a, %d %b %Y %H:%M:%S %z').strftime("%Y-%m-%d %H:%M:%S")
+        
+        if(date_df < date_now):
+            date = date_df
+        else:
+            date = date_now
             
-            if(date_df < date_now):
-                date = date_df
-            else:
-                date = date_now
-                
-            # title for the post
-            title = row['titulos']
-            # the wordpress categories index for the 'noticia' at idx_noticia index 
-            categories_names = row['categorias']
-            categories = get_categories_idx(categories_names)
-            cats = join_strings(np.array(categories).astype(str).tolist())
-            
-            # the text of the 'abstract' and the link
-            news = row['abstract']
-            reduced_news = get_reduced_news(news)
-            temp = '... ' + '<a href=' + row['links'] +'> ' + 'Leia a reportagem completa' + '</a>'
-            content = reduced_news + temp
-    
-            # if the row does not have category
-            if(categories == []):
-                cats = '97' # category Geral
-               
-            # url
-            url = URL
-    #             url_pernambuco = 'https://politica.xarx.rocks/pe/wp-json/wp/v2'
-               
-    #             payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; \
-    #             name=\"title\"\r\n\r\n{0}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #             form-data; name=\"categories\"\r\n\r\n{1}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #             form-data; name=\"content\"\r\n\r\n{2}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #             form-data; name=\"status\"\r\n\r\npublish\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--".format(title, 
-    #                                                                                                           cats, 
-    #                                                                                                           content).encode("utf-8")
-                                                                                                             
+        # title for the post
+        title = row['titulos']
+        # the wordpress categories index for the 'noticia' at idx_noticia index 
+        categories_names = row['categorias']
+        categories = get_categories_idx(categories_names)
+        cats = join_strings(np.array(categories).astype(str).tolist())
+        
+        # the text of the 'abstract' and the link
+        news = row['abstract']
+        reduced_news = get_reduced_news(news)
+        temp = '... ' + '<a href=' + row['links'] +'> ' + 'Leia a reportagem completa' + '</a>'
+        content = reduced_news + temp
+
+        # if the row does not have category
+        if(categories == []):
+            cats = '97' # category Geral
            
-    #         payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; \
-    #         name=\"title\"\r\n\r\n{0}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #         form-data; name=\"categories\"\r\n\r\n{1}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #         form-data; name=\"content\"\r\n\r\n{2}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
-    #         form-data; name=\"status\"\r\n\r\npublish\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--".format(title, 
-    #                                                                                                       cats, 
-    #                                                                                                       content)
-    #                                                                                                          
-    #         headers_postman = {
-    #             'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-    #             'authorization': "Basic YWRtcG9saXRpY2E6eGFyeEAyMDE4",
-    #             'cache-control': "no-cache",
-    #             'postman-token': "660515d7-2398-f142-2660-69ff2d5ef344"
-    #         }
-    #       
-    #         r = requests.post(url + '/posts', headers=headers_postman, data=payload)
-    #         print('POST = ' + str(r))
-    
-            post = {'date': date,
-                    'title': title,
-                    'categories': cats,
-                    'content': content,
-                    'status': 'publish',
-                    }
-                            
-            r = requests.post(url + '/posts', headers=headers, json=post)
-            print('POST = ' + str(r))
-                                 
-            if(use_image): 
-                try:
-    #                 image_path = '../Data/download/' + row['image'].encode('utf-8')
-                    image_path = '../Data/download/' + row['image']
-                    media = {'file': open(image_path,'rb'), 'caption': 'picture'}
-                    image = requests.post(url + '/media', headers=headers, files=media)  
-                    print('IMAGE_POST = ' + str(image))      
+        # url
+        url = URL
+#             url_pernambuco = 'https://politica.xarx.rocks/pe/wp-json/wp/v2'
+           
+#             payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; \
+#             name=\"title\"\r\n\r\n{0}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#             form-data; name=\"categories\"\r\n\r\n{1}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#             form-data; name=\"content\"\r\n\r\n{2}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#             form-data; name=\"status\"\r\n\r\npublish\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--".format(title, 
+#                                                                                                           cats, 
+#                                                                                                           content).encode("utf-8")
+                                                                                                         
+       
+#         payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; \
+#         name=\"title\"\r\n\r\n{0}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#         form-data; name=\"categories\"\r\n\r\n{1}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#         form-data; name=\"content\"\r\n\r\n{2}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: \
+#         form-data; name=\"status\"\r\n\r\npublish\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--".format(title, 
+#                                                                                                       cats, 
+#                                                                                                       content)
+#                                                                                                          
+#         headers_postman = {
+#             'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+#             'authorization': "Basic YWRtcG9saXRpY2E6eGFyeEAyMDE4",
+#             'cache-control': "no-cache",
+#             'postman-token': "660515d7-2398-f142-2660-69ff2d5ef344"
+#         }
+#       
+#         r = requests.post(url + '/posts', headers=headers_postman, data=payload)
+#         print('POST = ' + str(r))
+
+        post = {'date': date,
+                'title': title,
+                'categories': cats,
+                'content': content,
+                'status': 'publish',
+                }
+                        
+        r = requests.post(url + '/posts', headers=headers, json=post)
+        print('POST = ' + str(r))
+                             
+        if(use_image): 
+            try:
+#                 image_path = '../Data/download/' + row['image'].encode('utf-8')
+                image_path = '../Data/download/' + row['image']
+                media = {'file': open(image_path,'rb'), 'caption': 'picture'}
+                image = requests.post(url + '/media', headers=headers, files=media)  
+                print('IMAGE_POST = ' + str(image))      
+                          
+#                 # Como estava
+#                 img_id = requests.get(url + '/media').json()[0]['id']
+#                 post_id = requests.get(url + '/posts').json()[0]['id']
+# #                 print(img_id)
+# #                 print(post_id)
+                   
+                # Testa essa nova forma para ver se funciona
+                img_id = (json.loads(image.content))['id']
+                post_id = (json.loads(r.content))['id']
+                print(img_id)
+                print(post_id)
                               
-    #                 # Como estava
-    #                 img_id = requests.get(url + '/media').json()[0]['id']
-    #                 post_id = requests.get(url + '/posts').json()[0]['id']
-    # #                 print(img_id)
-    # #                 print(post_id)
-                       
-                    # Testa essa nova forma para ver se funciona
-                    img_id = (json.loads(image.content))['id']
-                    post_id = (json.loads(r.content))['id']
-                    print(img_id)
-                    print(post_id)
-                                  
-                    updated_post = {'featured_media' : img_id}
-                                   
-                    update = requests.post(url + '/posts/' + str(post_id), headers=headers, json=updated_post)     
-                    print('UPDATE_POST = ' + str(update))
-                except:
-                    print('Image not found.')
+                updated_post = {'featured_media' : img_id}
+                               
+                update = requests.post(url + '/posts/' + str(post_id), headers=headers, json=updated_post)     
+                print('UPDATE_POST = ' + str(update))
+            except:
+                print('Image not found.')

@@ -60,7 +60,8 @@ def format_date(raw_date):
 
 
 
-links = ['https://g1.globo.com/df/distrito-federal/eleicoes/2018/',
+links = ['https://g1.globo.com/politica/eleicoes/2018/', 
+         'https://g1.globo.com/df/distrito-federal/eleicoes/2018/',
          'https://g1.globo.com/go/goias/eleicoes/2018/',
          'https://g1.globo.com/mt/mato-grosso/eleicoes/2018/',
          'https://g1.globo.com/ms/mato-grosso-do-sul/eleicoes/2018/',
@@ -140,9 +141,10 @@ for link in links:
                 row = pd.DataFrame(row)
                 df, categories = lexical_soup_globo(row)
                 # DB categories
-                news.set_categories(categories)
-                save_news(news)
-                post_news(df)
+                if(categories != [set()]):
+                    news.set_categories(categories)
+                    save_news(news)
+                    post_news(df)
         except:
             print('Empty News')
     

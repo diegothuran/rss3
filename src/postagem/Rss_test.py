@@ -92,9 +92,10 @@ for entrie in entries:
             row = pd.DataFrame(row)
             df, categories = lexical(row)
             # DB categories
-            news.set_categories(categories)
-            save_news(news)
-            post_news(df)
+            if(categories != [set()]):
+                news.set_categories(categories)
+                save_news(news)
+                post_news(df)
     except:
         print('Empty News')
 
@@ -135,13 +136,14 @@ for j in range(1, int(limite_links / 10) + 1):
             print(row['titulos'])
             news_in_db = check_news(news)
             print('news_in_db: ' + str(news_in_db))
-            if (not news_in_db):
+            if(not news_in_db):
                 row = pd.DataFrame(row)
                 df, categories = lexical(row)
                 # DB categories
-                news.set_categories(categories)
-                save_news(news)
-                post_news(df)
+                if(categories != [set()]):
+                    news.set_categories(categories)
+                    save_news(news)
+                    post_news(df)
         except:
             print('Empty News')
 
