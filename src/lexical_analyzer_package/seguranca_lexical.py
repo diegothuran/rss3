@@ -16,7 +16,8 @@ import nltk
 # stemmer.stem("copiar")
 
 # categories related to the main theme: security in this case
-STEMMED_WORDS = ['violência', 
+# using stemmed_words
+WORDS = ['violência', 
                  'assalto', 'assaltad', 
                  'sequestro', 'sequestrad', 
                  'presídio', 'presidiári', 'penitenciári',
@@ -44,9 +45,9 @@ THEME_CATEGORIES = ['violência',
                     'segurança']
 
 def lexical(df):
-    df, categories = base_lexical_analyzer.get_categories_corpus(df, STEMMED_WORDS, THEME_CATEGORIES)
+    df, categories = base_lexical_analyzer.get_categories_corpus(df, WORDS, THEME_CATEGORIES)
     return df, categories
  
 def lexical_corpus_and_title(df):
-    df, categories = base_lexical_analyzer.get_categories_corpus_and_title(df, STEMMED_WORDS, THEME_CATEGORIES)
+    df, categories = base_lexical_analyzer.get_categories_corpus_and_title(df, WORDS, THEME_CATEGORIES)
     return df, categories

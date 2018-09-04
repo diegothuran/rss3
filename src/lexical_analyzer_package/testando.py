@@ -17,10 +17,12 @@ from Model.News import News
 
 import Database.seguranca_table as seguranca_table
 import Database.credito_table as credito_table 
-import Database.varejo_table as varejo_table  
+import Database.varejo_table as varejo_table
+import Database.midia_table as midia_table  
+  
 import time
 
-from lexical_analyzer_package import seguranca_lexical, varejo_lexical, credito_lexical
+from lexical_analyzer_package import seguranca_lexical, varejo_lexical, credito_lexical, midia_lexical
 
 def format_date(raw_date):
     formated_date = datetime.datetime.strptime(raw_date, ' %d/%m/%Y %Hh%M ').strftime("%Y-%m-%d %H:%M:%S")
@@ -100,7 +102,7 @@ for new in news:
             # DB categories
             if(categories != [set()]):
                 news.set_categories(categories)
-                credito_table.save_news(news)
+#                 credito_table.save_news(news)
 #                 post_news(df)
     except:
         print('Empty News')
@@ -118,8 +120,25 @@ for new in news:
             # DB categories
             if(categories != [set()]):
                 news.set_categories(categories)
-                varejo_table.save_news(news)
+#                 varejo_table.save_news(news)
 #                 post_news(df)
     except:
         print('Empty News')
-       
+    
+    
+    print('\n --- Midia ---')
+    try:
+        print(titulo)
+        news_in_db = midia_table.check_news(news)
+        print('news_in_db: ' + str(news_in_db))
+        if(not news_in_db):
+            row = pd.DataFrame(row)
+            df, categories = midia_lexical.lexical_corpus_and_title(row)
+            print(categories)
+            # DB categories
+            if(categories != [set()]):
+                news.set_categories(categories)
+                midia_table.save_news(news)
+#                 post_news(df)
+    except:
+        print('Empty News')   

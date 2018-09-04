@@ -16,21 +16,21 @@ import nltk
 # stemmer.stem("copiar")
 
 # categories related to the main theme: security in this case
-STEMMED_WORDS = ['comércio', 
-                 'ecommerce', 'e-commerce', 'comércio eletrônico',
-                 'vendas', 
-                 'lojas', 
-                 'shopping', 
-                 'presente', 
-                 'dia dos pais', 
-                 'dia das mães', 
-                 'dia dos namorados', 
-                 'dia das crianças', 
-                 'dia dos professores', 
-                 'natal', 
-                 'páscoa', 
-                 'são joão', 
-                 'carnaval']
+WORDS = ['comércio', 
+         'ecommerce', 'e-commerce', 'comércio eletrônico',
+         'vendas', 
+         'lojas', 
+         'shopping', 
+         'presente', 
+         'dia dos pais', 
+         'dia das mães', 
+         'dia dos namorados', 
+         'dia das crianças', 
+         'dia dos professores', 
+         'natal', 
+         'páscoa', 
+         'são joão', 
+         'carnaval']
 
 THEME_CATEGORIES = ['comércio', 
                      'ecommerce', 'ecommerce', 'ecommerce',
@@ -49,9 +49,9 @@ THEME_CATEGORIES = ['comércio',
                      'carnaval']
 
 def lexical(df):
-    df, categories = base_lexical_analyzer.get_categories_corpus(df, STEMMED_WORDS, THEME_CATEGORIES)
+    df, categories = base_lexical_analyzer.get_categories_corpus(df, WORDS, THEME_CATEGORIES)
     return df, categories
  
 def lexical_corpus_and_title(df):
-    df, categories = base_lexical_analyzer.get_categories_corpus_and_title(df, STEMMED_WORDS, THEME_CATEGORIES)
+    df, categories = base_lexical_analyzer.get_categories_corpus_and_title(df, WORDS, THEME_CATEGORIES)
     return df, categories

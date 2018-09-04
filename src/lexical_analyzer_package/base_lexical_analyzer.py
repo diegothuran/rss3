@@ -94,13 +94,13 @@ def get_estados_categories(input_text):
     return estados_categories
 
 
-def get_theme_categories(input_text, stemmed_words, theme_categories):
+def get_theme_categories(input_text, words, theme_categories):
     """
     input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
-    stemmed_words: raiz das palavras
+    words: palavras da busca
     theme_categories: categorias relacionadas ao tema principal do analisador lexico
     """
-    security_categories = []
+    related_categories = []
 #     try:
     text = remove_punctuation(input_text)
     
@@ -110,21 +110,21 @@ def get_theme_categories(input_text, stemmed_words, theme_categories):
     lower_text = text.lower()
 
     # seek for ESTADOS name
-    for idx in range(len(stemmed_words)):
-        if stemmed_words[idx] in lower_text:
-            security_categories.append(theme_categories[idx])
-#             security_categories.append(theme_categories[idx].lower())
+    for idx in range(len(words)):
+        if words[idx] in lower_text:
+            related_categories.append(theme_categories[idx])
+#             related_categories.append(theme_categories[idx].lower())
 
-    return security_categories
+    return related_categories
 
-def get_categories(input_text, stemmed_words, theme_categories):
+def get_categories(input_text, words, theme_categories):
     """
     input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
     theme_categories: categorias relacionadas ao tema principal do analisador lexico
     """
     cats, main_theme_categories, estados_categories = [], [], []
     try:
-        main_theme_categories = get_theme_categories(input_text, stemmed_words, theme_categories)
+        main_theme_categories = get_theme_categories(input_text, words, theme_categories)
         if(main_theme_categories != []):
             estados_categories = get_estados_categories(input_text)
 
@@ -136,7 +136,7 @@ def get_categories(input_text, stemmed_words, theme_categories):
 
     return cats
 
-def get_categories_corpus(df, stemmed_words, theme_categories):
+def get_categories_corpus(df, words, theme_categories):
     """
     categories from rss: input_text is just from the 'noticias'
     
@@ -154,7 +154,7 @@ def get_categories_corpus(df, stemmed_words, theme_categories):
     for idx in range(len(df)):
         row = df.iloc[idx]
         noticia = row['noticia']
-        cats = get_categories(noticia, stemmed_words, theme_categories)
+        cats = get_categories(noticia, words, theme_categories)
 
     # Removing replicated items
     set_cats = [set(cat) for cat in cats]
@@ -162,7 +162,7 @@ def get_categories_corpus(df, stemmed_words, theme_categories):
     df = df.assign(categorias = set_cats)
     return df, set_cats
 
-def get_categories_corpus_and_title(df, stemmed_words, theme_categories):
+def get_categories_corpus_and_title(df, words, theme_categories):
     """
     categories from corpus and title: input_text is from both 'noticia' and 'titulo' 
     
@@ -181,10 +181,145 @@ def get_categories_corpus_and_title(df, stemmed_words, theme_categories):
         row = df.iloc[idx]
         
         noticia = row['noticia']
-        cats_noticia = get_categories(noticia, stemmed_words, theme_categories)
+        cats_noticia = get_categories(noticia, words, theme_categories)
 
         title = row['titulos']
-        cats_title = get_categories(title, stemmed_words, theme_categories)
+        cats_title = get_categories(title, words, theme_categories)
+
+    cats_concat = cats_noticia[0] + cats_title[0]
+    cats.append(cats_concat)
+
+    # Removing replicated items
+    set_cats = [set(cat) for cat in cats]
+    
+    df = df.assign(categorias = set_cats)
+    return df, set_cats
+
+
+# --- Tree Structure ---
+def check_string(word, lower_text):
+    in_the_text = (word in lower_text)
+    return in_the_text
+
+def check_list(list_words, lower_text):
+    if(len(list_words) > 1):
+        temp2 = []
+        for i in range(len(list_words)):
+            ablibla = (list_words[i] in lower_text)
+            temp2.append(ablibla)
+        if(True in temp2):
+            in_the_text = True
+        else:
+            in_the_text = False
+    else:
+        in_the_text = (list_words[0] in lower_text)
+
+    return in_the_text
+
+
+def get_theme_categories_tree_structure(input_text, clustered_search_words, theme_categories):
+    """
+    input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
+    clustered_search_words: as palavras agrupadas no formato dado
+    theme_categories: categorias relacionadas ao tema principal do analisador lexico
+    """
+#     try:
+    text = remove_punctuation(input_text)
+    
+    #TODO: ver se vai precisar fazer case sensitive 
+    
+    # LOWER_CASE VERIFICATION: text to lower case
+    lower_text = text.lower()
+    cats = []
+    for idx in range(len(clustered_search_words)):
+        words_tree = clustered_search_words[idx]
+        if(len(words_tree) > 1):
+            checker = []
+            for i in range(len(words_tree)):
+                # Check if the item is a string or a list of strings
+                if(type(words_tree[i]) == str):
+                    str_in_the_text = check_string(words_tree[i], lower_text)
+                    checker.append(str_in_the_text)
+                else:
+                    list_in_the_text = check_list(words_tree[i], lower_text)
+                    checker.append(list_in_the_text)
+            if(False not in checker):
+                cats.append(theme_categories[idx])
+        else:
+            if words_tree[0] in lower_text:
+                cats.append(theme_categories[idx])
+
+    return cats
+
+def get_categories_tree_structure(input_text, words_tree_structure, theme_categories):
+    """
+    input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
+    words_tree_structure: words in the tree structure
+    theme_categories: categorias relacionadas ao tema principal do analisador lexico
+    """
+    cats, main_theme_categories, estados_categories = [], [], []
+    try:
+        main_theme_categories = get_theme_categories_tree_structure(input_text, words_tree_structure, theme_categories)
+        if(main_theme_categories != []):
+            estados_categories = get_estados_categories(input_text)
+
+        cats_concat = main_theme_categories + estados_categories
+        cats.append(cats_concat)
+
+    except:
+        cats.append([])
+
+    return cats
+
+def get_categories_corpus_tree_structure(df, words_tree_structure, theme_categories):
+    """
+    categories from rss: input_text is just from the 'noticias'
+    
+    Parameters
+    ----------
+    input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
+    theme_categories: categorias relacionadas ao tema principal do analisador lexico
+    
+    Return
+    ------
+    df: the df with the column 'categories'
+    set_cats: set of categories
+    """
+    cats = []
+    for idx in range(len(df)):
+        row = df.iloc[idx]
+        noticia = row['noticia']
+        cats = get_categories_tree_structure(noticia, words_tree_structure, theme_categories)
+
+    # Removing replicated items
+    set_cats = [set(cat) for cat in cats]
+
+    df = df.assign(categorias = set_cats)
+    return df, set_cats
+
+def get_categories_corpus_and_title_tree_structure(df, words_tree_structure, theme_categories):
+    """
+    categories from corpus and title: input_text is from both 'noticia' and 'titulo' 
+    
+    Parameters
+    ----------
+    input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
+    theme_categories: categorias relacionadas ao tema principal do analisador lexico
+    
+    Return
+    ------
+    df: the df with the column 'categories'
+    set_cats: set of categories
+    """
+    cats = []
+    for idx in range(len(df)):
+        row = df.iloc[idx]
+        
+        noticia = row['noticia']
+        cats_noticia = get_categories_tree_structure(noticia, words_tree_structure, theme_categories)
+
+        title = row['titulos']
+        cats_title = get_categories_tree_structure(title, words_tree_structure, theme_categories)
 
     cats_concat = cats_noticia[0] + cats_title[0]
     cats.append(cats_concat)
