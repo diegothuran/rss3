@@ -1,12 +1,8 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 
-import sys
-sys.path.insert(0, '../../src')
-
 from lexical_analyzer_package import base_lexical_analyzer
 
-import nltk
 
 # import pandas as pd
 # import string 
@@ -177,4 +173,6 @@ def lexical_corpus_and_title(df):
     words_tree_structure = structure_words()
     
     df, categories = base_lexical_analyzer.get_categories_corpus_and_title_tree_structure(df, words_tree_structure, THEME_CATEGORIES)
+    if(categories == [set()]):
+        print(' -- no categories -- ')
     return df, categories
