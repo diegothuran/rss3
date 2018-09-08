@@ -23,9 +23,12 @@ import datetime
 
 link = 'https://diplomatique.org.br/'
 req = requests.get(link)
-soup = BeautifulSoup(req.text, "html.parser").find_all('div', class_='owl-carousel')
+bs = BeautifulSoup(req.text, "html.parser")
+materias = bs.find_all('div', class_='owl-carousel')
+materias += bs.find('div', class_='materia-principal').find_all('a', href=True)
+materias += bs.find('div', class_='editorias ').find_all('a', href=True)
 
-for div in soup:
+for div in materias[1:]:
     page_link = div.find_all('a', href=True)[0]['href']
     article = NewsPlease.from_url(page_link)
     print(article.title)
