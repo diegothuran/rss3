@@ -14,7 +14,7 @@ import copy
 USER = b'admxarx'
 PASSWORD = b'!xarx@2018*'
 
-URL = 'https://midia.xarx.rocks/wp-json/wp/v2'
+URL = '-/wp-json/wp/v2'
 # URL = 'https://varejo.xarx.rocks/wp-json/wp/v2'
 
 token = base64.standard_b64encode(USER + b':' + PASSWORD)
