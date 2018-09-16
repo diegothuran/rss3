@@ -4,6 +4,6 @@ until 1; do
     python soup_agenciabrasil.py;
     python soup_diplomatique.py;
     python soup_jornaldocomercio.py;
-    python soup_operamundi.py
+    #python soup_operamundi.py
     sleep 1;
 done
