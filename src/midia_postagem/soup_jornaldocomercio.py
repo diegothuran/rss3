@@ -19,8 +19,11 @@ import requests
 
 import datetime
 
+#link do site de onde as notícias serão pegas
 link = 'https://www.jornaldocomercio.com/index.php?id=/ultimas_noticias/index.php'
+#requisição que vai pegar os html da página
 req = requests.get(link)
+
 bs = BeautifulSoup(req.text, "html.parser")
 materias = bs.find('div', class_='col-md-8 col-sm-12').find_all('a', href=True)
 
