@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="" />
+    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +27,8 @@
     <session id="-144769720">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.0" value="5" />
+          <entry key="project.closed" value="11" />
+          <entry key="project.open.time.0" value="9" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
@@ -34,35 +37,35 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="5" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="ipynb" value="1" />
-          <entry key="py" value="47" />
-          <entry key="sh" value="1" />
+          <entry key="py" value="56" />
+          <entry key="sh" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="1" />
+          <entry key="Bash" value="4" />
           <entry key="IPNB" value="1" />
-          <entry key="Python" value="47" />
+          <entry key="Python" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1096" />
-          <entry key="sh" value="148" />
-          <entry key="txt" value="260" />
+          <entry key="py" value="1206" />
+          <entry key="sh" value="238" />
+          <entry key="txt" value="270" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="148" />
-          <entry key="PLAIN_TEXT" value="260" />
-          <entry key="Python" value="1096" />
+          <entry key="Bash" value="238" />
+          <entry key="PLAIN_TEXT" value="270" />
+          <entry key="Python" value="1206" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -74,30 +77,21 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py">
+        <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="55" column="31" selection-start-line="27" selection-start-column="4" selection-end-line="55" selection-end-column="31" />
+            <state relative-caret-position="361">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_operamundi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="18" selection-end-line="55" selection-end-column="31" />
+            <state relative-caret-position="504">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -137,13 +131,16 @@
         <option value="$PROJECT_DIR$/src/postagem/soup_globo.py" />
         <option value="$PROJECT_DIR$/src/postagem/post_from_bbc.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
         <option value="$PROJECT_DIR$/src/postagem/job.sh" />
         <option value="$PROJECT_DIR$/src/postagem/Rss_test.py" />
         <option value="$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py" />
         <option value="$PROJECT_DIR$/src/midia_postagem/soup_diplomatique.py" />
-        <option value="$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py" />
+        <option value="$PROJECT_DIR$/src/job.sh" />
+        <option value="$PROJECT_DIR$/src/midia_postagem/job.sh" />
+        <option value="$PROJECT_DIR$/src/midia_postagem/midia_post.py" />
         <option value="$PROJECT_DIR$/src/midia_postagem/soup_operamundi.py" />
+        <option value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
+        <option value="$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py" />
       </list>
     </option>
   </component>
@@ -184,12 +181,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="midia_postagem" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="rss3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rss3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="postagem" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -201,19 +192,20 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Python/crawling" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/postagem" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/midia_postagem" />
       <recent name="$PROJECT_DIR$/src/Database" />
       <recent name="$PROJECT_DIR$/src/postagem" />
       <recent name="$PROJECT_DIR$/src/Utilities" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/postagem" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/Model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -472,19 +464,26 @@
       <option name="project" value="LOCAL" />
       <updated>1536443942938</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="adding operamundi no midias">
+      <created>1536445063384</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1536445063384</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30404687" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3168264" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32901832" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32901832" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.399137" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -493,7 +492,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33764833" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.21574973" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -518,7 +517,8 @@
     <MESSAGE value="adding agenciabrasil.com.br no midias" />
     <MESSAGE value="adding diplomaque.org.br no midias" />
     <MESSAGE value="adding jornal do comércio no midias" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding jornal do comércio no midias" />
+    <MESSAGE value="adding operamundi no midias" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding operamundi no midias" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -608,13 +608,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Model1/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/src/Model/News.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/postagem/Util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -666,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/postagem/job.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/postagem/Rss_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -681,23 +667,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Untitled.ipynb" />
-    <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="76" column="24" lean-forward="true" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Rss_midia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="63" column="44" lean-forward="true" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/midia_post.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/anaconda2/envs/rss/lib/python3.6/site-packages/requests/sessions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1855">
@@ -705,31 +674,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_diplomatique.py">
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/midia_post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/job.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/postagem/job.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/News.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_operamundi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_diplomatique.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
           <caret line="28" selection-start-line="28" selection-end-line="28" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="55" column="31" selection-start-line="27" selection-start-column="4" selection-end-line="55" selection-end-column="31" />
+        <state relative-caret-position="129">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Rss_midia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3528">
+          <caret line="147" column="2" selection-start-line="147" selection-start-column="2" selection-end-line="147" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="18" selection-end-line="55" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/soup_operamundi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        <state relative-caret-position="504">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
