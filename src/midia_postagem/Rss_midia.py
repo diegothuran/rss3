@@ -10,7 +10,7 @@ import urllib
 from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
 from lexical_analyzer_package import midia_lexical
 from midia_postagem import midia_post
-from Model.News import News
+from Model.Social_News import Social_News
 from Database import midia_table
 
 from newsplease import NewsPlease
@@ -19,6 +19,7 @@ import requests
 
 import datetime
 
+import util_midia
 
 hit_list = [
     'http://braziljournal.com/rss',
@@ -104,63 +105,32 @@ hit_list = [
     'http://www.pt.org.br/feed/',
     'http://servicios.lanacion.com.ar/herramientas/rss/origen=2'
     ]
-
+  
 future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
-
-
+  
+  
 # In[3]:
 entries = []
 for feed in future_calls:
     entries.extend(feed["items"])
-
-
-resultados = pd.DataFrame({'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []})
-
-
-def format_date(raw_date):
-    formated_date = datetime.datetime.strptime(raw_date, '%d/%m/%Y %Hh%M%S').strftime("%Y-%m-%d %H:%M:%S")
-    return formated_date
-
+ 
+ 
 i = 0
 for entrie in entries:
     i+=1
-    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
+      
     domain = extract_domain(entrie['link'])
     print('\n Index: ' + str(i))
     print(domain)
     path_image = ""
     ref_link = entrie['link']
+    # get info from the ref_link and perform both post and db_save operations    
+    util_midia.social_news_from_link(ref_link)
+ 
+# ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
+# # get info from the ref_link and perform both post and db_save operations    
+# util_midia.social_news_from_link(ref_link)
     
-    article = NewsPlease.from_url(ref_link)
-    # Data returned by the NewsPlease
-    row['titulos'].append(article.title)
-    row['noticia'].append(article.text)
-    row['links'].append(article.url)
-    row['abstract'].append(article.text)
-    formated_date = str(article.date_publish)
-    row['date'].append(formated_date)
     
-    path_image = article.image_url
-    if path_image == '' or path_image == None:
-        row['image'].append(0)
-    else:
-        row['image'].append(download_and_move_image(article.image_url))
-  
-    news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
-   
-    try:
-        print(row['titulos'])
-        news_in_db = midia_table.check_news(news)
-        print('news_in_db: ' + str(news_in_db))
-        if(not news_in_db):
-            row = pd.DataFrame(row)
-            df, categories = midia_lexical.lexical_corpus_and_title(row)
-            # DB categories
-            if(categories != [set()]):
-                news.set_categories(categories)
-                midia_table.save_news(news)
-                midia_post.post_news(df)
-    except:
-        print('Empty News')
 
 

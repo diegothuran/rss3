@@ -14,7 +14,7 @@ import copy
 USER = b'admxarx'
 PASSWORD = b'!xarx@2018*'
 
-URL = '-/wp-json/wp/v2'
+URL = 'https://midia.xarx.rocks/wp-json/wp/v2'
 # URL = 'https://varejo.xarx.rocks/wp-json/wp/v2'
 
 token = base64.standard_b64encode(USER + b':' + PASSWORD)
@@ -264,7 +264,15 @@ def post_news(df):
         news = row['abstract']
         reduced_news = get_reduced_news(news)
         temp = '... ' + '<a href=' + row['links'] +'> ' + 'Leia a reportagem completa' + '</a>'
-        content = reduced_news + temp
+        
+        texto_contagem = 'Informações relacionadas ao SharedCount : <br> &emsp; Compartilhamentos no Pinterest = ' + str(row['pinterest']) + \
+            ' <br> &emsp; Total de atividades relacionadas ao Facebook = ' + str(row['fb_total']) + ' - sendo: <br> &emsp;&emsp; Compartilhamentos = ' + \
+            str(row['fb_share']) + ' <br> &emsp;&emsp; Comentários = ' + str(row['fb_comment']) + ' <br> &emsp;&emsp; Reações = ' + \
+            str(row['fb_reaction']) + ' <br><br>'
+        
+        
+#         content = reduced_news + temp
+        content = texto_contagem + reduced_news + temp
 
         # if the row does not have category
         if(categories == []):

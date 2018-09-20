@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 import sys
 sys.path.insert(0, '../../src')
-from Model import News
+
+from Model import Social_News
 from Database import connection
 import datetime
 from dateutil import parser
 import postagem.Util as Util
 
 
-def save_news(news = News):
+def save_news(news = Social_News):
     cnx = connection.connection()
 
     try:
@@ -20,11 +21,14 @@ def save_news(news = News):
         str_now = datetime.datetime.now().strftime("%Y-%m-%d")
         
         cats = Util.join_categories(news.categories[0])
+        
         add_news = ("INSERT INTO midia "
-                    "(id, abstract, noticia, public_date, image, titulo, link, cheated_at, categories) "
-                        "VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)", (news.abstract[0], news.news[0],
+                    "(id, abstract, noticia, public_date, image, titulo, link, cheated_at, categories, pinterest, fb_comment, fb_share, fb_reaction, fb_total) "
+                        "VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (news.abstract[0], news.news[0],
                                                                                    news.date[0], news.media[0],
-                                                                                news.title[0], news.link[0], str_now, cats))
+                                                                                news.title[0], news.link[0], str_now, cats,
+                                                                                news.pinterest[0], news.fb_comment[0], news.fb_share[0],
+                                                                                news.fb_reaction[0], news.fb_total[0]))
 
         cursor.execute(*add_news)
     except Exception as e:
@@ -33,7 +37,7 @@ def save_news(news = News):
     cnx.close()
 
 
-def select_news(news = News):
+def select_news(news = Social_News):
     cnx = connection.connection()
     try:
         cursor = cnx.cursor()
@@ -47,7 +51,7 @@ def select_news(news = News):
     except Exception as e:
         print(e)
 
-def check_news(news = News):
+def check_news(news = Social_News):
     cnx = connection.connection()
     
     cursor = cnx.cursor()
