@@ -1,258 +1,85 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 13,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import sys\n",
-    "sys.path.insert(0, '../../src')\n",
-    "import feedparser\n",
-    "import pandas as pd\n",
-    "\n",
-    "import urllib\n",
-    "\n",
-    "from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio\n",
-    "from lexical_analyzer_package import midia_lexical\n",
-    "from midia_postagem import midia_post\n",
-    "from Model.News import News\n",
-    "from Database import midia_table\n",
-    "\n",
-    "from newsplease import NewsPlease\n",
-    "from bs4 import BeautifulSoup\n",
-    "import requests\n",
-    "\n",
-    "import datetime"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 14,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "link = 'https://www1.folha.uol.com.br/ultimas-noticias/'"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 15,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "req = requests.get(link)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 16,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='flex-cell')\n",
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='c-headline__wrapper')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mundo/2018/09/sucessos-descritos-na-onu-por-trump-e-temer-nao-existem-no-mundo-real.shtml\n",
-      "100% [............................................................................] 301332 / 301332['Sucessos descritos na ONU por Trump e Temer não existem no mundo real']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/ilustrada/2018/09/modelo-do-nu-a-origem-do-mundo-e-finalmente-revelada.shtml\n",
-      "100% [............................................................................] 140763 / 140763[\"Modelo do nu 'A Origem do Mundo', de 1866, é finalmente revelada\"]\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/especial/2018/copa-do-brasil\n",
-      "100% [..............................................................................] 13313 / 13313['Esporte: Especial Copa do Brasil 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "http://www1.folha.uol.com.br/mundo/nyt/\n",
-      "100% [..............................................................................] 14666 / 14666['The New York Times']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mundo/2018/09/macri-diz-que-argentina-passa-por-mudancas-com-humildade-e-sem-pegar-atalhos.shtml\n",
-      "100% [............................................................................] 366808 / 366808['Macri diz que Argentina passa por mudanças com humildade e sem pegar atalhos']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mercado/2018/09/bc-assina-primeiro-acordo-da-historia-e-encerra-investigacao-contra-daycoval-com-multa-de-r-400-mil.shtml\n",
-      "100% [............................................................................] 123977 / 123977['BC assina 1º acordo da história para encerrar investigação contra Daycoval']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://f5.folha.uol.com.br/celebridades/2018/09/andre-goncalves-e-preso-por-desacato-a-policiais-vou-matar-voces.shtml\n",
-      "100% [..............................................................................] 35035 / 35035[\"André Gonçalves é preso por desacato a policiais: 'Vou matar vocês'\"]\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mercado/2018/09/brasil-e-social-democracia-presa-em-corpo-de-emergente-diz-economista.shtml\n",
-      "100% [............................................................................] 371642 / 371642['Brasil é social-democracia presa em corpo de emergente, diz economista']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://bompracachorro.blogfolha.uol.com.br\n",
-      "100% [..............................................................................] 14666 / 14666['um blog sobre o melhor amigo do homem']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/ilustrada/moda\n",
-      "['Ilustrada: Moda']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/esporte/2018/09/com-liminar-e-cassacao-votacao-de-impeachment-no-santos-vive-impasse.shtml\n",
-      "100% [..............................................................................] 92780 / 92780['Com liminar e cassação, votação de impeachment no Santos vive impasse']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mercado/2018/09/eleicao-retarda-investimentos-mas-historico-de-respeito-a-contratos-tranquiliza-diz-brookfield.shtml\n",
-      "100% [............................................................................] 820726 / 820726['Eleição retarda investimentos, mas histórico de respeito a contratos tranquiliza, diz Brookfield']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "http://www1.folha.uol.com.br/agora/\n",
-      "['Agora - Folha de S.Paulo']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "http://www1.folha.uol.com.br/bbc/\n",
-      "['BBC Brasil: Principais Notícias']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://f5.folha.uol.com.br/televisao/2018/09/fico-entre-o-panico-e-a-excitacao-afirma-joao-vicente-sobre-ser-protagonista-em-espelho-da-vida.shtml\n",
-      "100% [............................................................................] 396225 / 396225[\"'Fico entre o pânico e a excitação', afirma João Vicente sobre ser protagonista em 'Espelho da Vida'\"]\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/especial/2017/governo-trump\n",
-      "['Mundo: Especial Governo Trump 2017']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "http://www1.folha.uol.com.br/mundo/nyt/\n",
-      "100% [..............................................................................] 14666 / 14666['The New York Times']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://cozinhabruta.blogfolha.uol.com.br\n",
-      "100% [..............................................................................] 14666 / 14666['Comida de verdade, receitas e papo sobre gastronomia com humor (bom e mau)']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/ilustrada/livros\n",
-      "['Ilustrada: Livros']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/eleicoes/2018\n",
-      "100% [..............................................................................] 34129 / 34129['Eleições 2018']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/poder/2018/09/ninguem-vai-se-arriscar-a-desafiar-a-democracia-no-brasil-diz-toffoli.shtml\n",
-      "100% [............................................................................] 244587 / 244587[\"'Ninguém vai se arriscar a desafiar a democracia no Brasil', diz Toffoli\"]\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://www1.folha.uol.com.br/mercado/2018/09/petrobras-e-anp-discutem-r-60-mi-em-ressarcimento-do-desconto-ao-diesel.shtml\n"
-     ]
-    }
-   ],
-   "source": [
-    "for noticia in noticias:\n",
-    "    print(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}\n",
-    "    if (article is not None):\n",
-    "        row['titulos'].append(article.title)\n",
-    "        row['noticia'].append(article.text)\n",
-    "        row['links'].append(article.url)\n",
-    "        row['abstract'].append(article.text)\n",
-    "        row['date'].append(article.date_publish)\n",
-    "        path_image = article.image_url\n",
-    "        if path_image == '' or path_image == None:\n",
-    "            row['image'].append(0)\n",
-    "        else:\n",
-    "            row['image'].append(download_and_move_image(article.image_url))\n",
-    "        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])\n",
-    "        try:\n",
-    "            print(row['titulos'])\n",
-    "            news_in_db = midia_table.check_news(news)\n",
-    "            print('news_in_db: ' + str(news_in_db))\n",
-    "            if (not news_in_db):\n",
-    "                row = pd.DataFrame(row)\n",
-    "                df, categories = midia_lexical.lexical_corpus_and_title(row)\n",
-    "                # DB categories\n",
-    "                if (categories != [set()]):\n",
-    "                    news.set_categories(categories)\n",
-    "                    midia_table.save_news(news)\n",
-    "                    midia_post.post_news(df)\n",
-    "        except:\n",
-    "            print('Empty News')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "noticias[0]"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.6.5"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+
+# coding: utf-8
+
+# In[13]:
+
+
+import sys
+sys.path.insert(0, '../../src')
+import feedparser
+import pandas as pd
+
+import urllib
+
+from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from lexical_analyzer_package import midia_lexical
+from midia_postagem import midia_post
+from Model.News import News
+from Database import midia_table
+
+from newsplease import NewsPlease
+from bs4 import BeautifulSoup
+import requests
+
+import datetime
+
+
+# In[14]:
+
+
+link = 'https://www1.folha.uol.com.br/ultimas-noticias/'
+
+
+# In[15]:
+
+
+req = requests.get(link)
+
+
+# In[16]:
+
+
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='flex-cell')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='c-headline__wrapper')
+
+
+# In[ ]:
+
+
+for noticia in noticias:
+    print(noticia.find_all('a', href=True)[0]['href'])
+    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])
+    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
+    if (article is not None):
+        row['titulos'].append(article.title)
+        row['noticia'].append(article.text)
+        row['links'].append(article.url)
+        row['abstract'].append(article.text)
+        row['date'].append(article.date_publish)
+        path_image = article.image_url
+        if path_image == '' or path_image == None:
+            row['image'].append(0)
+        else:
+            row['image'].append(download_and_move_image(article.image_url))
+        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
+        try:
+            print(row['titulos'])
+            news_in_db = midia_table.check_news(news)
+            print('news_in_db: ' + str(news_in_db))
+            if (not news_in_db):
+                row = pd.DataFrame(row)
+                df, categories = midia_lexical.lexical_corpus_and_title(row)
+                # DB categories
+                if (categories != [set()]):
+                    news.set_categories(categories)
+                    midia_table.save_news(news)
+                    midia_post.post_news(df)
+        except:
+            print('Empty News')
+
+
+# In[ ]:
+
+
+noticias[0]
+

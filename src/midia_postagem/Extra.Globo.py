@@ -1,172 +1,84 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 1,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import sys\n",
-    "sys.path.insert(0, '../../src')\n",
-    "import feedparser\n",
-    "import pandas as pd\n",
-    "\n",
-    "import urllib\n",
-    "\n",
-    "from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio\n",
-    "from lexical_analyzer_package import midia_lexical\n",
-    "from midia_postagem import midia_post\n",
-    "from Model.News import News\n",
-    "from Database import midia_table\n",
-    "\n",
-    "from newsplease import NewsPlease\n",
-    "from bs4 import BeautifulSoup\n",
-    "import requests\n",
-    "\n",
-    "import datetime"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "link = 'https://extra.globo.com/noticias/plantao.html'"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 3,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "req = requests.get(link)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='text')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "https://extra.globo.com/noticias/economia/emprestimo-consignado-com-fgts-como-garantia-comeca-ser-oferecido-pela-caixa-23102999.html\n",
-      "100% [............................................................................] 132996 / 132996['Empréstimo consignado com FGTS como garantia começa a ser oferecido pela Caixa']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/noticias/economia/embraer-fecha-contrato-firme-para-entrega-de-12-jatos-e190-e2-para-helvetic-airways-23102991.html\n",
-      "100% [..............................................................................] 17874 / 17874['Embraer fecha contrato firme para entrega de 12 jatos E190-E2 para Helvetic Airways']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/casos-de-policia/policia-prende-20-suspeitos-em-operacao-contra-roubo-de-cargas-na-zona-oeste-23102859.html\n",
-      "100% [..............................................................................] 16020 / 16020['Polícia prende 20 suspeitos em operação contra roubo de cargas na Zona Oeste']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/casos-de-policia/pm-faz-operacao-em-agua-santa-na-zona-norte-do-rio-23102841.html\n",
-      "100% [..............................................................................] 17874 / 17874['PM faz operação em Água Santa, na Zona Norte do Rio']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/casos-de-policia/blindados-percorreram-rua-de-onde-partiu-tiro-que-segundo-testemunhas-atingiu-adolescente-na-mare-23102526.html\n",
-      "100% [..............................................................................] 65150 / 65150['Blindados percorreram rua de onde partiu tiro que, segundo testemunhas, atingiu adolescente na Maré']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/casos-de-policia/alerj-quer-que-capitania-dos-portos-evite-acao-da-milicia-maritima-no-litoral-do-rio-de-janeiro-23102390.html\n",
-      "100% [..............................................................................] 96558 / 96558['Alerj quer que Capitania dos Portos evite ação da milícia marítima no litoral do Rio de Janeiro']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://extra.globo.com/emprego/servidor-publico/forcas-armadas-sancionada-lei-que-amplia-para-20-dias-direito-licenca-paternidade-23102550.html\n",
-      "100% [............................................................................] 161104 / 161104['Forças Armadas: sancionada lei que amplia para 20 dias direito a licença-paternidade']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/emprego/servidor-publico/apos-agravo-de-servidores-rio-tenta-manter-decisao-do-stf-favoravel-desconto-de-14-23102494.html\n",
-      "100% [............................................................................] 128067 / 128067['Após agravo de servidores, Rio tenta manter decisão do STF favorável a desconto de 14%']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/emprego/servidor-publico/uniao-vai-ampliar-prazo-de-migracao-para-previdencia-complementar-dos-servidores-23102119.html\n",
-      "100% [............................................................................] 112527 / 112527['União vai ampliar o prazo de migração para a previdência complementar dos servidores']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://extra.globo.com/emprego/diferenca-salarial-por-genero-uma-realidade-supera-30-em-alguns-cargos-no-pais-23101830.html\n",
-      "100% [............................................................................] 111089 / 111089['Diferença salarial por gênero é uma realidade e supera 30% em alguns cargos no país']\n"
-     ]
-    }
-   ],
-   "source": [
-    "for noticia in noticias:\n",
-    "    print(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}\n",
-    "    if (article is not None):\n",
-    "        row['titulos'].append(article.title)\n",
-    "        row['noticia'].append(article.text)\n",
-    "        row['links'].append(article.url)\n",
-    "        row['abstract'].append(article.text)\n",
-    "        row['date'].append(article.date_publish)\n",
-    "        path_image = article.image_url\n",
-    "        if path_image == '' or path_image == None:\n",
-    "            row['image'].append(0)\n",
-    "        else:\n",
-    "            row['image'].append(download_and_move_image(article.image_url))\n",
-    "        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])\n",
-    "        try:\n",
-    "            print(row['titulos'])\n",
-    "            news_in_db = midia_table.check_news(news)\n",
-    "            print('news_in_db: ' + str(news_in_db))\n",
-    "            if (not news_in_db):\n",
-    "                row = pd.DataFrame(row)\n",
-    "                df, categories = midia_lexical.lexical_corpus_and_title(row)\n",
-    "                # DB categories\n",
-    "                if (categories != [set()]):\n",
-    "                    news.set_categories(categories)\n",
-    "                    midia_table.save_news(news)\n",
-    "                    midia_post.post_news(df)\n",
-    "        except:\n",
-    "            print('Empty News')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "noticias[0]"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.6.5"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+
+# coding: utf-8
+
+# In[1]:
+
+
+import sys
+sys.path.insert(0, '../../src')
+import feedparser
+import pandas as pd
+
+import urllib
+
+from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from lexical_analyzer_package import midia_lexical
+from midia_postagem import midia_post
+from Model.News import News
+from Database import midia_table
+
+from newsplease import NewsPlease
+from bs4 import BeautifulSoup
+import requests
+
+import datetime
+
+
+# In[2]:
+
+
+link = 'https://extra.globo.com/noticias/plantao.html'
+
+
+# In[3]:
+
+
+req = requests.get(link)
+
+
+# In[4]:
+
+
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='text')
+
+
+# In[ ]:
+
+
+for noticia in noticias:
+    print(noticia.find_all('a', href=True)[0]['href'])
+    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])
+    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
+    if (article is not None):
+        row['titulos'].append(article.title)
+        row['noticia'].append(article.text)
+        row['links'].append(article.url)
+        row['abstract'].append(article.text)
+        row['date'].append(article.date_publish)
+        path_image = article.image_url
+        if path_image == '' or path_image == None:
+            row['image'].append(0)
+        else:
+            row['image'].append(download_and_move_image(article.image_url))
+        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
+        try:
+            print(row['titulos'])
+            news_in_db = midia_table.check_news(news)
+            print('news_in_db: ' + str(news_in_db))
+            if (not news_in_db):
+                row = pd.DataFrame(row)
+                df, categories = midia_lexical.lexical_corpus_and_title(row)
+                # DB categories
+                if (categories != [set()]):
+                    news.set_categories(categories)
+                    midia_table.save_news(news)
+                    midia_post.post_news(df)
+        except:
+            print('Empty News')
+
+
+# In[ ]:
+
+
+noticias[0]
+

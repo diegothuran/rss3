@@ -1,331 +1,89 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 1,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "# coding: utf-8\n",
-    "\n",
-    "import sys\n",
-    "sys.path.insert(0, '../../src')\n",
-    "import feedparser\n",
-    "import pandas as pd\n",
-    "\n",
-    "import urllib\n",
-    "\n",
-    "from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio\n",
-    "from lexical_analyzer_package import midia_lexical\n",
-    "from midia_postagem import midia_post\n",
-    "from Model.News import News\n",
-    "from Database import midia_table\n",
-    "\n",
-    "from newsplease import NewsPlease\n",
-    "from bs4 import BeautifulSoup\n",
-    "import requests\n",
-    "\n",
-    "import datetime"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 2,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "link = 'http://piaui.folha.uol.com.br/'"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 3,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "req = requests.get(link)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 4,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='main-content')\n",
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='bloco size-1 destaque ')\n",
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='bloco size-2 ')\n",
-    "noticias = BeautifulSoup(req.text, \"html.parser\").find_all('div', class_='inner')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "https://piaui.folha.uol.com.br/a-revista/\n",
-      "100% [..............................................................................] 38296 / 38296['revista piauí']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/sao-particulares-diz-exercito-sobre-caminhoes-usados-em-campanha/\n",
-      "100% [..............................................................................] 79015 / 79015['“São particulares”, diz Exército sobre caminhões usados em campanha']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/hungria-franca-e-brasil/\n",
-      "100% [..............................................................................] 62075 / 62075['Hungria, França e Brasil']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/plata-o-plomo/\n",
-      "100% [..............................................................................] 58833 / 58833['Plata o plomo']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/e-se-bolsonaro-ganhar/\n",
-      "100% [............................................................................] 123174 / 123174['E se Bolsonaro ganhar?']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/os-mascates-do-rio/\n",
-      "100% [..............................................................................] 57218 / 57218['Os mascates do Rio']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/merval-e-democracinha/\n",
-      "100% [..............................................................................] 67884 / 67884['Merval e a democracinha*']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/ciro-vela-e-o-dane-se/\n",
-      "100% [..............................................................................] 61946 / 61946['Ciro, a vela e o dane-se']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/janela-de-haddad/\n",
-      "100% [..............................................................................] 63820 / 63820['A janela de Haddad']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/eua-devolvem-fortuna-familia-hawilla/\n",
-      "100% [............................................................................] 349843 / 349843['EUA devolvem fortuna à família Hawilla']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/maria-vai-com-as-outras-9-sexo-como-ganha-pao/\n",
-      "100% [............................................................................] 142252 / 142252['Maria vai com as outras #9: Sexo como ganha-pão']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/marcos-lisboa-me-comparar-paulo-guedes-e-demais/\n",
-      "100% [............................................................................] 192492 / 192492['Marcos Lisboa: “Me comparar a Paulo Guedes é demais”']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/sem-elite-sem-quase-nada/\n",
-      "100% [............................................................................] 239694 / 239694['Sem a elite, sem (quase) nada']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/nao-foi-voce/\n",
-      "100% [............................................................................] 466165 / 466165['Não foi você']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/materia/vida-de-sidarta-gautama/\n",
-      "100% [............................................................................] 167635 / 167635['A vida de Sidarta Gautama']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/bolsonaro-nao-queria-sair-da-santa-casa/\n",
-      "100% [............................................................................] 284204 / 284204['Bolsonaro não queria sair da Santa Casa']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/o-paciente-e-o-banquete-frutos-da-tragedia/\n",
-      "100% [............................................................................] 104630 / 104630['O Paciente e O Banquete - frutos da tragédia']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/lacrou-nao-tem-mais-nome-novo-na-urna/\n",
-      "100% [............................................................................] 204101 / 204101['Lacrou: não entra mais nome novo na urna']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/nossa-hora-mais-escura/\n",
-      "100% [..............................................................................] 52946 / 52946['A nossa hora mais escura']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/bolsonaro-e-haddad-vao-ao-jn-bombam-no-twitter-e-crescem/\n",
-      "100% [............................................................................] 833245 / 833245['Bolsonaro e Haddad vão ao JN, bombam no Twitter e crescem']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/por-que-mulheres-trocaram-marina-por-haddad-ciro-e-bolsonaro/\n",
-      "100% [............................................................................] 145995 / 145995['Por que mulheres trocaram Marina por Haddad, Ciro e Bolsonaro']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/aluguel-do-psl-custa-18-milhao-de-reais-campanha-de-bolsonaro/\n",
-      "100% [............................................................................] 932575 / 932575['Aluguel do PSL custa R$ 1,8 milhão à campanha de Bolsonaro']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/antipetismo-e-democracia/\n",
-      "100% [..............................................................................] 62066 / 62066['Antipetismo e democracia']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/robos-tiram-sono-de-90-dos-jovens-no-brasil/\n",
-      "100% [............................................................................] 176143 / 176143['Robôs tiram sono de 90% dos jovens no Brasil']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/ciro-queima-pontes-com-o-exercito/\n",
-      "100% [............................................................................] 198724 / 198724['Ciro queima pontes com o Exército']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/grupo-pro-bolsonaro-ganha-relevancia-no-twitter-apos-facada/\n",
-      "100% [............................................................................] 158307 / 158307['Grupo pró-Bolsonaro ganha relevância no Twitter após facada']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/nao-foi-voce/\n",
-      "100% [............................................................................] 466165 / 466165['Não foi você']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/merval-e-democracinha/\n",
-      "100% [..............................................................................] 67884 / 67884['Merval e a democracinha*']\n",
-      "news_in_db: False\n",
-      "'News' object has no attribute 'pinterest'\n",
-      "POST = <Response [201]>\n",
-      "Image not found.\n",
-      "https://piaui.folha.uol.com.br/paulo-guedes-contra-o-liberalismo/\n",
-      "100% [..............................................................................] 58833 / 58833['Paulo Guedes contra o liberalismo']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/janela-de-haddad/\n",
-      "100% [..............................................................................] 63820 / 63820['A janela de Haddad']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/o-fiador/\n",
-      "100% [............................................................................] 199884 / 199884['O fiador']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/marcos-lisboa-me-comparar-paulo-guedes-e-demais/\n",
-      "100% [............................................................................] 192492 / 192492['Marcos Lisboa: “Me comparar a Paulo Guedes é demais”']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/bolsonaro-nao-queria-sair-da-santa-casa/\n"
-     ]
-    },
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "100% [............................................................................] 284204 / 284204['Bolsonaro não queria sair da Santa Casa']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/sem-elite-sem-quase-nada/\n",
-      "100% [............................................................................] 239694 / 239694['Sem a elite, sem (quase) nada']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/por-que-mulheres-trocaram-marina-por-haddad-ciro-e-bolsonaro/\n",
-      "100% [............................................................................] 145995 / 145995['Por que mulheres trocaram Marina por Haddad, Ciro e Bolsonaro']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/antipetismo-e-democracia/\n",
-      "100% [..............................................................................] 62066 / 62066['Antipetismo e democracia']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/o-fiador/\n",
-      "100% [............................................................................] 199884 / 199884['O fiador']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/o-brizolista-de-catedra/\n",
-      "100% [..............................................................................] 80127 / 80127['O brizolista de cátedra']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/correio-literario/\n",
-      "100% [..............................................................................] 77418 / 77418['Correio literário']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/em-busca-do-centro/\n",
-      "100% [..............................................................................] 72772 / 72772['Em busca do centro']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/o-degas-aqui/\n",
-      "100% [............................................................................] 328453 / 328453['O degas aqui']\n",
-      "news_in_db: False\n",
-      " -- no categories -- \n",
-      "https://piaui.folha.uol.com.br/materia/vida-de-sidarta-gautama/\n"
-     ]
-    }
-   ],
-   "source": [
-    "for noticia in noticias:\n",
-    "    print(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])\n",
-    "    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}\n",
-    "    if (article is not None):\n",
-    "        row['titulos'].append(article.title)\n",
-    "        row['noticia'].append(article.text)\n",
-    "        row['links'].append(article.url)\n",
-    "        row['abstract'].append(article.text)\n",
-    "        row['date'].append(article.date_publish)\n",
-    "        path_image = article.image_url\n",
-    "        if path_image == '' or path_image == None:\n",
-    "            row['image'].append(0)\n",
-    "        else:\n",
-    "            row['image'].append(download_and_move_image(article.image_url))\n",
-    "        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])\n",
-    "        try:\n",
-    "            print(row['titulos'])\n",
-    "            news_in_db = midia_table.check_news(news)\n",
-    "            print('news_in_db: ' + str(news_in_db))\n",
-    "            if (not news_in_db):\n",
-    "                row = pd.DataFrame(row)\n",
-    "                df, categories = midia_lexical.lexical_corpus_and_title(row)\n",
-    "                # DB categories\n",
-    "                if (categories != [set()]):\n",
-    "                    news.set_categories(categories)\n",
-    "                    midia_table.save_news(news)\n",
-    "                    midia_post.post_news(df)\n",
-    "        except:\n",
-    "            print('Empty News')"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "scrolled": true
-   },
-   "outputs": [],
-   "source": [
-    "noticias[0]"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.6.5"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+
+# coding: utf-8
+
+# In[1]:
+
+
+
+
+import sys
+sys.path.insert(0, '../../src')
+import feedparser
+import pandas as pd
+
+import urllib
+
+from postagem.Util import extract_domain, download_and_move_image, get_noticia_comercio
+from lexical_analyzer_package import midia_lexical
+from midia_postagem import midia_post
+from Model.News import News
+from Database import midia_table
+
+from newsplease import NewsPlease
+from bs4 import BeautifulSoup
+import requests
+
+import datetime
+
+
+# In[2]:
+
+
+link = 'http://piaui.folha.uol.com.br/'
+
+
+# In[3]:
+
+
+req = requests.get(link)
+
+
+# In[4]:
+
+
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='main-content')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='bloco size-1 destaque ')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='bloco size-2 ')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='inner')
+
+
+# In[ ]:
+
+
+for noticia in noticias:
+    print(noticia.find_all('a', href=True)[0]['href'])
+    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])
+    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
+    if (article is not None):
+        row['titulos'].append(article.title)
+        row['noticia'].append(article.text)
+        row['links'].append(article.url)
+        row['abstract'].append(article.text)
+        row['date'].append(article.date_publish)
+        path_image = article.image_url
+        if path_image == '' or path_image == None:
+            row['image'].append(0)
+        else:
+            row['image'].append(download_and_move_image(article.image_url))
+        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
+        try:
+            print(row['titulos'])
+            news_in_db = midia_table.check_news(news)
+            print('news_in_db: ' + str(news_in_db))
+            if (not news_in_db):
+                row = pd.DataFrame(row)
+                df, categories = midia_lexical.lexical_corpus_and_title(row)
+                # DB categories
+                if (categories != [set()]):
+                    news.set_categories(categories)
+                    midia_table.save_news(news)
+                    midia_post.post_news(df)
+        except:
+            print('Empty News')
+
+
+# In[ ]:
+
+
+noticias[0]
+
