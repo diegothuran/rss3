@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/midia_postagem/EBC.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Untitled.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/midia_post.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/midia_post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/EBC.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/EBC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +95,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="ipynb" value="7" />
+          <entry key="ipynb" value="9" />
           <entry key="jpg" value="8" />
           <entry key="pip" value="1" />
           <entry key="py" value="6" />
@@ -104,7 +104,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="IPNB" value="7" />
+          <entry key="IPNB" value="9" />
           <entry key="Image" value="8" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="6" />
@@ -112,12 +112,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="PLAIN_TEXT" value="23" />
           <entry key="Python" value="147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="py" value="147" />
+          <entry key="txt" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -134,44 +136,44 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.py">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.py">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.py">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Untitled.ipynb">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
               <selected id="0" />
@@ -269,6 +271,13 @@
               <item name="rss3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="midia_postagem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rss3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rss3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="midia_postagem" type="462c0819:PsiDirectoryNode" />
+              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rss3" type="b2602c69:ProjectViewProjectNode" />
@@ -580,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537823913478</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adding blog folha de São Paulo">
+      <created>1537960812218</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1537960812218</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -590,6 +606,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15226555" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32786885" />
@@ -663,7 +680,8 @@
     <MESSAGE value="adding diplomaque.org.br no midias" />
     <MESSAGE value="adding jornal do comércio no midias" />
     <MESSAGE value="adding operamundi no midias" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding operamundi no midias" />
+    <MESSAGE value="adding blog folha de São Paulo" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding blog folha de São Paulo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -902,31 +920,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).ipynb">
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.ipynb">
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.py">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.ipynb">
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/.ipynb_checkpoints/Extra.Globo-checkpoint.py">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.ipynb">
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.py">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="3" />
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.py">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
         </state>
       </provider>
     </entry>
