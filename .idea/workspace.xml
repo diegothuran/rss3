@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/EBC.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/EBC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Jornais Virtuais.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/folha de São Paulo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,14 +106,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="23" />
+          <entry key="PLAIN_TEXT" value="30" />
           <entry key="Python" value="147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="py" value="147" />
-          <entry key="txt" value="23" />
+          <entry key="txt" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -176,7 +170,7 @@
         <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
-              <selected id="0" />
+              <selected id="4" />
             </state>
           </provider>
         </entry>
@@ -596,11 +590,25 @@
       <option name="project" value="LOCAL" />
       <updated>1537960812218</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="adding Gabriel">
+      <created>1537963162295</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1537963162295</updated>
+    </task>
+    <task id="LOCAL-00020" summary="adding Gabriel">
+      <created>1537963172836</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1537963172836</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15226555" />
@@ -681,7 +689,8 @@
     <MESSAGE value="adding jornal do comércio no midias" />
     <MESSAGE value="adding operamundi no midias" />
     <MESSAGE value="adding blog folha de São Paulo" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding blog folha de São Paulo" />
+    <MESSAGE value="adding Gabriel" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding Gabriel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
