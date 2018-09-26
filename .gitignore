@@ -1,0 +1,9 @@
+venv
+*.pyc
+staticfiles
+.env
+*.swp
+.ipynb_checkpoints
+
+playbooks/deploy.retry
+.idea/
