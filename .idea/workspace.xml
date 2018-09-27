@@ -15,8 +15,10 @@
     <SUITE FILE_PATH="coverage/rss3$soup_globo.coverage" NAME="soup_globo Coverage Results" MODIFIED="1535632947139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/postagem" />
     <SUITE FILE_PATH="coverage/rss3$soup_elpais.coverage" NAME="soup_elpais Coverage Results" MODIFIED="1535632959194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/postagem" />
     <SUITE FILE_PATH="coverage/rss3$new_database.coverage" NAME="new_database Coverage Results" MODIFIED="1535477316425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Database" />
+    <SUITE FILE_PATH="coverage/rss3$Extra_Globo.coverage" NAME="Extra.Globo Coverage Results" MODIFIED="1538077286896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/midia_postagem" />
     <SUITE FILE_PATH="coverage/rss3$soup_agenciabrasil.coverage" NAME="soup_agenciabrasil Coverage Results" MODIFIED="1536343802044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/midia_postagem" />
     <SUITE FILE_PATH="coverage/rss3$soup_operamundi.coverage" NAME="soup_operamundi Coverage Results" MODIFIED="1536444967047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/midia_postagem" />
+    <SUITE FILE_PATH="coverage/rss3$EBC.coverage" NAME="EBC Coverage Results" MODIFIED="1537968344573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/midia_postagem" />
     <SUITE FILE_PATH="coverage/rss3$main.coverage" NAME="main Coverage Results" MODIFIED="1535543552826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rss3$soup_diplomatique.coverage" NAME="soup_diplomatique Coverage Results" MODIFIED="1536443229689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/midia_postagem" />
     <SUITE FILE_PATH="coverage/rss3$post_from_bbc.coverage" NAME="post_from_bbc Coverage Results" MODIFIED="1535632940903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/postagem" />
@@ -26,9 +28,9 @@
     <session id="-144769720">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="12" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -36,29 +38,32 @@
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="5" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="1" />
-          <entry key="ipynb" value="1" />
-          <entry key="py" value="58" />
+          <entry key="gitignore" value="2" />
+          <entry key="html" value="1" />
+          <entry key="ipynb" value="2" />
+          <entry key="py" value="69" />
           <entry key="sh" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Bash" value="4" />
-          <entry key="IPNB" value="1" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="58" />
+          <entry key="HTML" value="1" />
+          <entry key="IPNB" value="2" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="22" />
           <entry key="gitignore" value="5" />
-          <entry key="py" value="1207" />
+          <entry key="py" value="1208" />
           <entry key="sh" value="238" />
           <entry key="txt" value="302" />
         </counts>
@@ -66,8 +71,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="238" />
-          <entry key="PLAIN_TEXT" value="307" />
-          <entry key="Python" value="1207" />
+          <entry key="PLAIN_TEXT" value="329" />
+          <entry key="Python" value="1208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -79,12 +84,30 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="-768">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Rss_midia.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="127" column="26" lean-forward="true" selection-start-line="127" selection-start-column="26" selection-end-line="127" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/midia_postagem/util_midia.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -106,6 +129,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -134,7 +158,9 @@
         <option value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
         <option value="$PROJECT_DIR$/src/midia_postagem/soup_jornaldocomercio.py" />
         <option value="$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py" />
+        <option value="$PROJECT_DIR$/src/midia_postagem/EBC.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/midia_postagem/util_midia.py" />
       </list>
     </option>
   </component>
@@ -167,6 +193,11 @@
             <path>
               <item name="rss3" type="b2602c69:ProjectViewProjectNode" />
               <item name="rss3" type="462c0819:PsiDirectoryNode" />
+              <item name="Jupyters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rss3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rss3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -189,17 +220,18 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/postagem" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Model" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/midia_postagem" />
       <recent name="$PROJECT_DIR$/src/Database" />
       <recent name="$PROJECT_DIR$/src/postagem" />
       <recent name="$PROJECT_DIR$/src/Utilities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/midia_postagem/jupyters" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/postagem" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -214,8 +246,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.soup_operamundi">
-    <configuration name="soup_agenciabrasil" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Extra.Globo">
+    <configuration name="EBC" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rss3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -228,7 +260,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/EBC.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Extra.Globo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="rss3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/midia_postagem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -251,28 +305,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/soup_diplomatique.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="soup_elpais" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="rss3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/postagem" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/postagem/soup_elpais.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -326,19 +358,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.soup_elpais" />
-      <item itemvalue="Python.soup_agenciabrasil" />
       <item itemvalue="Python.soup_diplomatique" />
       <item itemvalue="Python.soup_jornaldocomercio" />
       <item itemvalue="Python.soup_operamundi" />
+      <item itemvalue="Python.EBC" />
+      <item itemvalue="Python.Extra.Globo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Extra.Globo" />
+        <item itemvalue="Python.EBC" />
         <item itemvalue="Python.soup_operamundi" />
         <item itemvalue="Python.soup_jornaldocomercio" />
         <item itemvalue="Python.soup_diplomatique" />
-        <item itemvalue="Python.soup_agenciabrasil" />
-        <item itemvalue="Python.soup_elpais" />
       </list>
     </recent_temporary>
   </component>
@@ -486,7 +518,7 @@
     <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32641107" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32960597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -497,7 +529,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32901832" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33333334" />
@@ -683,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/midia_post.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/midia_postagem/job.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -725,13 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Rss_midia.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3528">
-          <caret line="147" column="2" selection-start-line="147" selection-start-column="2" selection-end-line="147" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/postagem/soup_elpais.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -753,10 +771,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/jupyters/Extra.Globo.ipynb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.html" />
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/jupyters/folha de São Paulo.ipynb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/jupyters/Jornais Virtuais.ipynb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/midia_post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="76" column="31" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/jupyters/EBC.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/jupyters/OCafezinho.ipynb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="216">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Rss_midia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="127" column="26" lean-forward="true" selection-start-line="127" selection-start-column="26" selection-end-line="127" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/util_midia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-768">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

@@ -21,7 +21,7 @@ from newsplease import NewsPlease
 from bs4 import BeautifulSoup
 import requests
 
-import datetime
+import util_midia
 
 
 # In[2]:
@@ -47,38 +47,7 @@ noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='text')
 
 for noticia in noticias:
     print(noticia.find_all('a', href=True)[0]['href'])
-    article = NewsPlease.from_url(noticia.find_all('a', href=True)[0]['href'])
-    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
-    if (article is not None):
-        row['titulos'].append(article.title)
-        row['noticia'].append(article.text)
-        row['links'].append(article.url)
-        row['abstract'].append(article.text)
-        row['date'].append(article.date_publish)
-        path_image = article.image_url
-        if path_image == '' or path_image == None:
-            row['image'].append(0)
-        else:
-            row['image'].append(download_and_move_image(article.image_url))
-        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
-        try:
-            print(row['titulos'])
-            news_in_db = midia_table.check_news(news)
-            print('news_in_db: ' + str(news_in_db))
-            if (not news_in_db):
-                row = pd.DataFrame(row)
-                df, categories = midia_lexical.lexical_corpus_and_title(row)
-                # DB categories
-                if (categories != [set()]):
-                    news.set_categories(categories)
-                    midia_table.save_news(news)
-                    midia_post.post_news(df)
-        except:
-            print('Empty News')
+    ref_link = noticia.find_all('a', href=True)[0]['href']
+    util_midia.social_news_from_link(ref_link)
 
-
-# In[ ]:
-
-
-noticias[0]
 
