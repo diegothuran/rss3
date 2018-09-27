@@ -94,7 +94,7 @@ def get_estados_categories(input_text):
     return estados_categories
 
 
-def get_theme_categories(input_text, words, theme_categories):
+def get_theme_categories(input_text, words, theme_categories, words_case_sensitive=None, theme_categories_case_sensitive=None):
     """
     input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
     words: palavras da busca
@@ -104,7 +104,12 @@ def get_theme_categories(input_text, words, theme_categories):
 #     try:
     text = remove_punctuation(input_text)
     
-    #TODO: ver se vai precisar fazer case sensitive 
+    #Case sensitive
+    if(words_case_sensitive is not None):
+        splited_text = text.split()                
+        for splited in splited_text:
+            if splited in words_case_sensitive:
+                related_categories.append(splited.lower())
     
     # LOWER_CASE VERIFICATION: text to lower case
     lower_text = text.lower()
@@ -117,14 +122,14 @@ def get_theme_categories(input_text, words, theme_categories):
 
     return related_categories
 
-def get_categories(input_text, words, theme_categories):
+def get_categories(input_text, words, theme_categories, words_case_sensitive=None, theme_categories_case_sensitive=None):
     """
     input_text: deve estar no formato original, a transformacao para lower vai ser feita durante o metodo
     theme_categories: categorias relacionadas ao tema principal do analisador lexico
     """
     cats, main_theme_categories, estados_categories = [], [], []
     try:
-        main_theme_categories = get_theme_categories(input_text, words, theme_categories)
+        main_theme_categories = get_theme_categories(input_text, words, theme_categories, words_case_sensitive, theme_categories_case_sensitive)
         if(main_theme_categories != []):
             estados_categories = get_estados_categories(input_text)
 
@@ -136,7 +141,7 @@ def get_categories(input_text, words, theme_categories):
 
     return cats
 
-def get_categories_corpus(df, words, theme_categories):
+def get_categories_corpus(df, words, theme_categories, words_case_sensitive=None, theme_categories_case_sensitive=None):
     """
     categories from rss: input_text is just from the 'noticias'
     
@@ -154,7 +159,7 @@ def get_categories_corpus(df, words, theme_categories):
     for idx in range(len(df)):
         row = df.iloc[idx]
         noticia = row['noticia']
-        cats = get_categories(noticia, words, theme_categories)
+        cats = get_categories(noticia, words, theme_categories, words_case_sensitive, theme_categories_case_sensitive)
 
     # Removing replicated items
     set_cats = [set(cat) for cat in cats]
@@ -162,7 +167,7 @@ def get_categories_corpus(df, words, theme_categories):
     df = df.assign(categorias = set_cats)
     return df, set_cats
 
-def get_categories_corpus_and_title(df, words, theme_categories):
+def get_categories_corpus_and_title(df, words, theme_categories, words_case_sensitive=None, theme_categories_case_sensitive=None):
     """
     categories from corpus and title: input_text is from both 'noticia' and 'titulo' 
     
@@ -181,10 +186,10 @@ def get_categories_corpus_and_title(df, words, theme_categories):
         row = df.iloc[idx]
         
         noticia = row['noticia']
-        cats_noticia = get_categories(noticia, words, theme_categories)
+        cats_noticia = get_categories(noticia, words, theme_categories, words_case_sensitive, theme_categories_case_sensitive)
 
         title = row['titulos']
-        cats_title = get_categories(title, words, theme_categories)
+        cats_title = get_categories(title, words, theme_categories, words_case_sensitive, theme_categories_case_sensitive)
 
     cats_concat = cats_noticia[0] + cats_title[0]
     cats.append(cats_concat)
