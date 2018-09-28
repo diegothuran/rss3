@@ -9,6 +9,7 @@ import requests
 from newsplease import NewsPlease
 import pandas as pd
 from selenium import webdriver
+import shutil
 
 def download_image(url, path_to_save_image):
     http = urllib3.PoolManager()
@@ -29,11 +30,18 @@ def extract_domain(link):
     return ext.domain
 
 def download_and_move_image(path_to_image):
+    root_path = os.getcwd()
     try:
         file_name = wget.download(path_to_image)
-    except:
+        print(file_name)
+        dst = os.path.join(os.getcwd(), 'images', file_name)
+        shutil.move(os.path.join(root_path, file_name), dst)
+    except Exception as e:
+        print(e)
         file_name = wget.download(path_to_image)
-    return file_name
+        dst = os.path.join(os.getcwd(), 'images', file_name)
+        shutil.move(os.path.join(root_path, file_name), dst)
+    return dst
 
 # def download_and_move_image(path_to_image):
 #     file_name = wget.download(path_to_image)
