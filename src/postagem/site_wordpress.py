@@ -330,7 +330,7 @@ def post_news(df):
         if(use_image): 
             try:
 #                 image_path = '../Data/download/' + row['image'].encode('utf-8')
-                image_path = '../Data/download/' + row['image']
+                image_path = row['image']
                 media = {'file': open(image_path,'rb'), 'caption': 'picture'}
                 image = requests.post(url + '/media', headers=headers, files=media)  
                 print('IMAGE_POST = ' + str(image))      
