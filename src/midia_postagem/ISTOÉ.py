@@ -4,8 +4,6 @@
 # In[1]:
 
 
-
-
 import sys
 sys.path.insert(0, '../../src')
 import feedparser
@@ -29,7 +27,7 @@ import datetime
 # In[2]:
 
 
-link = 'http://piaui.folha.uol.com.br/'
+link = 'https://istoe.com.br/ultimas/'
 
 
 # In[3]:
@@ -41,13 +39,12 @@ req = requests.get(link)
 # In[4]:
 
 
-noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='main-content')
-noticias += BeautifulSoup(req.text, "html.parser").find_all('div', class_='bloco size-1 destaque ')
-noticias += BeautifulSoup(req.text, "html.parser").find_all('div', class_='bloco size-2 ')
-noticias += BeautifulSoup(req.text, "html.parser").find_all('div', class_='inner')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='wrapper-title no-image')
+noticias += BeautifulSoup(req.text, "html.parser").find_all('div', class_='wrapper-image')
+noticias += BeautifulSoup(req.text, "html.parser").find_all('div', class_='row')
 
 
-# In[ ]:
+# In[5]:
 
 
 for noticia in noticias:
