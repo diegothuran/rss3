@@ -10,7 +10,7 @@ class Social_News(object):
         self.media = media
         self.categories = None
         # --- Social info ---
-        # Pinterest 
+        # pinterest
         self.pinterest = pinterest
         # Facebook info
         self.fb_comment = fb_comment
