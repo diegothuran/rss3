@@ -31,16 +31,8 @@ def extract_domain(link):
 def download_and_move_image(path_to_image):
     try:
         file_name = wget.download(path_to_image)
-    #     destination = os.path.join('/home/diego/Documentos/rss_reader/Untitled Folder/Images', file_name)
-        if not os.path.exists('../Data/download'):
-            os.mkdir('../Data/download')
-        destination = os.path.join('../Data/download', file_name)
-        os.rename(file_name, destination)
-    #     print(file_name)
     except:
-#         print('entrou na excecao')
-        file_name = wget.filename_from_url(path_to_image)
-#     print(file_name)
+        file_name = wget.download(path_to_image)
     return file_name
 
 # def download_and_move_image(path_to_image):
