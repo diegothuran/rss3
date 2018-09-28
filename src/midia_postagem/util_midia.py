@@ -27,7 +27,7 @@ def format_date(raw_date):
 
 def social_news_from_link(ref_link):
     row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': [], 
-           'pinterest': [], 'fb_comment': [], 'fb_share': [], 'fb_reaction': [], 'fb_total': []}
+           'Pinterest': [], 'fb_comment': [], 'fb_share': [], 'fb_reaction': [], 'fb_total': []}
     
     article = NewsPlease.from_url(ref_link)
     if (article is not None):
@@ -44,16 +44,16 @@ def social_news_from_link(ref_link):
         else:
             row['image'].append(download_and_move_image(article.image_url))
         
-        pinterest, fb_comment, fb_share, fb_reaction, fb_total = util.get_sharedcount_info(article.url)
+        Pinterest, fb_comment, fb_share, fb_reaction, fb_total = util.get_sharedcount_info(article.url)
         
-        row['pinterest'].append(pinterest)
+        row['Pinterest'].append(Pinterest)
         row['fb_comment'].append(fb_comment)
         row['fb_share'].append(fb_share)
         row['fb_reaction'].append(fb_reaction)
         row['fb_total'].append(fb_total)
     
         social_news = Social_News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'],
-                                  row['pinterest'], row['fb_comment'], row['fb_share'], row['fb_reaction'], row['fb_total'])
+                                  row['Pinterest'], row['fb_comment'], row['fb_share'], row['fb_reaction'], row['fb_total'])
         
         try:
             print(row['titulos'])

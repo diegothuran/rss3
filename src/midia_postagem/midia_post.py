@@ -265,7 +265,7 @@ def post_news(df):
         reduced_news = get_reduced_news(news)
         temp = '... ' + '<a href=' + row['links'] +'> ' + 'Leia a reportagem completa' + '</a>'
         
-#         texto_contagem = 'Informações relacionadas ao SharedCount : <br> &emsp; Compartilhamentos no pinterest = ' + str(row['pinterest']) + \
+#         texto_contagem = 'Informações relacionadas ao SharedCount : <br> &emsp; Compartilhamentos no Pinterest = ' + str(row['Pinterest']) + \
 #             ' <br> &emsp; Total de atividades relacionadas ao Facebook = ' + str(row['fb_total']) + ' - sendo: <br> &emsp;&emsp; Compartilhamentos = ' + \
 #             str(row['fb_share']) + ' <br> &emsp;&emsp; Comentários = ' + str(row['fb_comment']) + ' <br> &emsp;&emsp; Reações = ' + \
 #             str(row['fb_reaction']) + ' <br><br>'

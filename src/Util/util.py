@@ -14,13 +14,13 @@ def get_sharedcount_info(tracked_url):
     r = requests.get(URL, params=payload)
     info = r.json()
     
-    # pinterest info
-    pinterest = info['pinterest']
+    # Pinterest info
+    Pinterest = info['Pinterest']
     # Facebook info
     fb_comment = info['Facebook']['comment_count'] + info['Facebook']['comment_plugin_count']
     fb_share = info['Facebook']['share_count']
     fb_reaction = info['Facebook']['reaction_count']
     fb_total = info['Facebook']['total_count']
     
-    return pinterest, fb_comment, fb_share, fb_reaction, fb_total
+    return Pinterest, fb_comment, fb_share, fb_reaction, fb_total
 
