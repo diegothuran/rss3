@@ -90,12 +90,13 @@ for feed in future_calls:
  
  
 i = 0
+news_from_globo = False
 for entrie in entries:
     i+=1
     print('\n Index: ' + str(i))
     ref_link = entrie['link']
     # get info from the ref_link and perform both post and db_save operations    
-    util_seguranca.news_from_link(ref_link)
+    util_seguranca.news_from_link(ref_link, news_from_globo)
  
 # ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
 # # get info from the ref_link and perform both post and db_save operations    
