@@ -39,10 +39,7 @@ def download_and_move_image(path_to_image):
         shutil.move(os.path.join(root_path, file_name), dst)
     except Exception as e:
         print(e)
-        file_name = wget.download(path_to_image)
-        dst = os.path.join(os.getcwd(), 'images', file_name)
-        print(dst)
-        shutil.move(os.path.join(root_path, file_name), dst)
+        dst = '0'
     return dst
 
 # def download_and_move_image(path_to_image):

@@ -31,7 +31,7 @@ hit_list = ["https://www.jornaldocomercio.com/_conteudo/politica/rss.xml", "http
 
 future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
 
-
+'''
 # In[3]:
 entries = []
 for feed in future_calls:
@@ -53,7 +53,7 @@ for entrie in entries:
     domain = extract_domain(entrie['link'])
     path_image = ""
  
-    '''
+    ''''''
     if  domain == 'globo':
         row['titulos'].append(entrie['title'])
         row['links'].append(entrie['link'])
@@ -66,7 +66,7 @@ for entrie in entries:
             row['image'].append(download_and_move_image(path_image))
         else:
             row['image'].append(0)
-    '''
+    ''''''
     if domain == 'jornaldocomercio':
         row['titulos'].append(entrie['title'])
         row['links'].append(entrie['link'])
@@ -100,7 +100,7 @@ for entrie in entries:
                 post_news(df)
     except:
         print('Empty News')
-
+'''
 
 
 print("---------------------------------- UOL --------------------------------")
@@ -121,7 +121,8 @@ for j in range(1, int(limite_links / 10) + 1):
     # Para cada link recuperado
     for titulo, link in zip(links_coletados, links_links):
         row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
-        article = NewsPlease.from_url(link.get('href'))
+        page = link.get('href')
+        article = NewsPlease.from_url(page)
         row['titulos'].append(article.title)
         row['noticia'].append(article.text)
         news_url = article.url 
