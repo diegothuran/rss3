@@ -27,7 +27,7 @@ def save_news(news = Social_News):
                         "VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (news.abstract[0], news.news[0],
                                                                                    news.date[0], news.media[0],
                                                                                 news.title[0], news.link[0], str_now, cats,
-                                                                                news.Pinterest[0], news.fb_comment[0], news.fb_share[0],
+                                                                                '0', news.fb_comment[0], news.fb_share[0],
                                                                                 news.fb_reaction[0], news.fb_total[0]))
 
         cursor.execute(*add_news)

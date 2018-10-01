@@ -1,7 +1,7 @@
 
 class Social_News(object):
 
-    def __init__(self, abstract, news, date, link, title, media, Pinterest, fb_comment, fb_share, fb_reaction, fb_total):
+    def __init__(self, abstract, news, date, link, title, media, fb_comment, fb_share, fb_reaction, fb_total):
         self.title = title
         self.abstract = abstract
         self.news = news
@@ -10,8 +10,6 @@ class Social_News(object):
         self.media = media
         self.categories = None
         # --- Social info ---
-        # Pinterest
-        self.Pinterest = Pinterest
         # Facebook info
         self.fb_comment = fb_comment
         self.fb_share = fb_share
