@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/postagem/soup_correiobraziliense.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/postagem/job.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/postagem/job.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +34,7 @@
     <session id="-144769720">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.0" value="14" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="2" />
@@ -76,13 +74,13 @@
           <entry key="gitignore" value="5" />
           <entry key="py" value="1679" />
           <entry key="sh" value="263" />
-          <entry key="txt" value="507" />
+          <entry key="txt" value="526" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Bash" value="263" />
-          <entry key="PLAIN_TEXT" value="534" />
+          <entry key="PLAIN_TEXT" value="553" />
           <entry key="Python" value="1679" />
         </counts>
       </usages-collector>
@@ -632,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538508687360</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="adding corrio_braziliense to news pool">
+      <created>1538509566036</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1538509566036</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -644,7 +649,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32901832" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32901832" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49893504" weight="0.399137" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -712,7 +717,8 @@
     <MESSAGE value="Correcting social media content" />
     <MESSAGE value="Setting seguranca to run infinitly" />
     <MESSAGE value="adding gauchazh to news pool" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding gauchazh to news pool" />
+    <MESSAGE value="adding corrio_braziliense to news pool" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding corrio_braziliense to news pool" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
