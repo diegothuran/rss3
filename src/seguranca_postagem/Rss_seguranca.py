@@ -23,6 +23,7 @@ import datetime
 
 import util_seguranca
 
+
 hit_list = [ 
     'http://g1.globo.com/dynamo/ac/acre/rss2.xml',
     'http://g1.globo.com/dynamo/al/alagoas/rss2.xml',
@@ -79,29 +80,30 @@ hit_list = [
     'http://g1.globo.com/dynamo/to/tocantins/rss2.xml',
     'http://g1.globo.com/dynamo/vc-no-g1/rss2.xml'
     ]
-  
-future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
-  
-  
-# In[3]:
-entries = []
-for feed in future_calls:
-    entries.extend(feed["items"])
- 
- 
-i = 0
-news_from_globo = False
-for entrie in entries:
-    i+=1
-    print('\n Index: ' + str(i))
-    ref_link = entrie['link']
-    # get info from the ref_link and perform both post and db_save operations    
-    util_seguranca.news_from_link(ref_link, news_from_globo)
- 
-# ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
-# # get info from the ref_link and perform both post and db_save operations    
-# util_midia.social_news_from_link(ref_link)
-    
-    
+
+while True:
+    future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
+
+
+    # In[3]:
+    entries = []
+    for feed in future_calls:
+        entries.extend(feed["items"])
+
+
+    i = 0
+    news_from_globo = False
+    for entrie in entries:
+        i+=1
+        print('\n Index: ' + str(i))
+        ref_link = entrie['link']
+        # get info from the ref_link and perform both post and db_save operations
+        util_seguranca.news_from_link(ref_link, news_from_globo)
+
+    # ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
+    # # get info from the ref_link and perform both post and db_save operations
+    # util_midia.social_news_from_link(ref_link)
+
+
 
 
