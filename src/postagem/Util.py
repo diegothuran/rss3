@@ -11,6 +11,7 @@ import pandas as pd
 from selenium import webdriver
 import shutil
 
+
 def download_image(url, path_to_save_image):
     http = urllib3.PoolManager()
     r = http.request('GET', url, preload_content=False)
@@ -148,3 +149,34 @@ def join_categories(categories):
 def categories_db_to_categories(categories_db):
     categories = categories_db.split(', ')
     return categories
+
+def news_from_link(link):
+    article = NewsPlease.from_url(link)
+    row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
+    if (article is not None):
+        row['titulos'].append(article.title)
+        row['noticia'].append(article.text)
+        row['links'].append(article.url)
+        row['abstract'].append(article.text)
+        row['date'].append(article.date_publish)
+        path_image = article.image_url
+        if path_image == '' or path_image == None:
+            row['image'].append(0)
+        else:
+            row['image'].append(download_and_move_image(article.image_url))
+        news = News(row['abstract'], row['noticia'], row['date'], row['links'], row['titulos'], row['image'])
+        try:
+            print(row['titulos'])
+            news_in_db = check_news(news)
+            print('news_in_db: ' + str(news_in_db))
+            if (not news_in_db):
+                row = pd.DataFrame(row)
+                df, categories = lexical(row)
+                # DB categories
+                if (categories != [set()]):
+                    news.set_categories(categories)
+                    save_news(news)
+                    post_news(df)
+        except:
+            print('Empty News')
+

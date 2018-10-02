@@ -78,8 +78,3 @@ for noticia in noticias:
             print('Empty News')
 
 
-# In[6]:
-
-
-noticias[0]
-
