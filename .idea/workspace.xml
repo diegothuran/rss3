@@ -219,10 +219,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1676" />
-    <option name="y" value="141" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -302,7 +301,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Folha(Piauí)">
+  <component name="RunManager" selected="Bash.midias.sh">
+    <configuration name="midias.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="rss3" />
+      <option name="INTERPRETER_OPTIONS" value="bash" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/midia_postagem" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/midias.sh" />
+      <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Folha(Piauí)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rss3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -315,29 +324,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="soup_agenciabrasil" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="rss3" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/midia_postagem" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/soup_agenciabrasil.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -413,19 +401,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.soup_agenciabrasil" />
       <item itemvalue="Python.soup_diplomatique" />
       <item itemvalue="Python.soup_jornaldocomercio" />
       <item itemvalue="Python.soup_operamundi" />
       <item itemvalue="Python.Folha(Piauí)" />
+      <item itemvalue="Bash.midias.sh" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Bash.midias.sh" />
         <item itemvalue="Python.Folha(Piauí)" />
         <item itemvalue="Python.soup_jornaldocomercio" />
         <item itemvalue="Python.soup_operamundi" />
         <item itemvalue="Python.soup_diplomatique" />
-        <item itemvalue="Python.soup_agenciabrasil" />
       </list>
     </recent_temporary>
   </component>
