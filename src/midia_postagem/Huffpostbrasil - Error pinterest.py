@@ -71,5 +71,5 @@ for noticia in noticias:
 # In[ ]:
 
 
-noticias[0]
+
 
