@@ -215,10 +215,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1922" />
     <option name="height" value="1055" />
+=======
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1676" />
+    <option name="y" value="141" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+>>>>>>> Stashed changes
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
