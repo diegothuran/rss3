@@ -7,3 +7,4 @@ staticfiles
 
 playbooks/deploy.retry
 .idea/
+.idea/workspace.xml
