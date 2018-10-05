@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="" />
+    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/midia_postagem/osdivergentes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Esboço.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Esboço.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,85 +130,6 @@
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Extra.Globo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/util_midia.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-541" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/postagem/job.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/EBC.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Folha(Piauí).py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1104">
-              <caret line="46" column="82" selection-start-line="43" selection-end-line="46" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Terra.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/Blogdoprimo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1536">
-              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/midia_postagem/midias.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -272,19 +197,17 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="width" value="1922" />
-    <option name="height" value="1055" />
+    <option name="x" value="-37" />
+    <option name="y" value="25" />
+    <option name="width" value="3306" />
+    <option name="height" value="1100" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,6 +230,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -342,7 +266,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Bash.midias.sh">
+  <component name="RunManager" selected="Unknown.midias.sh1068979554">
     <configuration name="midias.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="rss3" />
       <option name="INTERPRETER_OPTIONS" value="bash" />
@@ -446,11 +370,9 @@
       <item itemvalue="Python.soup_jornaldocomercio" />
       <item itemvalue="Python.soup_operamundi" />
       <item itemvalue="Python.Folha(Piauí)" />
-      <item itemvalue="Bash.midias.sh" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Bash.midias.sh" />
         <item itemvalue="Python.Folha(Piauí)" />
         <item itemvalue="Python.soup_jornaldocomercio" />
         <item itemvalue="Python.soup_operamundi" />
@@ -658,14 +580,20 @@
       <option name="project" value="LOCAL" />
       <updated>1538598128061</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="changing sh postagens">
+      <created>1538760920730</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1538760920730</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
-    <editor active="true" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.45314163" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" />
@@ -1032,13 +960,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Terra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/midia_postagem/Terra.py" />
     <entry file="file://$PROJECT_DIR$/src/midia_postagem/Blogdoprimo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1536">
