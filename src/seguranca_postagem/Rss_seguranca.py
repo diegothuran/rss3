@@ -82,28 +82,31 @@ hit_list = [
     ]
 
 while True:
-    future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
+    try:
+        future_calls = [feedparser.parse(rss_url) for rss_url in hit_list]
 
 
-    # In[3]:
-    entries = []
-    for feed in future_calls:
-        entries.extend(feed["items"])
+        # In[3]:
+        entries = []
+        for feed in future_calls:
+            entries.extend(feed["items"])
 
 
-    i = 0
-    news_from_globo = False
-    for entrie in entries:
-        i+=1
-        print('\n Index: ' + str(i))
-        ref_link = entrie['link']
-        # get info from the ref_link and perform both post and db_save operations
-        util_seguranca.news_from_link(ref_link, news_from_globo)
+        i = 0
+        news_from_globo = False
+        for entrie in entries:
+            i+=1
+            print('\n Index: ' + str(i))
+            ref_link = entrie['link']
+            # get info from the ref_link and perform both post and db_save operations
+            util_seguranca.news_from_link(ref_link, news_from_globo)
 
-    # ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
-    # # get info from the ref_link and perform both post and db_save operations
-    # util_midia.social_news_from_link(ref_link)
+        # ref_link = 'https://www.torcedores.com/noticias/2018/09/galvao-expulsao-dede-cbf'
+        # # get info from the ref_link and perform both post and db_save operations
+        # util_midia.social_news_from_link(ref_link)
 
+    except Exception as e:
+        print(e)
 
 
 
