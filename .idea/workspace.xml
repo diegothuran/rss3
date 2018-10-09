@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="" />
+    <list default="true" id="e47b3243-8e0b-42dc-8f83-c4593bfe64d9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/midia_postagem/blogdomaringoni.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/midia_postagem/blogdorovai.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/midia_postagem/jornallivre.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/Esboço.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/midia_postagem/Esboço.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/midia_postagem/contaratomagno.pngiazrf5oq.tmp" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,8 +200,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1690" />
-    <option name="y" value="8" />
+    <option name="x" value="1626" />
+    <option name="y" value="49" />
     <option name="width" value="1378" />
     <option name="height" value="735" />
   </component>
@@ -597,11 +604,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538998854645</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="changing sh postagens">
+      <created>1539030577300</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1539030577300</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
