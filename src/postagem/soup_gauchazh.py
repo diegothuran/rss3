@@ -20,7 +20,7 @@ materias = bs.find('section', class_='section-latest-page').find_all('div', clas
 
 for materia in materias:
     row = {'titulos': [], 'links': [], 'noticia': [], 'image': [], 'abstract': [], 'date': []}
-    article = NewsPlease.from_url('https://gauchazh.clicrbs.com.br/' + materia.find('a', href=True)['href'])
+    article = NewsPlease.from_url('https://gauchazh.clicrbs.com.br' + materia.find('a', href=True)['href'])
     row['titulos'].append(article.title)
     row['noticia'].append(article.text)
     row['links'].append(article.url)
