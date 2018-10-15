@@ -27,7 +27,7 @@ import datetime
 # In[2]:
 
 
-link = 'https://www.huffpostbrasil.com/'
+link = 'http://www.papelpop.com/'
 
 
 # In[3]:
@@ -36,13 +36,13 @@ link = 'https://www.huffpostbrasil.com/'
 req = requests.get(link)
 
 
-# In[ ]:
+# In[4]:
 
 
-noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='splash-inner')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('h1')
 
 
-# In[7]:
+# In[5]:
 
 
 for noticia in noticias:

@@ -27,7 +27,7 @@ import datetime
 # In[2]:
 
 
-link = 'https://www.huffpostbrasil.com/'
+link = 'https://noticias.gospelprime.com.br/'
 
 
 # In[3]:
@@ -36,13 +36,13 @@ link = 'https://www.huffpostbrasil.com/'
 req = requests.get(link)
 
 
-# In[ ]:
+# In[4]:
 
 
-noticias = BeautifulSoup(req.text, "html.parser").find_all('div', class_='splash-inner')
+noticias = BeautifulSoup(req.text, "html.parser").find_all('h3', class_='media-heading')
 
 
-# In[7]:
+# In[5]:
 
 
 for noticia in noticias:
@@ -78,7 +78,7 @@ for noticia in noticias:
             print('Empty News')
 
 
-# In[ ]:
+# In[6]:
 
 
 noticias[0]
