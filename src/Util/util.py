@@ -4,7 +4,160 @@ import sys
 sys.path.insert(0, '../../src')
 
 import requests
+import string 
 
+def remove_punctuation(input_text):
+    """
+    Removes the punctuation from the input_text string
+    python 2 (string.maketrans) is different from python 3 (str.maketrans)
+    
+    Parameters
+    ----------
+    input_text: string in which the punctuation will be removed
+    
+    Return
+    ------
+        input_text without the puncutation
+    """
+    punct = string.punctuation
+    trantab = str.maketrans(punct, len(punct) * ' ')  # Every punctuation symbol will be replaced by a space
+    return input_text.translate(trantab)
+
+def join_strings(list_of_strings):
+    """
+        Método para transformar tokens em uma única sentença
+    :param list_of_strings: Lista com os tokens
+    :return: sentença formada pela união dos tokens
+    """
+    return ", ".join(list_of_strings)
+
+def get_categories_idx(categories_names, index_categories):
+    """
+    Get the wordpress categories index from the list of strings
+    
+    Parameters
+    ----------
+    categories_names: list of strings containing the name of the categories
+    
+    Return:
+    ------
+        categories_idx: list of integers containing the index of the categories
+    """
+#     categories_noticias = df['categorias'].values.tolist()
+    list_categories = list(categories_names)
+    categories_idx = []
+    for category in list_categories:
+        category = remove_punctuation(category)
+        if category in index_categories.keys():
+            categories_idx.append(index_categories[category])
+    return categories_idx  
+
+def get_categories_all_noticias(df):
+    """
+    Get the list of categories (list of categories (str)) for all 'noticias' 
+    
+    Parameters
+    ----------
+    df : dataframe containing all the data
+    
+    Return:
+    ------
+        list_categorias: list of list of categories for all 'noticias'
+    """
+    categories_noticias = df['categorias']
+    list_categories = []
+    for categories_noticia in categories_noticias:
+        list_categories.append(remove_punctuation(categories_noticia).split())
+    return list_categories
+
+def get_categorias_noticia(df, idx_noticia):
+    """
+    Get the categories (list of categories (str)) for 'noticia' at idx_noticia index 
+    
+    Parameters
+    ----------
+    df : dataframe containing all the data
+    
+    Return:
+    ------
+        list_categorias: lista de categorias para a noticia no indice idx_noticia
+    """
+    categories_noticias = df['categorias']
+    list_categories = remove_punctuation(categories_noticias[idx_noticia]).split()
+    return list_categories  
+
+def get_reduced_news(news_text):
+    """
+    Get the reduced text (content) of the news in the in the POST format
+    
+    Parameters
+    ----------
+    news_text : initial text of the news (in the current format is the abstract text)
+    
+    Return:
+    ------
+        reduced_news: reduced text (content) of the news in the in the POST format
+    """
+    # get paragraph_tag
+    paragraph_tag = '\n'
+    tag_idxs = []
+    for i, _ in enumerate(news_text):
+        if news_text[i:i + len(paragraph_tag)] == paragraph_tag:
+            tag_idxs.append(i)
+            
+    br_tag = '<br />'
+    br_idxs = []
+    for i, _ in enumerate(news_text):
+        if news_text[i:i + len(br_tag)] == br_tag:
+            br_idxs.append(i)
+            
+    img_tag = 'img'
+    foto_tag = 'foto'
+    globo_tag = 'globo'
+    estadao_tag = 'estadão'
+    g1_tag = 'g1'
+    
+    # No caso das noticias do globo    
+    try:
+        # No caso de as noticias nao virem com imagens
+        if(img_tag not in news_text[:tag_idxs[0]]):
+            reduced_size = int(len(news_text) / 5)
+            reduced_news = news_text[:reduced_size]
+        else:
+#             # vai comecar a ver a partir da tag final da imagem
+            index_after_img = (br_idxs[0] + len(br_tag))
+            verification_text = news_text[index_after_img:tag_idxs[5]]
+            
+            if((globo_tag in verification_text.lower()) or (foto_tag in verification_text.lower()) 
+               or (estadao_tag in verification_text.lower()) or (g1_tag in verification_text.lower())):
+                paragraph_idx = 0
+                for i in range(5, 0, -1):
+                    temp = news_text[tag_idxs[i-1]:tag_idxs[i]]
+                    if((globo_tag in temp.lower()) or (foto_tag in temp.lower())
+                       or (estadao_tag in temp.lower()) or (g1_tag in temp.lower())):
+                        paragraph_idx = i
+                        break
+                    
+                # paragrafo vazio
+                if(abs(tag_idxs[paragraph_idx + 1] - tag_idxs[paragraph_idx]) < 10):
+                    paragraph_idx += 1
+                main_content = news_text[tag_idxs[paragraph_idx]:]
+                reduced_size = int(len(main_content) / 5)
+                reduced_news = main_content[:reduced_size]
+            else:
+                reduced_size = int(len(verification_text) / 5)
+                reduced_news = verification_text[:reduced_size]
+    # No caso das noticias do jornal do comercio, que tem um abstract diferente do texto em si
+    except:
+        reduced_news = news_text
+
+    # Remover '\n' duplicado
+    # ver isso no linux: se no lugar do \r\n vai ser so \n (https://stackoverflow.com/questions/14606799/what-does-r-do-in-the-following-script)
+    # Tem que deixar essa parte se nao o texto ser postado quebrado
+    reduced_news = reduced_news.replace('\n\n\t \n\n', '<p>')
+    reduced_news = reduced_news.replace('\n', '<p>')
+    
+    return reduced_news
 
 def get_sharedcount_info(tracked_url):
     URL = 'https://api.sharedcount.com/v1.0/'
