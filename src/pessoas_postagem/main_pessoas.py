@@ -8,18 +8,19 @@ from pages.util import load_pages
 
 
 """ post """
-for page in load_pages.PAGES:
-    try:
-        urls = page.get_urls()
-        news_from_globo = False
-        for url in urls:
-            print('\n' + url)
-            util_pessoas.news_from_link(url)
- 
-    except Exception as e:
-        print(e)
-        pass
-    
+while(True):
+    for page in load_pages.PAGES:
+        try:
+            urls = page.get_urls()
+            news_from_globo = False
+            for url in urls:
+                print('\n' + url)
+                util_pessoas.news_from_link(url)
+
+        except Exception as e:
+            print(e)
+            pass
+
 
 # """ post """
 # # primeira_vez = True
