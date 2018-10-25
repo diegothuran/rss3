@@ -3,21 +3,12 @@
 import sys
 sys.path.insert(0, '../../src')
 
-
-# import feedparser
 from pessoas_postagem import util_pessoas
-
-from pages import agenciabrasil_ebc, bastidoresdopoder, cartacapital, correio24horas, diariocatarinense, diariodocentrodomundo, \
-diariodocentrodomundo_mundo, diariodonordeste, dinheirorural, exame, gazetadopovo, infomoney, istoedinheiro, jornalestadodeminas, \
-jovempan, justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, terra_noticias, tnh1, tribunadosertao, veja_ultimas
-
-""" List of pages """
-pages = [agenciabrasil_ebc, bastidoresdopoder, cartacapital, correio24horas, diariocatarinense, diariodocentrodomundo, 
-         diariodocentrodomundo_mundo, diariodonordeste, dinheirorural, exame, gazetadopovo, infomoney, istoedinheiro, jornalestadodeminas, 
-         jovempan, justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, terra_noticias, tnh1, tribunadosertao, veja_ultimas]
+from pages.util import load_pages
 
 
-for page in pages:
+""" post """
+for page in load_pages.PAGES:
     try:
         urls = page.get_urls()
         news_from_globo = False
@@ -28,3 +19,24 @@ for page in pages:
     except Exception as e:
         print(e)
         pass
+    
+
+# """ post """
+# # primeira_vez = True
+# for page in load_pages.PAGES:
+#     try:
+#         urls = page.get_urls()
+#         news_from_globo = False
+#         primeira = True
+#         for url in urls:
+#             if(primeira):
+#                 print('\n' + url)
+#                 util_pessoas.news_from_link(url, news_from_globo)
+#             else:
+#                 primeira = False
+#                 print('--- primeira: ' + str(primeira))
+#                 break
+#  
+#     except Exception as e:
+#         print(e)
+#         pass
