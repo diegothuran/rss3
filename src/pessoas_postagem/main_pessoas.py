@@ -14,7 +14,7 @@ for page in load_pages.PAGES:
         news_from_globo = False
         for url in urls:
             print('\n' + url)
-            util_pessoas.news_from_link(url, news_from_globo)
+            util_pessoas.news_from_link(url)
  
     except Exception as e:
         print(e)
