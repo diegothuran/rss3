@@ -1,17 +1,11 @@
-FROM ubuntu:16.04
-
-MAINTAINER Diego Santos
-
-RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y python3 python3-pip
-
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-
-COPY . .
-
-RUN mkdir logs
-
-RUN python3 -m nltk.downloader wordnet pros_cons reuters stopwords rslp punkt
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+FROM continuumio/miniconda3
+RUN conda create -n env python=3.6
+RUN echo "source activate env" > ~/.bashrc
+ENV PATH /opt/conda/envs/env/bin:$PATH
+RUN apt update
+RUN apt install git
+RUN git clone https://github.com/diegothuran/rss3
+RUN cd rss3
+RUN pip install -r rss3/requirements.txt
+RUN conda install -c anaconda mysql-connector-python
+RUN cd src/postagem/job.sh
