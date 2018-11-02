@@ -60,7 +60,7 @@ PAGES = [# page from the states
          ebc, elielbezerra, estadao, extra_globo, fabiocampana, falandoverdades, folha_piaui, folha_sp, gospelprime, grandesnomesdapropaganda, huffpostbrasil, 
          imprensaviva, istoe, jaderbarbalho, jornais_virtuais, jornaldocomercio, jornallivre, jota, justificando, marcossilverio, migalhas, moneytimes,
          mundodomarketing, natelinha, observatoriodatelevisao, ocafezinho, ocombatente, osamigosdopresidentelula, osdivergentes, outraspalavras, 
-         papelpop, polibiobraga, politicanarede, poncheverde, portaldapropaganda, ptnacamara, revistaforum, revistapress, rss_multiplos, rufandobombo, saibamais, 
+         papelpop, politicanarede, poncheverde, portaldapropaganda, ptnacamara, revistaforum, revistapress, rss_multiplos, rufandobombo, saibamais, 
          sputniknews, telepadi, telesintese, tijolaco, tribunadainternet, tribunadajustiça, veja, viomundo,
          
          agenciabrasil_ebc, bastidoresdopoder, bbc, cartacapital, correio24horas, diariocatarinense, diariodocentrodomundo, diariodocentrodomundo_mundo,
