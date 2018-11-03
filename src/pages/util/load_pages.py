@@ -46,7 +46,7 @@ jovempan, justificando_artigos, justificando, marceloauler, ne10, oantagonista, 
 PAGES = [# page from the states
          agazetadoacre, jornalatribuna, jornalopiniao, jornalopiniao_economia, jornalopiniao_policia, jornalopiniao_politica, oaltoacre,
          oestadoacre, oriobranco_geral, oriobranco_policial, oriobranco_politica, pagina20, pagina20_economia, pagina20_policia, pagina20_politica,
-         anoticia, cadaminuto, correiodopovo, gazetadealagoas, gazetaweb, novoextra, primeiraedicao, tribunahoje, tribunauniao,
+         anoticia, cadaminuto, correiodopovo, gazetadealagoas, gazetaweb, novoextra, primeiraedicao, tribunahoje,
          aquiamapa, diariodoamapa, diariodoamazonas, ojornaldailha, osolimoes, aregiao, atarde, correiodooeste, folharegionalbahia, folhasertaneja, 
          istoenoticia, jornalalerta, jornalanossavoz, jornalfolhadoestado, jornalimpacto, jornalnovafronteira, novoeste, oecojornal, rss_diariobahia, tribunafeirense,
          anoticiadoceara, folhadosertaoce, oestadoce, opovo, tribunadoceara, camara, correiobraziliense, diariodeceilandia, folhacentrooeste, jornaldebrasilia, 
