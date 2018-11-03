@@ -49,10 +49,58 @@ for j in range(1, int(limite_links / 10) + 1):
             row['links'].append(news_url)
             row['abstract'].append(article.text)
         #         row['date'].append(article.date_publish)
-            formated_date = util.format_date(article.date_publish, news_url)
-            print(formated_date)
-            row['date'].append(formated_date)
-                
+#             formated_date = util.format_date(article.date_publish, news_url)
+#             print(formated_date)
+#             row['date'].append(formated_date)
+            try:
+                if('ne10' in news_url):
+                    # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                    page_time = urllib.request.urlopen(news_url)
+                    soup_date = BeautifulSoup(page_time, 'html.parser')
+                    time = soup_date.find_all('p', attrs={'class': 'data-materia'})
+                    raw_date = time[0].text 
+                    raw_date = raw_date.replace(',', '')
+                    raw_date = raw_date.split()
+                    public_date = raw_date[2] + ' ' + raw_date[4]
+                    formated_date = datetime.datetime.strptime(public_date, '%d/%m/%Y %Hh%M').strftime("%Y-%m-%d %H:%M:%S")
+                    row['date'].append(formated_date)
+                elif('band' in news_url):
+                    # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                    page_time = urllib.request.urlopen(news_url)
+                    soup_date = BeautifulSoup(page_time, 'html.parser')
+                    time = soup_date.find_all('meta', attrs={'itemprop': 'datePublished'})
+                    raw_date = time[0].text 
+                    raw_date = raw_date.split()
+                    public_date = raw_date[0] + ' ' + raw_date[2]
+                    formated_date = datetime.datetime.strptime(public_date, '%d/%m/%Y %H:%M').strftime("%Y-%m-%d %H:%M:%S")
+                    row['date'].append(formated_date)
+                elif('folha' in news_url):
+                    # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                    page_time = urllib.request.urlopen(news_url)
+                    soup_date = BeautifulSoup(page_time, 'html.parser')
+                    time = soup_date.find_all('time', attrs={'class': 'c-more-options__published-date'})
+                    formated_date = time[0]['datetime']
+                    row['date'].append(formated_date)          
+                elif('congressoemfoco' in news_url):
+                    print(' --- congressoemfoco --- ')
+                    # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                    page_time = urllib.request.urlopen(news_url)
+                    soup_date = BeautifulSoup(page_time, 'html.parser')
+                    time = soup_date.find_all('time', attrs={'class': 'post-published updated'})
+                    public_date = time[0]['datetime']
+                    formated_date = datetime.datetime.strptime(public_date, '%Y-%m-%dT%H:%M:%S+00:00').strftime("%Y-%m-%d %H:%M:%S")
+                    row['date'].append(formated_date)
+        
+                # if no case is caught: This happens in the case of the 'noticias.uol.com.br' page
+                else:
+                    print(' --- noticias.uol.com.br ---')
+                    # we need to get the date from the original url, the date returned by the NewsPlease is wrong
+                    # The BeautifulSoup cannot get the actual date of the news, so I'll set the time now.
+                    formated_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    row['date'].append(formated_date)
+            except:
+                formated_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                row['date'].append(formated_date)
             # image
             path_image = article.image_url
             if path_image == '' or path_image == None:
