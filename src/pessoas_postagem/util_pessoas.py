@@ -29,7 +29,10 @@ def news_from_link(ref_link):
         row['noticia'].append(article.text)
         row['links'].append(article.url)
         row['abstract'].append(article.text)
-        row['date'].append(article.date_publish)
+        if(article.date_publish == None):
+            row['date'].append(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        else:
+            row['date'].append(article.date_publish)
         path_image = article.image_url
         print(path_image)
         if path_image == '' or path_image == None:

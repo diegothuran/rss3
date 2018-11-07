@@ -47,9 +47,14 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'se' : 26,
                     'to' : 34,
     
-                    'jungmann' : 8, 
-                    'haddad' : 10, 
-                    'bolsonaro' : 9
+#                     'jungmann' : 8, 
+#                     'haddad' : 10, 
+                    'bolsonaro' : 9,
+                    'onyx lorenzoni' : 45, 
+                    'paulo guedes' : 46, 
+                    'augusto heleno' : 47, 
+                    'marcos pontes' : 48, 
+                    'sérgio moro' : 49
                     }
 
 
