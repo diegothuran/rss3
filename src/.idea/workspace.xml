@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29138449-b4f4-4e15-a451-a61bb64c7800" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/midia_postagem/Comvergenciadigital.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/midia_postagem/adrenaline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/midia_postagem/gazetaesportiva.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/midia_postagem/goal.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/midia_postagem/torcedores.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/midia_postagem/Esboço.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/midia_postagem/Esboço.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,8 +123,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/midia_postagem/apublica - Error pinterest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="8" selection-start-line="27" selection-end-line="28" />
+            <state relative-caret-position="255">
+              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -363,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540812222531</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add Gabriel">
+      <created>1541012645487</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1541012645487</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -483,8 +484,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/midia_postagem/apublica - Error pinterest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="8" selection-start-line="27" selection-end-line="28" />
+        <state relative-caret-position="255">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
         </state>
       </provider>
     </entry>
