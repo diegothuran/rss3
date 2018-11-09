@@ -6,6 +6,10 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+#pegou o indice de bol.uol.com.br
+GLOBAL_RANK = 938 
+RANK_BRAZIL = 27  
+
 def get_urls():
     try:
         urls = [] 

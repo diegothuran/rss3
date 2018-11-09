@@ -6,6 +6,9 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+GLOBAL_RANK = 200288
+RANK_BRAZIL = 8307 
+
 def get_urls():
     try:
         urls = [] 

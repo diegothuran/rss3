@@ -5,6 +5,9 @@ sys.path.insert(0, '../../src')
 
 import feedparser
 
+GLOBAL_RANK = 86681
+RANK_BRAZIL = 2929
+
 
 def get_urls():
     try:
@@ -25,7 +28,7 @@ def get_urls():
         
         return urls
     except:
-        raise Exception('Exception in jornalopcao')
+        raise Exception('Exception in rss_jornalopcao')
 
 
 

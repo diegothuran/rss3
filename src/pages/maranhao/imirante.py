@@ -5,6 +5,9 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+GLOBAL_RANK = 64669
+RANK_BRAZIL = 2385 
+
 def get_urls():
     try:
         urls = [] 
@@ -18,4 +21,4 @@ def get_urls():
         
         return urls
     except:
-        raise Exception('Exception in diariodocentrodomundo')
+        raise Exception('Exception in imirante')

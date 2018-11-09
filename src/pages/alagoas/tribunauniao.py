@@ -5,13 +5,14 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+GLOBAL_RANK = 2208945
+RANK_BRAZIL = None
+
 
 def get_urls():
     try:
         urls = [] 
-        link = 'https://www.diariodocentrodomundo.com.br/brasil/'
         root = 'http://www.tribunauniao.com.br/'
-        
         news_idx = ['0', '24', '48', '72', '96', '120']
         for i in range(len(news_idx)):
             link = 'http://www.tribunauniao.com.br/index.php/noticias/' + news_idx[i]

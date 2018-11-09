@@ -3,8 +3,10 @@
 import sys
 sys.path.insert(0, '../../src')
 
-
 import feedparser
+
+GLOBAL_RANK = 558617
+RANK_BRAZIL = 22699
 
 def get_urls():
     try:

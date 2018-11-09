@@ -5,6 +5,9 @@ sys.path.insert(0, '../../src')
 
 import feedparser
 
+GLOBAL_RANK = None
+RANK_BRAZIL = None
+
 def get_urls():
     try:
         urls = [] 

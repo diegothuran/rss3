@@ -16,16 +16,16 @@ from pages.amazonas import diariodoamazonas, ojornaldailha, osolimoes
 from pages.bahia import aregiao, atarde, correiodooeste, folharegionalbahia, folhasertaneja, istoenoticia, jornalalerta, jornalanossavoz, jornalfolhadoestado,\
 jornalimpacto, jornalnovafronteira, novoeste, oecojornal, rss_diariobahia, tribunafeirense
 
-from pages.ceara import anoticiadoceara, folhadosertaoce, oestadoce, opovo, tribunadoceara
+from pages.ceara import anoticiadoceara, oestadoce, opovo, tribunadoceara
 
-from pages.distrito_federal import camara, correiobraziliense, diariodeceilandia, folhacentrooeste, jornaldebrasilia, jornalregional, rss_estacaonews, rss_senado
+from pages.distrito_federal import camara, correiobraziliense, folhacentrooeste, jornaldebrasilia, jornalregional, rss_estacaonews, rss_senado
 
 from pages.espirito_santo import aquinoticias, correiodoestadoonline, estadocapixaba, gazetaonline, jornalcorreiocapixaba, noticiaagora, rss_folhaonline, tribunaonline
 
-from pages.goias import diariodeaparecida, diariodoestadogo, jornalaguaslindas, jornaldiariodonorte, jornalestadodegoias, oanapolis, ohoje, opopular, \
+from pages.goias import diariodeaparecida, diariodoestadogo, jornalaguaslindas, jornalopcao, jornalestadodegoias, oanapolis, ohoje, opopular, \
 rss_jornalopcao, tribunadoplanalto
 
-from pages.maranhao import atosefatos, oestadoma, oimparcial, oquartopoder
+from pages.maranhao import atosefatos, oestadoma, imirante, oquartopoder
 
 ' import Gabriel pages '
 from pages.gabriel import agenciabrasil, apublica, avozeavezdajuventude, b9, balaiodokotscho, blastingnews, blogdafloresta, blogdoataide, blogdoluciosorge,\
@@ -49,10 +49,10 @@ PAGES = [# page from the states
          anoticia, cadaminuto, correiodopovo, gazetadealagoas, gazetaweb, novoextra, primeiraedicao, tribunahoje,
          aquiamapa, diariodoamapa, diariodoamazonas, ojornaldailha, osolimoes, aregiao, atarde, correiodooeste, folharegionalbahia, folhasertaneja, 
          istoenoticia, jornalalerta, jornalanossavoz, jornalfolhadoestado, jornalimpacto, jornalnovafronteira, novoeste, oecojornal, rss_diariobahia, tribunafeirense,
-         anoticiadoceara, folhadosertaoce, oestadoce, opovo, tribunadoceara, camara, correiobraziliense, diariodeceilandia, folhacentrooeste, jornaldebrasilia, 
+         anoticiadoceara, oestadoce, opovo, tribunadoceara, camara, correiobraziliense, folhacentrooeste, jornaldebrasilia, 
          jornalregional, rss_estacaonews, rss_senado, aquinoticias, correiodoestadoonline, estadocapixaba, gazetaonline, jornalcorreiocapixaba, noticiaagora, 
-         rss_folhaonline, tribunaonline, diariodeaparecida, diariodoestadogo, jornalaguaslindas, jornaldiariodonorte, jornalestadodegoias, oanapolis, ohoje, 
-         opopular, rss_jornalopcao, tribunadoplanalto, atosefatos, oestadoma, oimparcial, oquartopoder,
+         rss_folhaonline, tribunaonline, diariodeaparecida, diariodoestadogo, jornalaguaslindas, jornalopcao, jornalestadodegoias, oanapolis, ohoje, 
+         opopular, rss_jornalopcao, tribunadoplanalto, atosefatos, oestadoma, imirante, oquartopoder,
          # pages ate o maranhao
          agenciabrasil, apublica, avozeavezdajuventude, b9, balaiodokotscho, blastingnews, blogdafloresta, blogdoataide, blogdoluciosorge, blogdomaringoni, 
          blogdomello, blogdomiro, blogdopaulonunes, blogdoprimo, blogdoriella, blogdorovai, blogdoskarlack, blogmarcosfrahm, buzzfeed_news_br, carta_maior, 

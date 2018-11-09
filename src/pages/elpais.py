@@ -7,6 +7,10 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+GLOBAL_RANK = 440 
+RANK_BRAZIL = None
+
+
 # def format_date(raw_date):
 #     formated_date = datetime.datetime.strptime(raw_date, ' %d/%m/%Y %Hh%M ').strftime("%Y-%m-%d %H:%M:%S")
 #     return formated_date

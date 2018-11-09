@@ -5,23 +5,25 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+GLOBAL_RANK = None
+RANK_BRAZIL = None
+
+
 def get_urls():
     try:
         urls = [] 
-        root = 'https://www.gazetadopovo.com.br/'
-        for i in range(10):
-            if(i == 0):
-                link = 'https://www.gazetadopovo.com.br/ultimas-noticias/'
+        for i in range(1, 10):
+            if(i == 1):
+                link = 'http://folhacentrooeste.blog.br/category/noticias/'
             else:
-                link = 'https://www.gazetadopovo.com.br/ultimas-noticias/?offset=' + str(i)
+                link = 'http://folhacentrooeste.blog.br/category/noticias/page/' + str(i)
             req = requests.get(link)
-            noticias = BeautifulSoup(req.text, "html.parser").find_all('article', class_='c-chamada lista-ordenada ultimas-chamadas')
+            noticias = BeautifulSoup(req.text, "html.parser").find_all('h2', class_='post-box-title')
             for noticia in noticias:
                 href = noticia.find_all('a', href=True)[0]['href']
-                full_link = root + href 
-#                 print(full_link)
-                urls.append(full_link)
+#                 print(href)
+                urls.append(href)
         
         return urls
     except:
-        raise Exception('Exception in gazetadopovo')
+        raise Exception('Exception in folhacentrooeste')
