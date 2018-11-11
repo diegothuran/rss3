@@ -54,7 +54,8 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'paulo guedes' : 46, 
                     'augusto heleno' : 47, 
                     'marcos pontes' : 48, 
-                    'sérgio moro' : 49
+                    'sérgio moro' : 49,
+                    'hamilton mourão' : 51
                     }
 
 
