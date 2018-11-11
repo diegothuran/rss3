@@ -27,8 +27,4 @@ def get_urls():
     except:
         raise Exception('Exception in administradores')
 
-print(get_urls())
-
-
-
-
+# print(get_urls())
