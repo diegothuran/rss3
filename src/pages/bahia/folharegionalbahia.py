@@ -7,6 +7,7 @@ import requests
 
 GLOBAL_RANK = 8504964
 RANK_BRAZIL = None
+NAME = 'folharegionalbahia'
 
 
 def get_urls():

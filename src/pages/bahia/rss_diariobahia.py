@@ -7,6 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 558617
 RANK_BRAZIL = 22699
+NAME = 'diariobahia'
 
 def get_urls():
     try:

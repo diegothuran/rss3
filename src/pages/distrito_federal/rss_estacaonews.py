@@ -7,6 +7,7 @@ import feedparser
 
 GLOBAL_RANK = None
 RANK_BRAZIL = None
+NAME = 'estacaonews'
 
 def get_urls():
     try:

@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 121796
 RANK_BRAZIL = 3542
+NAME = 'nocaute'
 
 def get_urls():
     try:

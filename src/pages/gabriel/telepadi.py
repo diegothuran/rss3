@@ -9,6 +9,7 @@ import requests
 # pegou o indice de folha.uol.com.br
 GLOBAL_RANK = 1167
 RANK_BRAZIL = 26
+NAME = 'telepadi'
 
 def get_urls():
     try:

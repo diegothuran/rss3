@@ -7,6 +7,7 @@ import requests
 
 GLOBAL_RANK = 5435
 RANK_BRAZIL = 137   
+NAME = 'infomoney'
 
 def get_urls():
     try:

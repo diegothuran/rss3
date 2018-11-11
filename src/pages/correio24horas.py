@@ -7,6 +7,7 @@ import requests
 
 GLOBAL_RANK = 28580 
 RANK_BRAZIL =  924  
+NAME = 'correio24horas'
 
 def get_urls():
     try:  

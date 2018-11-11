@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 1355
 RANK_BRAZIL = None
+NAME = 'blastingnews'
 
 
 def get_urls():

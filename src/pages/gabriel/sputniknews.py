@@ -32,7 +32,7 @@ def get_urls():
     except:
         raise Exception('Exception in sputniknews')
 
-print(get_urls())
+# print(get_urls())
 
 # def get_urls():
 #     try:

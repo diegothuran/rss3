@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 88221
 RANK_BRAZIL = 2106
+NAME = 'imprensaviva'
 
 def get_urls():
     try:

@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 86259
 RANK_BRAZIL = 2117
+NAME = 'moneytimes'
 
 def get_urls():
     try:

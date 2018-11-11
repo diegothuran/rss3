@@ -9,6 +9,7 @@ import requests
 #pegou o indice de bol.uol.com.br
 GLOBAL_RANK = 938 
 RANK_BRAZIL = 27  
+NAME = 'observatoriodatelevisao'
 
 def get_urls():
     try:

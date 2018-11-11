@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 148422
 RANK_BRAZIL = 3598
+NAME = 'apublica'
 
 
 def get_urls():

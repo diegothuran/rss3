@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 188076
 RANK_BRAZIL = 7717 
+NAME = 'mundodomarketing'
 
 def get_urls():
     try:

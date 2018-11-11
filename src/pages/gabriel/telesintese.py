@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 213467
 RANK_BRAZIL = 6536 
+NAME = 'telesintese'
 
 def get_urls():
     try:

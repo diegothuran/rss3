@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 10746
 RANK_BRAZIL = 223  
+NAME = 'revistaforum'
 
 def get_urls():
     try:

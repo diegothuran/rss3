@@ -7,6 +7,7 @@ import requests
 
 GLOBAL_RANK = 9755719
 RANK_BRAZIL = None
+NAME = 'jornalcorreiocapixaba'
 
 
 def get_urls():

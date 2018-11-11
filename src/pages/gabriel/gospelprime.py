@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 26767
 RANK_BRAZIL = 696  
+NAME = 'gospelprime'
 
 def get_urls():
     try:

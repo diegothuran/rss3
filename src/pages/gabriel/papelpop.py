@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 54606
 RANK_BRAZIL = 1996
+NAME = 'papelpop'
 
 def get_urls():
     try:

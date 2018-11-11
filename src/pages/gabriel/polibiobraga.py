@@ -8,6 +8,7 @@ import requests
 
 GLOBAL_RANK = 168935
 RANK_BRAZIL = 4986 
+NAME = 'polibiobraga'
 
 def get_urls():
     try:
