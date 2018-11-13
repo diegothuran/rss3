@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import sys
+from numpy import nan
 sys.path.insert(0, '../../src')
 
 import requests
@@ -156,6 +157,20 @@ def get_reduced_news(news_text):
     # Tem que deixar essa parte se nao o texto ser postado quebrado
     reduced_news = reduced_news.replace('\n\n\t \n\n', '<p>')
     reduced_news = reduced_news.replace('\n', '<p>')
+    
+    return reduced_news
+
+def get_reduced_news_with_relevance(news_text, relevancia):
+    reduced_news = get_reduced_news(news_text)
+    if((relevancia is None) or (relevancia is nan)):
+        texto_relevancia = '-'
+    else:
+        texto_relevancia = relevancia
+    posicionamento_relevancia = '<div style="float: right;"> \
+    <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
+    <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"> %s </div>\
+    </div>' % (texto_relevancia,)
+    reduced_news = posicionamento_relevancia + reduced_news
     
     return reduced_news
 

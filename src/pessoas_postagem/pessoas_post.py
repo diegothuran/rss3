@@ -8,6 +8,7 @@ import datetime
 import numpy as np
 
 from Util import util
+from Database import relevancia_site_table
 
 USER = b'admxarx'
 PASSWORD = b'!xarx@2018*'
@@ -55,7 +56,10 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'augusto heleno' : 47, 
                     'marcos pontes' : 48, 
                     'sérgio moro' : 49,
-                    'hamilton mourão' : 51
+                    'hamilton mourão' : 51,
+                    'joaquim levy' : 52,
+                    'mansueto almeida' : 53,
+                    'fernando azevedo e silva' : 54
                     }
 
 
@@ -85,6 +89,10 @@ def post_news(df):
         # texto_sumarizado: por enquanto apenas em seguranca
         news = row['abstract']
         reduced_news = util.get_reduced_news(news)
+        
+#         #testes para o novo formato
+#         tupla = relevancia_site_table.select(row['site'])
+#         reduced_news = util.get_reduced_news_with_relevance(news, tupla[2])
         temp = '... <p>Leia a íntegra em: ' + '<a href=' + row['links'] +'> ' + row['links']  + '</a>'
         
         content = reduced_news + temp
