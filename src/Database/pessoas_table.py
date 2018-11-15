@@ -18,7 +18,7 @@ def save_news(news = News):
 #         timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 #         now = datetime.datetime(2009, 5, 5)
 #         str_now = now.date().isoformat()
-        str_now = datetime.datetime.now().strftime("%Y-%m-%d")
+        str_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         
         cats = Util.join_categories(news.categories[0])
         add_news = ("INSERT INTO pessoas "
