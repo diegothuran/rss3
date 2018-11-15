@@ -162,17 +162,61 @@ def get_reduced_news(news_text):
 
 def get_reduced_news_with_relevance(news_text, relevancia):
     reduced_news = get_reduced_news(news_text)
-    if((relevancia is None) or (relevancia is nan)):
+    if(relevancia == 'nan'):
         texto_relevancia = '-'
     else:
         texto_relevancia = relevancia
-    posicionamento_relevancia = '<div style="float: right;"> \
-    <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
-    <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"> %s </div>\
-    </div>' % (texto_relevancia,)
-    reduced_news = posicionamento_relevancia + reduced_news
     
+    posicionamento_relevancia = get_posicionamento_relevancia(texto_relevancia)
+        
+#     posicionamento_relevancia = '<div style="float: right;"> \
+#     <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
+#     <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"> %s </div>\
+#     </div>' % (texto_relevancia,)
+    reduced_news = posicionamento_relevancia + reduced_news
+
     return reduced_news
+
+def get_posicionamento_relevancia(texto_relevancia):
+    posicionamento = '<style>\
+        .relevancia_box .tooltip_relevancia {\
+        visibility: hidden;\
+        width: 300px;\
+        background-color: #555;\
+        color: #fff;\
+        text-align: center;\
+        border-radius: 6px;\
+        padding: 5px 0;\
+        position: absolute;\
+        z-index: 1;\
+        bottom: 101%%;\
+        left: 69%%;\
+        opacity: 0;\
+        transition: opacity 0.3s\
+    }\
+    .relevancia_box .tooltip_relevancia::after {\
+        content: "";\
+        position: absolute;\
+        top: 100%%;\
+        left: 50%%;\
+        margin-left: -5px;\
+        border-width: 5px;\
+        border-style: solid;\
+        border-color: #555 transparent transparent transparent\
+    }\
+    .relevancia_box:hover .tooltip_relevancia {\
+        visibility: visible;\
+        opacity: 1\
+    }\
+    </style>\
+    <div class="relevancia_box" style = "float: right;">\
+    <div class="tooltip_relevancia">\
+        Nosso índice de relevância representa uma média da popularidade do site fonte da notícia acessada e é definido pelo Rank Alexa. Na prática, quanto mais próximo de 10.00 for a relevância, maior o número de usuários que visitaram o site fonte dessa notícia. Valores próximo a 0.00 representam um menor o número de acessos à informação.</div>\
+        <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
+        <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"> %s </div>\
+        </div>' % (texto_relevancia,) 
+    return posicionamento
+
 
 def get_sharedcount_info(tracked_url):
     URL = 'https://api.sharedcount.com/v1.0/'

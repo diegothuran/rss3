@@ -59,7 +59,9 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'hamilton mourão' : 51,
                     'joaquim levy' : 52,
                     'mansueto almeida' : 53,
-                    'fernando azevedo e silva' : 54
+                    'fernando azevedo e silva' : 54,
+                    'ernesto araújo' : 55, 
+                    'roberto campos neto' : 56
                     }
 
 
