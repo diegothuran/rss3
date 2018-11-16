@@ -25,19 +25,17 @@ def save(relevancia_site = Relevancia_Site):
 
     cnx.close()
 
-
-def select(relevancia_site = Relevancia_Site):
+def select(site):
     cnx = connection.connection()
-    try:
-        cursor = cnx.cursor()
-        query = ("SELECT * FROM relevancia_site WHERE site = %s", (relevancia_site.site[0]))
-        result = cursor.execute(*query)
-        cnx.close()
- 
-        return result
-    except Exception as e:
-        print(e)
- 
+    cursor = cnx.cursor()
+  
+    sql = "SELECT * FROM relevancia_site WHERE site = %s"
+    site = (site, )    
+    cursor.execute(sql, site)
+    result = cursor.fetchall()[0] 
+    cnx.close()
+    return result
+
 def check(relevancia_site = Relevancia_Site):
     cnx = connection.connection()
      
@@ -66,4 +64,22 @@ def update(relevancia_site = Relevancia_Site):
     cursor.execute(sql, site)
     
     cnx.close()
+
+def select_form_date(request_date):
+    cnx = connection.connection()
+     
+    cursor = cnx.cursor()
     
+    query = ("SELECT * FROM pessoas "
+             "WHERE public_date = %s")
+    
+    str_date = request_date.strftime("%Y-%m-%d")
+#     hire_start = datetime.date(1999, 1, 1)
+#     hire_end = datetime.date(1999, 12, 31)
+    str_date = (str_date, )    
+    cursor.execute(query, str_date)
+    rows = cursor.fetchall()
+    print(len(rows))
+    
+    cursor.close()
+    cnx.close()
