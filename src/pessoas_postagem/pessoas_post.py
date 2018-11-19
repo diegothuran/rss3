@@ -61,7 +61,8 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'mansueto almeida' : 53,
                     'fernando azevedo e silva' : 54,
                     'ernesto araújo' : 55, 
-                    'roberto campos neto' : 56
+                    'roberto campos neto' : 56,
+                    'tereza cristina' : 57
                     }
 
 
