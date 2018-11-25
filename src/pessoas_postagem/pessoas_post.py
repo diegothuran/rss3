@@ -62,7 +62,17 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'fernando azevedo e silva' : 54,
                     'ernesto araújo' : 55, 
                     'roberto campos neto' : 56,
-                    'tereza cristina' : 57
+                    'tereza cristina' : 57,
+                    'andré luiz de almeida mendonça' : 58,
+                    'carlos von doellinger' : 59,
+                    'érika marena' : 60,
+                    'luiz mandetta' : 61,
+                    'maurício valeixo' : 62,
+                    'pedro guimarães' : 63,
+                    'ricardo vélez rodríguez' : 64,
+                    'roberto castello branco' : 65,
+                    'rubem novaes' : 66,
+                    'wagner do rosário' : 67
                     }
 
 
@@ -93,9 +103,9 @@ def post_news(df):
         news = row['abstract']
         reduced_news = util.get_reduced_news(news)
         
-#         #testes para o novo formato
+        #testes para o novo formato
 #         tupla = relevancia_site_table.select(row['site'])
-#         reduced_news = util.get_reduced_news_with_relevance(news, tupla[2])
+#         reduced_news = util.get_reduced_news_with_relevance(news, row['site'])
         temp = '... <p>Leia a íntegra em: ' + '<a href=' + row['links'] +'> ' + row['links']  + '</a>'
         
         content = reduced_news + temp

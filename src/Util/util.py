@@ -160,14 +160,9 @@ def get_reduced_news(news_text):
     
     return reduced_news
 
-def get_reduced_news_with_relevance(news_text, relevancia):
+def get_reduced_news_with_relevance(news_text, nome_site):
     reduced_news = get_reduced_news(news_text)
-    if(relevancia == 'nan'):
-        texto_relevancia = '-'
-    else:
-        texto_relevancia = relevancia
-    
-    posicionamento_relevancia = get_posicionamento_relevancia(texto_relevancia)
+    posicionamento_relevancia = get_posicionamento_relevancia(nome_site)
         
 #     posicionamento_relevancia = '<div style="float: right;"> \
 #     <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
@@ -177,44 +172,58 @@ def get_reduced_news_with_relevance(news_text, relevancia):
 
     return reduced_news
 
-def get_posicionamento_relevancia(texto_relevancia):
-    posicionamento = '<style>\
-        .relevancia_box .tooltip_relevancia {\
-        visibility: hidden;\
-        width: 300px;\
-        background-color: #555;\
-        color: #fff;\
-        text-align: center;\
-        border-radius: 6px;\
-        padding: 5px 0;\
-        position: absolute;\
-        z-index: 1;\
-        bottom: 101%%;\
-        left: 69%%;\
-        opacity: 0;\
-        transition: opacity 0.3s\
-    }\
-    .relevancia_box .tooltip_relevancia::after {\
-        content: "";\
-        position: absolute;\
-        top: 100%%;\
-        left: 50%%;\
-        margin-left: -5px;\
-        border-width: 5px;\
-        border-style: solid;\
-        border-color: #555 transparent transparent transparent\
-    }\
-    .relevancia_box:hover .tooltip_relevancia {\
-        visibility: visible;\
-        opacity: 1\
-    }\
-    </style>\
-    <div class="relevancia_box" style = "float: right;">\
-    <div class="tooltip_relevancia">\
-        Nosso índice de relevância representa uma média da popularidade do site fonte da notícia acessada e é definido pelo Rank Alexa. Na prática, quanto mais próximo de 10.00 for a relevância, maior o número de usuários que visitaram o site fonte dessa notícia. Valores próximo a 0.00 representam um menor o número de acessos à informação.</div>\
-        <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\
-        <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"> %s </div>\
-        </div>' % (texto_relevancia,) 
+def get_posicionamento_relevancia(nome_site):
+    posicionamento = '<style>\n\
+        .relevancia_box .tooltip_relevancia {\n\
+        visibility: hidden;\n\
+        width: 300px;\n\
+        background-color: #555;\n\
+        color: #fff;\n\
+        text-align: center;\n\
+        border-radius: 6px;\n\
+        padding: 5px 0;\n\
+        position: absolute;\n\
+        z-index: 1;\n\
+        bottom: 101%%;\n\
+        left: 69%%;\n\
+        opacity: 0;\n\
+        transition: opacity 0.3s\n\
+    }\n\
+    .relevancia_box .tooltip_relevancia::after {\n\
+        content: "";\n\
+        position: absolute;\n\
+        top: 100%%;\n\
+        left: 50%%;\n\
+        margin-left: -5px;\n\
+        border-width: 5px;\n\
+        border-style: solid;\n\
+        border-color: #555 transparent transparent transparent\n\
+    }\n\
+    .relevancia_box:hover .tooltip_relevancia {\n\
+        visibility: visible;\n\
+        opacity: 1\n\
+    }\n\
+    </style>\n\
+    <div class="relevancia_box" style = "float: right;">\n\
+    <div class="tooltip_relevancia">\n\
+        Nosso índice de relevância representa uma média da popularidade do site fonte da notícia acessada e é definido pelo Rank Alexa. Na prática, quanto mais próximo de 10.00 for a relevância, maior o número de usuários que visitaram o site fonte dessa notícia. Valores próximo a 0.00 representam um menor o número de acessos à informação.</div>\n\
+        <div style="padding: 8px 8px; background: #81c483; color: #fff; font-weight: 700; border-radius: 4px 4px 0 0;"> RELEVÂNCIA </div>\n\
+        <div id="relevancia" align="center" style="width:129px; border: 1px solid #81c483"></div>\n\
+        </div>\n\
+        <script type="text/javascript">\n\
+            const http = new XMLHttpRequest()\n\
+            site = "%s"\n\
+            http.open("GET", "http://34.234.188.90:5000/relevancia/?site=" + site)\n\
+            http.send()\n\
+            http.onload = () => document.getElementById("relevancia").innerHTML = http.responseText;\n\
+        </script>' % (nome_site,) 
+    
+#     #TODO: COLOCAR O IF NO JAVASCRIPT
+#     if(relevancia == 'nan'):
+#         texto_relevancia = '-'
+#     else:
+#         texto_relevancia = relevancia
+    
     return posicionamento
 
 
@@ -236,4 +245,3 @@ def get_sharedcount_info(tracked_url):
         return fb_comment, fb_share, fb_reaction, fb_total
     except:
         return 0, 0, 0, 0
-
