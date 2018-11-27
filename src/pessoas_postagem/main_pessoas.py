@@ -32,7 +32,7 @@ while(True):
 #         for url in urls:
 #             if(primeira):
 #                 print('\n' + url)
-#                 util_pessoas.news_from_link(url, news_from_globo)
+#                 util_pessoas.news_from_link(url)
 #             else:
 #                 primeira = False
 #                 print('--- primeira: ' + str(primeira))
