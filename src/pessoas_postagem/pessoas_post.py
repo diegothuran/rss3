@@ -72,7 +72,14 @@ INDEX_CATEGORIES = {'ac' : 28,
                     'ricardo vélez rodríguez' : 64,
                     'roberto castello branco' : 65,
                     'rubem novaes' : 66,
-                    'wagner do rosário' : 67
+                    'wagner rosário' : 67,
+                    'bento costa lima leite de albuquerque junior' : 68, 
+                    'marcelo álvaro antônio' : 69, 
+                    'osmar terra' : 70, 
+                    'gustavo henrique rigodanzo canuto' : 71, 
+                     'tarcísio gomes de freitas' : 72, 
+                     'carlos alberto dos santos cruz' : 73, 
+                     'gustavo bebianno' : 74
                     }
 
 
