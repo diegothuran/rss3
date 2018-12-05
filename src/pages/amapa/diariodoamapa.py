@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
+from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 305057
 RANK_BRAZIL = 10132 
@@ -12,7 +13,7 @@ NAME = 'diariodoamapa'
 def get_urls():
     try:
         urls = [] 
-        for i in range(1, 10):
+        for i in range(1, PAGE_LIMIT):
             print(' --------' + str(i))
             if(i == 1):
                 link = 'https://www.diariodoamapa.com.br/category/cadernos/ultima-hora/'

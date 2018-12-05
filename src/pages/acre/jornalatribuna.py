@@ -5,6 +5,8 @@ sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
 
+from pages.util.constantes import PAGE_LIMIT
+
 GLOBAL_RANK = 2675408
 RANK_BRAZIL = None
 NAME = 'jornalatribuna'
@@ -15,7 +17,7 @@ def get_urls():
         urls = [] 
         categorias = ['2', '9', '16']
         for categoria in categorias:
-            for i in range(1,10):
+            for i in range(1,PAGE_LIMIT):
                 if(i == 1):
                     link = 'http://www.jornalatribuna.com.br/?cat=' + categoria
                 else:

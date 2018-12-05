@@ -73,7 +73,7 @@ telesintese, tijolaco, torcedores, tribunadainternet, tribunadajustiça, valor, 
 ' import general pages '
 from pages import agenciabrasil_ebc, bastidoresdopoder, bbc, cartacapital, correio24horas, diariocatarinense, diariodocentrodomundo, \
 diariodocentrodomundo_mundo, diariodonordeste, dinheirorural, elpais, exame, gauchazh, gazetadopovo, globo_eleicoes, infomoney, istoedinheiro, jornalestadodeminas, \
-jovempan, justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, rss_globo, terra_noticias, tnh1, tribunadosertao, veja_ultimas
+jovempan, justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, rss_globo, terra_noticias, tnh1, tribunadosertao, veja_ultimas, uol
 
 """ List of pages """
 PAGES = [# page from the states
@@ -97,7 +97,7 @@ PAGES = [# page from the states
          #paginas diversas
          agenciabrasil_ebc, bastidoresdopoder, bbc, cartacapital, correio24horas, diariocatarinense, diariodocentrodomundo, diariodocentrodomundo_mundo, 
          diariodonordeste, dinheirorural, elpais, exame, gauchazh, gazetadopovo, globo_eleicoes, infomoney, istoedinheiro, jornalestadodeminas, jovempan, 
-         justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, rss_globo, terra_noticias, tnh1, tribunadosertao, veja_ultimas,
+         justificando_artigos, justificando, marceloauler, ne10, oantagonista, r7, rss_globo, terra_noticias, tnh1, tribunadosertao, veja_ultimas, uol,
  
          # paginas gabriel
          abert, abi, administradores, adrenaline, agenciabrasil, ancine, apublica, avozeavezdajuventude, b9, balaiodokotscho, 

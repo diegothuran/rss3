@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
+from pages.util.constantes import PAGE_LIMIT
 
 #based on the rank of globo
 GLOBAL_RANK = 147 
@@ -14,7 +15,7 @@ def get_urls():
     try:
         urls = [] 
         
-        for idx in range(1,9):
+        for idx in range(1,PAGE_LIMIT):
             link = 'http://gazetaweb.globo.com/portal/editoria.php?c=' + str(idx)
             req = requests.get(link)
             noticias = BeautifulSoup(req.text, "html.parser").find_all('a', class_='com-foto', href=True)

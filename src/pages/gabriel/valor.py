@@ -5,6 +5,7 @@ sys.path.insert(0, '../../src')
 
 from bs4 import BeautifulSoup
 import requests
+from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 15823
 RANK_BRAZIL = 423  
@@ -15,7 +16,7 @@ def get_urls():
         urls = [] 
         root = 'https://www.valor.com.br'
         
-        for i in range(0,10):
+        for i in range(0,PAGE_LIMIT):
             if(i == 0):
                 link = 'https://www.valor.com.br/ultimas-noticias'
             else:

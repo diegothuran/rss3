@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
+from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 9755719
 RANK_BRAZIL = None
@@ -13,7 +14,7 @@ NAME = 'jornalcorreiocapixaba'
 def get_urls():
     try:
         urls = [] 
-        for i in range(10):
+        for i in range(PAGE_LIMIT):
             link = 'http://jornalcorreiocapixaba.com.br/pt-BR/publicacoes/?page=' + str(i)
             req = requests.get(link)
             noticias = BeautifulSoup(req.text, "html.parser").find_all('article', class_='block_topic_post_feature')

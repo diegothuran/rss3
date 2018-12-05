@@ -14,7 +14,8 @@ def get_urls():
     try:
         urls = [] 
         root = 'http://www.tribunauniao.com.br/'
-        news_idx = ['0', '24', '48', '72', '96', '120']
+#         news_idx = ['0', '24', '48', '72', '96', '120']
+        news_idx = ['0', '24', '48']
         for i in range(len(news_idx)):
             link = 'http://www.tribunauniao.com.br/index.php/noticias/' + news_idx[i]
             req = requests.get(link)

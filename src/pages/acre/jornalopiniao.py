@@ -13,7 +13,7 @@ def get_urls():
     try:
         urls = [] 
         root = 'https://www.jornalopiniao.net'
-        news_idx = ['0', '8', '16', '24', '32', '40']
+        news_idx = ['0', '8', '16', '24']
         for i in range(len(news_idx)):
             if(i == 1):
                 link = 'https://www.jornalopiniao.net/index.php/brasil.html'

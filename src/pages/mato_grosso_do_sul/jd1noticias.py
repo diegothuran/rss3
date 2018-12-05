@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, '../../src')
 from bs4 import BeautifulSoup
 import requests
+from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 1125849
 RANK_BRAZIL = 31946    
@@ -13,7 +14,7 @@ def get_urls():
     try:
         urls = [] 
         
-        for i in range(1, 5):
+        for i in range(1, PAGE_LIMIT):
             link = 'http://www.jd1noticias.com/canal/ultimas-noticias/p/' + str(i)
             req = requests.get(link)
             noticias = BeautifulSoup(req.text, "html.parser").find_all('ul', class_='listNoticias listCanal')
