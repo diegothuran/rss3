@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 936 
 RANK_BRAZIL = 25  
-NAME = 'veja_abril'
+NAME = 'veja.abril'
 
 
 def get_urls():

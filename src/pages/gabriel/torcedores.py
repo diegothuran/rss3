@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 28215
 RANK_BRAZIL = 942 
-NAME = 'torcedores'
+NAME = 'www.torcedores.com'
 
 def get_urls():
     try:

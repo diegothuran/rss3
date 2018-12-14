@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 158
 RANK_BRAZIL = 9   
-NAME = 'uol'
+NAME = 'noticias.uol'
 
 
 def get_urls():

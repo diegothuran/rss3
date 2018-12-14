@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 62708
 RANK_BRAZIL = 2177
-NAME = 'jota'
+NAME = 'jota.info'
 
 def get_urls():
     try:

@@ -9,7 +9,7 @@ from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 97024
 RANK_BRAZIL = 3100
-NAME = 'oab'
+NAME = 'oab.org.br'
 
 def get_urls():
     try:

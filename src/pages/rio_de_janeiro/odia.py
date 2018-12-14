@@ -8,7 +8,7 @@ import requests
 # pegou o rank do ig
 GLOBAL_RANK = 2759
 RANK_BRAZIL = 71    
-NAME = 'ig'
+NAME = 'odia.ig.com.br'
 
 def get_urls():
     try:

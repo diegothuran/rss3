@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 490914
 RANK_BRAZIL = 19676 
-NAME = 'ceert'
+NAME = 'ceert.org.br'
 
 def get_urls():
     try:
