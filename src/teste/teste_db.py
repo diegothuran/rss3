@@ -151,10 +151,10 @@ def categories_timeline():
 
 
 def categories_per_site():
-    site = 'www.terra.com.br'
+    site = 'terra.com.br'
     cats = relevancia_site_table.select_site_pd(site)
     nb_noticias = len(cats)
-#     print(len(cats))
+    print(len(cats))
     cats_counter = INDEX_CATEGORIES.copy()
     for row in cats:
     #     print(categories_per_row)
@@ -353,7 +353,8 @@ INDEX_CATEGORIES = {
 # # print(len(coor_matrix['bolsonaro']))
 
 ''' Novos '''
-# categories_source()
 # categories_timeline()
+categories_relation()
+# categories_source()
 
-categories_per_site()
+# categories_per_site()
