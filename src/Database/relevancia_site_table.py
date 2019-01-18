@@ -18,8 +18,8 @@ def save(relevancia_site = Relevancia_Site):
         cursor = cnx.cursor()
         
         add_news = ("INSERT INTO relevancia_site "
-                    "(id, site, relevancia) "
-                        "VALUES (NULL, %s, %s)", (relevancia_site.site[0], relevancia_site.relevancia[0]))
+                    "(id, site, relevancia, relevancia_inicial) "
+                        "VALUES (NULL, %s, %s, %s)", (relevancia_site.site[0], relevancia_site.relevancia[0], relevancia_site.relevancia_inicial[0]))
 
         cursor.execute(*add_news)
     except Exception as e:
@@ -63,6 +63,17 @@ def update(relevancia_site = Relevancia_Site):
     
     sql = "UPDATE relevancia_site SET relevancia = %s WHERE site = %s"
     site = (relevancia_site.relevancia[0], relevancia_site.site[0],)    
+    cursor.execute(sql, site)
+    
+    cnx.close()
+    
+def update_com_relevancia_inicial(relevancia_site = Relevancia_Site):
+    cnx = connection.connection()
+     
+    cursor = cnx.cursor()
+    
+    sql = "UPDATE relevancia_site SET relevancia = %s, relevancia_inicial = %s WHERE site = %s"
+    site = (relevancia_site.relevancia[0], relevancia_site.relevancia_inicial[0], relevancia_site.site[0],)    
     cursor.execute(sql, site)
     
     cnx.close()
@@ -160,28 +171,66 @@ def select_categories(categorie):
     cursor.close()
     cnx.close()
     
+    return rows
+
+def select_news_source_categories(categorie):
+    cnx = connection.connection()     
+    cursor = cnx.cursor()
+
+    
+    query = ("SELECT site FROM pessoas WHERE categories LIKE %s")
+    formated_string = '%' + categorie + '%'
+    request_site = (formated_string, )    
+    
+    cursor.execute(query, request_site)
+    rows = cursor.fetchall()
+#     print(len(rows))
+    for row in rows:
+        print(row)
+    
+    cursor.close()
+    cnx.close()
+    
+    return rows    
 
 def select_site_pd(site):
     cnx = connection.connection()
     cursor = cnx.cursor()
     
-    query = ("SELECT * FROM pessoas WHERE site = %s")
+    query = ("SELECT categories FROM pessoas WHERE site = %s")
     request_site = (site, )    
     cursor.execute(query, request_site)
     rows = cursor.fetchall()
-    print(len(rows))
+#     print(len(rows))
     for row in rows:
         print(row)
-    df = DataFrame(rows)
-#     print(df)
-#     df.columns = rows.keys()
     
-#     print(df.iloc[:,8])
     cursor.close()
     cnx.close()
     
-    categories = df.iloc[:,8]
-    return categories
+    return rows
+    
+# def select_site_pd(site):
+#     cnx = connection.connection()
+#     cursor = cnx.cursor()
+#     
+#     query = ("SELECT * FROM pessoas WHERE site = %s")
+#     request_site = (site, )    
+#     cursor.execute(query, request_site)
+#     rows = cursor.fetchall()
+#     print(len(rows))
+#     for row in rows:
+#         print(row)
+#     df = DataFrame(rows)
+# #     print(df)
+# #     df.columns = rows.keys()
+#     
+# #     print(df.iloc[:,8])
+#     cursor.close()
+#     cnx.close()
+#     
+#     categories = df.iloc[:,8]
+#     return categories
 
 
 def get_interval(data_inicial, data_final):
@@ -208,5 +257,32 @@ def get_interval(data_inicial, data_final):
     cursor.close()
     cnx.close()
     
+def get_interval_category(category, data_inicial, data_final):
+    cnx = connection.connection()
+    cursor = cnx.cursor()
     
+    query = ("SELECT public_date FROM pessoas "
+             "WHERE categories LIKE %s AND public_date BETWEEN %s AND %s")
+    
+#     query = ("SELECT * FROM pessoas "
+#              "WHERE categories LIKE %s AND public_date BETWEEN %s AND %s")
+    
+#     str_data_inicial = data_inicial.strftime("%Y-%m-%d")
+#     str_data_final = data_final.strftime("%Y-%m-%d")
+    request_site = (category, data_inicial, data_final, )    
+    cursor.execute(query, request_site)
+    
+    rows = cursor.fetchall()
+    print(len(rows))
+    print('aqui')
+    for i in rows:
+        print(i)
+    
+#     for (first_name, last_name, hire_date) in cursor:
+#         print("{}, {} was hired on {:%d %b %Y}".format(last_name, first_name, hire_date))
+    
+    cursor.close()
+    cnx.close()    
+    
+    return rows
     

@@ -38,6 +38,7 @@ def save_update_indice_relevancia():
     tuplas_site_relevancia = get_indice_relevancia()
     print(tuplas_site_relevancia)
     for tupla in tuplas_site_relevancia:
+#        print(tupla)
         #estrutura tupla: (site, relevancia)
         site = tupla[0]
         relevancia = "{0:.2f}".format(tupla[1])
@@ -47,6 +48,8 @@ def save_update_indice_relevancia():
         relevancia_site_in_db = relevancia_site_table.check(relevancia_site)
         if(relevancia_site_in_db):
             relevancia_site_table.update(relevancia_site)
+            # nao usar o update_com_relevancia_inicial pois basta atualizar a relevancia atual
+#             relevancia_site_table.update_com_relevancia_inicial(relevancia_site)
         else:
             relevancia_site_table.save(relevancia_site)
 

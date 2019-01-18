@@ -32,4 +32,4 @@ def get_urls():
         
         return urls
     except:
-        raise Exception('Exception in diariodocentrodomundo')
+        raise Exception('Exception in correiobraziliense')
