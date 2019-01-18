@@ -33,7 +33,7 @@ request.onload = function () {
         data: {
             labels: sites,
             datasets: [{
-                label: 'Relevancia',
+//                label: 'Relevancia',
                 data: relevancias,
                 backgroundColor: randomColors
             }]
@@ -43,9 +43,47 @@ request.onload = function () {
                 yAxes: [{
                     ticks: {
                         beginAtZero:true
-                    }
+                    },
+                    scaleLabel: {
+                		display: true,
+                		labelString: 'Fonte de informação',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
+                }],
+                
+                xAxes: [{
+                	scaleLabel: {
+                		display: true,
+                		labelString: 'Relevância',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
                 }]
-            }
+            },
+            
+            title: {
+	            display: true,
+	            text: 'Relevância das fontes de informação.',
+//	            text: ['Relevância das fontes de informação',
+//	            	'Nosso índice de relevância representa uma média da popularidade das fontes de informações utilizadas e é definido pelo Rank Alexa.', 
+//	            	'Na prática quanto mais próximo de 10.00 for a relevãncia, maior o número de usuários que visitaram a fonte de informação. Valores próximos a 0.00 representam um menor número de acessos à informação.'],
+	            fontSize: 16
+	        },
+	        
+	        legend: {
+	            display: false
+	        },
+	        
+	        tooltips: {
+	            callbacks: {
+	                label: function(tooltipItem) {
+	                    return " A fonte " + tooltipItem.yLabel + " apresenta relevância de " + Number(tooltipItem.xLabel)
+	                }
+	            }
+	        }
         }
     });
     
@@ -62,7 +100,7 @@ request.onload = function () {
         data: {
             labels: labels_category_timeline,
             datasets: [{
-                label: 'Timeline',
+//                label: 'Timeline',
                 data: data_category_timeline,
 //                borderWidth: 1
             }]
@@ -72,16 +110,50 @@ request.onload = function () {
                 yAxes: [{
                     ticks: {
                         beginAtZero:true
-                    }
+                    },  
+                    scaleLabel: {
+                		display: true,
+                		labelString: 'Quantidade',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
+                }],
+                
+                xAxes: [{
+                	scaleLabel: {
+                		display: true,
+                		labelString: 'Data',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
                 }]
-            }
+            },
+        
+	        title: {
+	            display: true,
+	            text: 'Timeline das notícias relacionadas a categoria: Osmar Terra.',
+	            fontSize: 16
+	        },
+	        
+	        legend: {
+	            display: false
+	        },
+	        
+	        tooltips: {
+	            callbacks: {
+	                label: function(tooltipItem) {
+	                    return Number(tooltipItem.yLabel) + " notícia(s) obtida(s) na data " + tooltipItem.xLabel + " contêm a categoria Osmar Terra"
+	                }
+	            }
+	        }
         }
     });
     
     // category_relation
 //    dict_keys(['bolsonaro', 'onyx lorenzoni', 'paulo guedes', 'augusto heleno', 'marcos pontes', 'sérgio moro', 'hamilton mourão', 'joaquim levy', 'mansueto almeida', 'fernando azevedo e silva', 'ernesto araújo', 'roberto campos neto', 'tereza cristina', 'andré luiz de almeida mendonça', 'carlos von doellinger', 'érika marena', 'luiz mandetta', 'maurício valeixo', 'pedro guimarães', 'ricardo vélez rodríguez', 'roberto castello branco', 'rubem novaes', 'wagner rosário', 'bento costa lima leite de albuquerque junior', 'marcelo álvaro antônio', 'gustavo henrique rigodanzo canuto', 'tarcísio gomes de freitas', 'carlos alberto dos santos cruz', 'gustavo bebianno', 'ac', 'al', 'ap', 'am', 'ba', 'ce', 'df', 'es', 'go', 'ma', 'mt', 'ms', 'mg', 'pa', 'pb', 'pr', 'pe', 'pi', 'rj', 'rn', 'rs', 'ro', 'rr', 'sc', 'sp', 'se', 'to'])
 //    dict_values(['85.81', '28.37', '30.47', '6.98', '7.21', '31.63', '7.67', '0.93', '0.47', '6.05', '5.58', '3.72', '14.42', '1.86', '0.23', '0.23', '1.40', '0.93', '1.63', '4.65', '0.93', '0.93', '8.84', '0.47', '3.72', '0.47', '7.91', '3.95', '7.44', '2.56', '0.70', '0.23', '3.02', '3.26', '1.63', '36.74', '13.49', '5.12', '1.16', '3.02', '7.21', '6.05', '1.86', '1.40', '25.35', '1.63', '0.70', '16.28', '3.49', '36.05', '0.00', '7.91', '2.33', '30.00', '0.23', '0.70'])
-
     
     labels_category_relation = ['bolsonaro', 'onyx lorenzoni', 'paulo guedes', 'augusto heleno', 'marcos pontes', 'sérgio moro', 'hamilton mourão', 'joaquim levy', 'mansueto almeida', 'fernando azevedo e silva', 'ernesto araújo', 'roberto campos neto', 'tereza cristina', 'andré luiz de almeida mendonça', 'carlos von doellinger', 'érika marena', 'luiz mandetta', 'maurício valeixo', 'pedro guimarães', 'ricardo vélez rodríguez', 'roberto castello branco', 'rubem novaes', 'wagner rosário', 'bento costa lima leite de albuquerque junior', 'marcelo álvaro antônio', 'gustavo henrique rigodanzo canuto', 'tarcísio gomes de freitas', 'carlos alberto dos santos cruz', 'gustavo bebianno', 'ac', 'al', 'ap', 'am', 'ba', 'ce', 'df', 'es', 'go', 'ma', 'mt', 'ms', 'mg', 'pa', 'pb', 'pr', 'pe', 'pi', 'rj', 'rn', 'rs', 'ro', 'rr', 'sc', 'sp', 'se', 'to'] 
     data_category_relation = ['85.81', '28.37', '30.47', '6.98', '7.21', '31.63', '7.67', '0.93', '0.47', '6.05', '5.58', '3.72', '14.42', '1.86', '0.23', '0.23', '1.40', '0.93', '1.63', '4.65', '0.93', '0.93', '8.84', '0.47', '3.72', '0.47', '7.91', '3.95', '7.44', '2.56', '0.70', '0.23', '3.02', '3.26', '1.63', '36.74', '13.49', '5.12', '1.16', '3.02', '7.21', '6.05', '1.86', '1.40', '25.35', '1.63', '0.70', '16.28', '3.49', '36.05', '0.00', '7.91', '2.33', '30.00', '0.23', '0.70'] 
@@ -95,10 +167,9 @@ request.onload = function () {
     	//type: 'line',
     	type: 'horizontalBar',
         data: {
-
             labels: labels_category_relation,
             datasets: [{
-                label: 'Relacionamento entre categorias (Porcentagem de noticias que contem a categoria Osmar Terra e a categoria relacionada)',
+//                label: 'Relacionamento entre categorias (Porcentagem de noticias que contem a categoria Osmar Terra e a categoria relacionada)',
                 data: data_category_relation,
 //                borderWidth: 1
                 backgroundColor: randomColors
@@ -109,8 +180,44 @@ request.onload = function () {
                 yAxes: [{
                     ticks: {
                         beginAtZero:true
-                    }
+                    },
+                    scaleLabel: {
+                		display: true,
+                		labelString: 'Categoria',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
+                }],
+                
+                xAxes: [{
+                	scaleLabel: {
+                		display: true,
+                		labelString: 'Porcentagem (%)',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
                 }]
+            },
+            
+            title: {
+                display: true,
+                text: 'Relacionamento entre categorias considerando a categoria base: Osmar Terra.',
+                fontSize: 16
+            },
+            
+            legend: {
+                display: false
+            },
+            
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return Number(tooltipItem.xLabel) + "% das notícias que contêm a categoria " + "Osmar Terra" + " também contêm a categoria " 
+                        + tooltipItem.yLabel
+                    }
+                }
             }
         }
     });
@@ -133,7 +240,7 @@ request.onload = function () {
         data: {
             labels: labels_category_sites,
             datasets: [{
-                label: 'Quantidade de noticias relacionadas a categoria Osmar Terra obtidas do site',
+//                label: 'Quantidade de noticias relacionadas a categoria Osmar Terra obtidas do site',
                 data: data_category_sites,
                 backgroundColor: randomColors
             }]
@@ -143,9 +250,46 @@ request.onload = function () {
                 yAxes: [{
                     ticks: {
                         beginAtZero:true
-                    }
+                    },
+                    scaleLabel: {
+                		display: true,
+                		labelString: 'Fonte de informação',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
+                }],
+                
+                xAxes: [{
+                	scaleLabel: {
+                		display: true,
+                		labelString: 'Quantidade',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+                			
+	                }
                 }]
+            },
+            
+            title: {
+                display: true,
+                text: 'Segmentação das fontes de informação considerando a categoria: Osmar Terra.',
+                fontSize: 16
+            },
+            
+            legend: {
+                display: false
+            },
+            
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return Number(tooltipItem.xLabel) + " notícias que contêm a categoria " + "Osmar Terra" + " foram obtidas do site " 
+                        + tooltipItem.yLabel
+                    }
+                }
             }
+            
         }
     });
     
@@ -170,7 +314,7 @@ request.onload = function () {
             labels: labels_category_set,
 
             datasets: [{
-                label: 'Quantidade de noticias obtidas do site www.terra.com.br relacionadas a categoria',
+//                label: 'Quantidade de noticias obtidas do site www.terra.com.br relacionadas a categoria',
                 data: data_category_set,
 //                borderWidth: 1
                 backgroundColor: randomColors
@@ -181,8 +325,44 @@ request.onload = function () {
                 yAxes: [{
                     ticks: {
                         beginAtZero:true
-                    }
+                    },
+                    
+                    scaleLabel: {
+                		display: true,
+                		labelString: 'Categoria',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+	                }
+                }],
+                
+                xAxes: [{
+                	scaleLabel: {
+                		display: true,
+                		labelString: 'Quantidade',
+                		fontSize: 14,
+                		fontStyle: 'bold'
+	                }
                 }]
+            },
+            
+            title: {
+                display: true,
+                text: 'Segmentação das categorias considerando a fonte: terra.com.br',
+                fontSize: 16
+//                	O gráfico exibe as fontes de notícias e o número de artigos resultantes que cada um deles escreveu.
+            },
+            
+            legend: {
+                display: false
+            },
+            
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return Number(tooltipItem.xLabel) + " notícias contêm a categoria " + tooltipItem.yLabel + 
+                        	" e têm o site " + "terra.com.br" + " como fonte.";
+                    }
+                }
             }
         }
     });
