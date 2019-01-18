@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 72367
 RANK_BRAZIL = 2400
-NAME = 'opopular'
+NAME = 'opopular.com.br'
 
 
 def get_urls():

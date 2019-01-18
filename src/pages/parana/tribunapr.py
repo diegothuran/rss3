@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 32820
 RANK_BRAZIL = 1084      
-NAME = 'tribunapr'
+NAME = 'tribunapr.com.br'
 
 def get_urls():
     try:

@@ -9,7 +9,7 @@ import requests
 
 GLOBAL_RANK = 440 
 RANK_BRAZIL = None
-NAME = 'elpais'
+NAME = 'brasil.elpais.com'
 
 
 # def format_date(raw_date):

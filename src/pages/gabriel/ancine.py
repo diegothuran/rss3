@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 188435
 RANK_BRAZIL = 8864 
-NAME = 'ancine'
+NAME = 'ancine.gov.br'
 
 def get_urls():
     try:

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 13308 
 RANK_BRAZIL =  358
-NAME = 'cartacapital'
+NAME = 'cartacapital.com.br'
 
 def get_urls():
     try:

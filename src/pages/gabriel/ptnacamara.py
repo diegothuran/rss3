@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 1020725
 RANK_BRAZIL = 71178
-NAME = 'ptnacamara'
+NAME = 'ptnacamara.org.br'
 
 def get_urls():
     try:

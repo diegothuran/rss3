@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 57788
 RANK_BRAZIL = 1710
-NAME = 'viomundo'
+NAME = 'viomundo.com.br'
 
 def get_urls():
     try:

@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 490286
 RANK_BRAZIL = 17614 
-NAME = 'convergenciadigital'
+NAME = 'convergenciadigital.com.br'
 
 def get_urls():
     try:

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 2129
 RANK_BRAZIL = 49  
-NAME = 'www.terra.com.br'
+NAME = 'terra.com.br'
 
 def get_urls():
     try:

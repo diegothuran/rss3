@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 4004752
 RANK_BRAZIL = None
-NAME = 'ceticismopolitico'
+NAME = 'ceticismopolitico.org'
 
 def get_urls():
     try:

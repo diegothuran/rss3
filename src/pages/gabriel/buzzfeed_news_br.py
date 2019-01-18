@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 287
 RANK_BRAZIL = None
-NAME = 'buzzfeed'
+NAME = 'buzzfeed.com'
 
 def get_urls():
     try:

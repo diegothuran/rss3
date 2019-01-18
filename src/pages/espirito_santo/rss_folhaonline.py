@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 1402576
 RANK_BRAZIL = None
-NAME = 'folhaonline'
+NAME = 'folhaonline.es'
 
 
 def get_urls():

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 3879141
 RANK_BRAZIL = None    
-NAME = 'cinform'
+NAME = 'cinform.com.br'
 
 def get_urls():
     try:

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 42573
 RANK_BRAZIL = 1524 
-NAME = 'atarde'
+NAME = 'atarde.uol.com.br'
 
 def get_urls():
     try:

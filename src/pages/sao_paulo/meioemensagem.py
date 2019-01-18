@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 81136
 RANK_BRAZIL = 3020   
-NAME = 'meioemensagem'
+NAME = 'meioemensagem.com.br'
 
 
 def get_urls():

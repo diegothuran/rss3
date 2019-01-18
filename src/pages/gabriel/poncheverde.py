@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 447069
 RANK_BRAZIL = 10771
-NAME = 'poncheverde'
+NAME = 'poncheverde.blogspot.com'
 
 def get_urls():
     try:

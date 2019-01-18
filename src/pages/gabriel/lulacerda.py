@@ -9,7 +9,7 @@ import requests
 # pegou o rank do ig
 GLOBAL_RANK = 2707
 RANK_BRAZIL = 64  
-NAME = 'lulacerda'
+NAME = 'lulacerda.ig.com.br'
 
 def get_urls():
     try:

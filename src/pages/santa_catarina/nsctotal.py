@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 74030
 RANK_BRAZIL = 2221      
-NAME = 'nsctotal'
+NAME = 'nsctotal.com.br'
 
 def get_urls():
     try:

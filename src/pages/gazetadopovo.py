@@ -8,7 +8,7 @@ from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 2763
 RANK_BRAZIL = 123 
-NAME = 'gazetadopovo'
+NAME = 'gazetadopovo.com.br'
 
 def get_urls():
     try:

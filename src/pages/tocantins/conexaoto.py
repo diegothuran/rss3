@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 230588
 RANK_BRAZIL = 10997    
-NAME = 'conexaoto'
+NAME = 'conexaoto.com.br'
 
 def get_urls():
     try:

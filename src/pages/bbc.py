@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 102 
 RANK_BRAZIL =  None
-NAME = 'bbc'
+NAME = 'bbc.com'
 
 
 def get_urls():

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 149
 RANK_BRAZIL = 5    
-NAME = 'globo'
+NAME = 'oglobo.globo.com'
 
 def get_urls():
     try:

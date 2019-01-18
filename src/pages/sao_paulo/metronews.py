@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 557366
 RANK_BRAZIL = 23002    
-NAME = 'metronews'
+NAME = 'metronews.com.br'
 
 
 def get_urls():

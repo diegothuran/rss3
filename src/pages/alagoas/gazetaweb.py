@@ -9,7 +9,7 @@ from pages.util.constantes import PAGE_LIMIT
 #based on the rank of globo
 GLOBAL_RANK = 147 
 RANK_BRAZIL = 5
-NAME = 'gazetaweb'
+NAME = 'gazetaweb.globo.com/portal'
 
 def get_urls():
     try:

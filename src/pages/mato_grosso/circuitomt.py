@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 255642
 RANK_BRAZIL = None   
-NAME = 'circuitomt'
+NAME = 'circuitomt.com.br'
 
 
 def get_urls():

@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 30177
 RANK_BRAZIL = 722  
-NAME = 'congressoemfoco'
+NAME = 'congressoemfoco.uol.com.br'
 
 def get_urls():
     try:

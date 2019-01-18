@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 590712
 RANK_BRAZIL = 32566 
-NAME = 'novoextra'
+NAME = 'novoextra.com.br'
 
 
 def get_urls():

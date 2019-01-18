@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 1089663
 RANK_BRAZIL = 34187
-NAME = 'ohoje'
+NAME = 'ohoje.com.br'
 
 
 def get_urls():

@@ -8,6 +8,7 @@ import feedparser
 GLOBAL_RANK = None
 RANK_BRAZIL = None
 NAME = 'rss_multiplos'
+# NAME = None
 
 def get_urls():
     try:

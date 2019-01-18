@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 364899
 RANK_BRAZIL = 16280 
-NAME = 'oestadoce'
+NAME = 'oestadoce.com.br'
 
 def get_urls():
     try:

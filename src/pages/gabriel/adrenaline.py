@@ -9,7 +9,7 @@ from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 12313
 RANK_BRAZIL = 394  
-NAME = 'adrenaline'
+NAME = 'adrenaline.uol.com.br'
 
 def get_urls():
     try:

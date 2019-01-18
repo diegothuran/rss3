@@ -352,6 +352,7 @@ INDEX_CATEGORIES = {
 # # print(coor_matrix['bolsonaro'])
 # # print(len(coor_matrix['bolsonaro']))
 
+''' Novos '''
 # categories_source()
 # categories_timeline()
 

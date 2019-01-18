@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 19639495
 RANK_BRAZIL = None
-NAME = 'tribunadajustica'
+NAME = 'tribunadajustica.com.br'
 
 def get_urls():
     try:

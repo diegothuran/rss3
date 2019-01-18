@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 47746
 RANK_BRAZIL = 1683     
-NAME = 'hojeemdia'
+NAME = 'hojeemdia.com.br'
 
 def get_urls():
     try:

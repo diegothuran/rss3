@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 13027
 RANK_BRAZIL = 301  
-NAME = 'camara'
+NAME = 'camara.leg.br'
 
 def get_urls():
     try:

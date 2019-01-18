@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 118359
 RANK_BRAZIL = 3062 
-NAME = 'cartamaior'
+NAME = 'cartamaior.com.br'
 
 def get_urls():
     try:

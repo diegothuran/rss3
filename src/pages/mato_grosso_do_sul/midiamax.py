@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 46036
 RANK_BRAZIL = 1567    
-NAME = 'midiamax'
+NAME = 'midiamax.com.br'
 
 def get_urls():
     try:

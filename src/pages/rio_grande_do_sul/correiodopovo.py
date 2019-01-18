@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 35259
 RANK_BRAZIL = 1087      
-NAME = 'correiodopovo'
+NAME = 'correiodopovo.com.br'
 
 def get_urls():
     try:

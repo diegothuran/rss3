@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 3853959
 RANK_BRAZIL = None
-NAME = 'folhasertaneja'
+NAME = 'folhasertaneja.com.br'
 
 def get_urls():
     try:

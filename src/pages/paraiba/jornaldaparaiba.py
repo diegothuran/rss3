@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 110038
 RANK_BRAZIL = 3508    
-NAME = 'jornaldaparaiba'
+NAME = 'jornaldaparaiba.com.br'
 
 
 def get_urls():

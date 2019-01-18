@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 1114340
 RANK_BRAZIL = 57138    
-NAME = 'monitordigital'
+NAME = 'monitordigital.com.br'
 
 def get_urls():
     try:

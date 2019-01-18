@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 148 
 RANK_BRAZIL = 5
-NAME = 'globo'
+NAME = 'g1.globo.com'
 
 def get_urls():
     try:

@@ -8,7 +8,7 @@ from pages.util.constantes import PAGE_LIMIT
 
 GLOBAL_RANK = 28580 
 RANK_BRAZIL =  924  
-NAME = 'correio24horas'
+NAME = 'correio24horas.com.br'
 
 def get_urls():
     try:  

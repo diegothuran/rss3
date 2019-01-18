@@ -9,7 +9,7 @@ from pages.util.constantes import PAGE_LIMIT
 #pegou o rank do clicrbs
 GLOBAL_RANK = 4526
 RANK_BRAZIL = 148    
-NAME = 'clicrbs'
+NAME = 'anoticia.clicrbs.com.br'
 
 def get_urls():
     try:

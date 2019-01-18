@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 4718953
 RANK_BRAZIL = None   
-NAME = 'diariodenoticias'
+NAME = 'diariodenoticias.com.br'
 
 
 def get_urls():

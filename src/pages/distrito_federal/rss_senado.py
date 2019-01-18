@@ -7,7 +7,7 @@ import feedparser
 
 GLOBAL_RANK = 10662
 RANK_BRAZIL = 230
-NAME = 'senado'
+NAME = 'senado.leg.br'
 
 def get_urls():
     try:

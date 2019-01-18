@@ -8,7 +8,7 @@ import requests
 
 GLOBAL_RANK = 200288
 RANK_BRAZIL = 8307 
-NAME = 'osdivergentes'
+NAME = 'osdivergentes.com.br'
 
 def get_urls():
     try:

@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = 17323
 RANK_BRAZIL = 609    
-NAME = 'jconline'
+NAME = 'jconline.ne10.uol.com.br'
 
 def get_urls():
     try:

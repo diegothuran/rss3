@@ -7,7 +7,7 @@ import requests
 
 GLOBAL_RANK = None
 RANK_BRAZIL = None   
-NAME = 'folhamg'
+NAME = 'folhamg.com'
 
 def get_urls():
     try:
