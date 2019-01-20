@@ -156,9 +156,27 @@ def select_site(site):
 def select_categories(categorie):
     cnx = connection.connection()     
     cursor = cnx.cursor()
+        
+    query = ("SELECT categories FROM pessoas WHERE categories LIKE %s")
+    formated_string = '%' + categorie + '%'
+    request_site = (formated_string, )    
+    
+    cursor.execute(query, request_site)
+    rows = cursor.fetchall()
+#     print(len(rows))
+    for row in rows:
+        print(row)
+    
+    cursor.close()
+    cnx.close()
+    return rows
+
+def select_text_categories(categorie):
+    cnx = connection.connection()     
+    cursor = cnx.cursor()
 
     
-    query = ("SELECT categories FROM pessoas WHERE categories LIKE %s")
+    query = ("SELECT abstract FROM pessoas WHERE categories LIKE %s")
     formated_string = '%' + categorie + '%'
     request_site = (formated_string, )    
     
@@ -184,7 +202,6 @@ def select_news_source_categories(categorie):
     
     cursor.execute(query, request_site)
     rows = cursor.fetchall()
-#     print(len(rows))
     for row in rows:
         print(row)
     
@@ -193,7 +210,7 @@ def select_news_source_categories(categorie):
     
     return rows    
 
-def select_site_pd(site):
+def get_categories_per_site(site):
     cnx = connection.connection()
     cursor = cnx.cursor()
     
@@ -273,8 +290,8 @@ def get_interval_category(category, data_inicial, data_final):
     cursor.execute(query, request_site)
     
     rows = cursor.fetchall()
-    print(len(rows))
-    print('aqui')
+#     print(len(rows))
+#     print('aqui')
     for i in rows:
         print(i)
     

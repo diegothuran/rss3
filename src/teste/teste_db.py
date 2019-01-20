@@ -15,20 +15,80 @@ import matplotlib.pyplot as plt
 
 from Util import util
 from pages.util import load_pages
+import wordcloud
+import nltk
 
+INDEX_CATEGORIES = {
+#     'categoria': '',
+                    'bolsonaro' : 0,
+                    'onyx lorenzoni' : 0, 
+                    'paulo guedes' : 0, 
+                    'augusto heleno' : 0, 
+                    'marcos pontes' : 0, 
+                    'sérgio moro' : 0,
+                    'hamilton mourão' : 0,
+                    'joaquim levy' : 0,
+                    'mansueto almeida' : 0,
+                    'fernando azevedo e silva' : 0,
+                    'ernesto araújo' : 0, 
+                    'roberto campos neto' : 0,
+                    'tereza cristina' : 0,
+                    'andré luiz de almeida mendonça' : 0,
+                    'carlos von doellinger' : 0,
+                    'érika marena' : 0,
+                    'luiz mandetta' : 0,
+                    'maurício valeixo' : 0,
+                    'pedro guimarães' : 0,
+                    'ricardo vélez rodríguez' : 0,
+                    'roberto castello branco' : 0,
+                    'rubem novaes' : 0,
+                    'wagner rosário' : 0,
+                    'bento costa lima leite de albuquerque junior' : 0, 
+                    'marcelo álvaro antônio' : 0, 
+                    'osmar terra' : 0, 
+                    'gustavo henrique rigodanzo canuto' : 0, 
+                    'tarcísio gomes de freitas' : 0, 
+                    'carlos alberto dos santos cruz' : 0, 
+                    'gustavo bebianno' : 0,
+ 
+#                     'jungmann' : 0, 
+#                     'haddad' : 0, 
+                    'ac' : 0,
+                    'al' : 0,
+                    'ap' : 0,
+                    'am' : 0,
+                    'ba' : 0,
+                    'ce' : 0,
+                    'df' : 0,
+                    'es' : 0,
+                    'go' : 0,
+                    'ma' : 0,
+                    'mt' : 0,
+                    'ms' : 0,
+                    'mg' : 0,
+                    'pa' : 0,
+                    'pb' : 0,
+                    'pr' : 0,
+                    'pe' : 0,
+                    'pi' : 0,
+                    'rj' : 0,
+                    'rn' : 0,
+                    'rs' : 0,
+                    'ro' : 0,
+                    'rr' : 0,
+                    'sc' : 0,
+                    'sp' : 0,
+                    'se' : 0,
+                    'to' : 0
+                    }
 
-def categories_relation():
-    categoria = 'osmar terra'
+def get_relacionamento_categorias(categoria):
+    #     categoria = 'osmar terra'
     cats = relevancia_site_table.select_categories(categoria)
     nb_noticias = len(cats)
-    print(len(cats))
     related_cats = INDEX_CATEGORIES.copy()
     for row in cats:
-    #     print(categories_per_row)
-    #     print(categories_per_row[0])
         categories_per_row = row[0]
-    #     print(categories_per_row)
-    #     if(theme in categories_per_row):
         try:
             if(',' in categories_per_row):
                 categories = categories_per_row.split(', ')
@@ -40,128 +100,90 @@ def categories_relation():
             pass
     print(related_cats)
     
-    # print(type(related_cats))
-    # print(related_cats.keys())
-    # print(related_cats.values())
     for key, value in related_cats.items():
-    #     print(key)
-    #     print(value)
         valor = ((value/nb_noticias) * 100)
         str_valor = "%.2f" % valor
-    #     print(str_valor)
-    #     related_cats[key] = valor
         related_cats[key] = str_valor
     
+    # removendo do dict a categoria passada nos parametros
     related_cats.pop(categoria)
     print(related_cats)
     print(related_cats.keys())
     print(related_cats.values())
 
-def categories_source():
+def get_fontes_informacao_categoria(categoria):
     sites = {}
     for page in load_pages.PAGES:
         sites[page.NAME] = 0
-    print(sites)
 
-    categoria = 'osmar terra'
-    sources = relevancia_site_table.select_news_source_categories(categoria)
-    nb_noticias = len(sources)
-    print(len(sources))
-    related_cats = sites.copy()
-    for row in sources:
-    #     print(categories_per_row)
-    #     print(categories_per_row[0])
-        categories_per_row = row[0]
-    #     print(categories_per_row)
-    #     if(theme in categories_per_row):
+    fontes_informacao = relevancia_site_table.select_news_source_categories(categoria)
+    todos_sites = sites.copy()
+    for fonte in fontes_informacao:
         try:
-            if(',' in categories_per_row):
-                categories = categories_per_row.split(', ')
-                for category in categories:
-                    related_cats[category] += 1
-            else: # only one category in the table
-                related_cats[categories_per_row] += 1
+            #fonte vem no formato de tupla por isso fonte[0]
+            todos_sites[fonte[0]] += 1
         except:
             pass
-    print(related_cats)
     
-#     # print(type(related_cats))
-#     # print(related_cats.keys())
-#     # print(related_cats.values())
-#     for key, value in related_cats.items():
-#     #     print(key)
-#     #     print(value)
+    # Se for colocar no formato de porcentagem
+#     # print(type(todos_sites))
+#     # print(todos_sites.keys())
+#     # print(todos_sites.values())
+#     for key, value in todos_sites.items():
 #         valor = ((value/nb_noticias) * 100)
 #         str_valor = "%.2f" % valor
-#     #     print(str_valor)
-#     #     related_cats[key] = valor
-#         related_cats[key] = str_valor
+#     #     todos_sites[key] = valor
+#         todos_sites[key] = str_valor
     
-#     related_cats.pop(categoria)
-    print(related_cats)
-    print(related_cats.keys())
-    print(related_cats.values())
+    # tirando o rss_multiplos para nao aparecer no grafico
+    todos_sites.pop('rss_multiplos')
+    print(todos_sites)
+    print(todos_sites.keys())
+    print(todos_sites.values())
 
 
-def categories_timeline():
-    categoria = 'osmar terra'
-#     categoria = 'bolsonaro'
+def get_categoria_timeline(categoria, dias_anteriores):
     date_now = datetime.datetime.now()   
 #     str_now = date_now.strftime('%Y-%m-%d %H:%M:%S')
     str_now = date_now.strftime('%Y-%m-%d')
-    print(date_now)
-    dias_anteriores = 30
+#     dias_anteriores = 30
     datas = []
     datas.append(str_now)
     temp = 1
     for i in range(dias_anteriores, 0, -1):
         difference = datetime.timedelta(days=-temp)
         data = date_now + difference
-#         print(data)
         datas.append(data.strftime('%Y-%m-%d'))
         temp += 1
     datas.reverse()
-    print(datas)
-    print(datas[0])
-    print(datas[-1])
-    sources = relevancia_site_table.get_interval_category(categoria, datas[0], datas[-1])
-    print(sources)
-    
+    # consulta ao banco
+    datas_categoria = relevancia_site_table.get_interval_category(categoria, datas[0], datas[-1])
+    # criando o dict
     dict_datas = { i : 0 for i in datas}
-    print(dict_datas)
-    
-    for row in sources:
-        categories_per_row = row[0].strftime('%Y-%m-%d')
+    # preenchendo o dict 
+    for data in datas_categoria:
+        categoria_por_data = data[0].strftime('%Y-%m-%d')
         try:
-            dict_datas[categories_per_row] += 1
+            dict_datas[categoria_por_data] += 1
         except:
             pass
-    print(dict_datas)
-    
-    ablibla = {}
+    # formatando o dict
+    datas_formatadas = {}
     for element in dict_datas:
         new_fmt = datetime.datetime.strptime(element, '%Y-%m-%d').strftime("%d-%m-%Y")
-        ablibla[new_fmt] = dict_datas[element]
-    print(dict_datas) 
-    print(ablibla) 
+        datas_formatadas[new_fmt] = dict_datas[element]
     
-    print(ablibla)
-    print(ablibla.keys())
-    print(ablibla.values())
+    print(dict_datas) 
+    print(datas_formatadas) 
+    print(datas_formatadas.keys())
+    print(datas_formatadas.values())
 
 
-def categories_per_site():
-    site = 'terra.com.br'
-    cats = relevancia_site_table.select_site_pd(site)
-    nb_noticias = len(cats)
-    print(len(cats))
+def categorias_por_site(site):
+    categorias = relevancia_site_table.get_categories_per_site(site)
     cats_counter = INDEX_CATEGORIES.copy()
-    for row in cats:
-    #     print(categories_per_row)
-    #     print(categories_per_row[0])
+    for row in categorias:
         categories_per_row = row[0]
-    #     print(categories_per_row)
-    #     if(theme in categories_per_row):
         try:
             if(',' in categories_per_row):
                 categories = categories_per_row.split(', ')
@@ -175,8 +197,40 @@ def categories_per_site():
     print(cats_counter.keys())
     print(cats_counter.values())
     
+
+def get_wordcloud(categoria):
+#     categoria = 'osmar terra'
+    noticias = relevancia_site_table.select_text_categories(categoria)
+    news = [noticia[0] for noticia in noticias]
+    # Create and generate a word cloud image:
+    temp = ''
+    from nltk.tokenize import word_tokenize
+    from string import punctuation
+    for new in news:
+        palavras = word_tokenize(new.lower())
+        
+        stopwords = set(nltk.corpus.stopwords.words('portuguese') + list(punctuation))
+        palavras_sem_stopwords = [palavra for palavra in palavras if palavra not in stopwords]
+        for palavra in palavras_sem_stopwords:
+            temp = temp + ' ' + palavra
+
     
+    wc = wordcloud.WordCloud().generate(temp)
     
+    print('[')
+    for key, value in wc.words_.items():
+#         print('{"word":"' + str(key) + '","freq":' + str(value) + '},')
+        valor = value * 100
+        print('{"word":"' + str(key) + '","freq":' + str(valor) + '},')
+    print(']')
+    
+#     # Display the generated image:
+#     plt.imshow(wc, interpolation='bilinear')
+#     plt.axis("off")
+#     plt.show()
+
+
+
 # site = 'oestadoacre'
 # estrutura tupla = (id, site, relevancia)
 # tupla = relevancia_site_table.select(site)
@@ -245,69 +299,7 @@ def categories_per_site():
 #                      'tarcísio gomes de freitas', 'carlos alberto dos santos cruz', 'gustavo bebianno']
 # 
 # 
-INDEX_CATEGORIES = {
-#     'categoria': '',
-                    'bolsonaro' : 0,
-                    'onyx lorenzoni' : 0, 
-                    'paulo guedes' : 0, 
-                    'augusto heleno' : 0, 
-                    'marcos pontes' : 0, 
-                    'sérgio moro' : 0,
-                    'hamilton mourão' : 0,
-                    'joaquim levy' : 0,
-                    'mansueto almeida' : 0,
-                    'fernando azevedo e silva' : 0,
-                    'ernesto araújo' : 0, 
-                    'roberto campos neto' : 0,
-                    'tereza cristina' : 0,
-                    'andré luiz de almeida mendonça' : 0,
-                    'carlos von doellinger' : 0,
-                    'érika marena' : 0,
-                    'luiz mandetta' : 0,
-                    'maurício valeixo' : 0,
-                    'pedro guimarães' : 0,
-                    'ricardo vélez rodríguez' : 0,
-                    'roberto castello branco' : 0,
-                    'rubem novaes' : 0,
-                    'wagner rosário' : 0,
-                    'bento costa lima leite de albuquerque junior' : 0, 
-                    'marcelo álvaro antônio' : 0, 
-                    'osmar terra' : 0, 
-                    'gustavo henrique rigodanzo canuto' : 0, 
-                    'tarcísio gomes de freitas' : 0, 
-                    'carlos alberto dos santos cruz' : 0, 
-                    'gustavo bebianno' : 0,
- 
-#                     'jungmann' : 0, 
-#                     'haddad' : 0, 
-                    'ac' : 0,
-                    'al' : 0,
-                    'ap' : 0,
-                    'am' : 0,
-                    'ba' : 0,
-                    'ce' : 0,
-                    'df' : 0,
-                    'es' : 0,
-                    'go' : 0,
-                    'ma' : 0,
-                    'mt' : 0,
-                    'ms' : 0,
-                    'mg' : 0,
-                    'pa' : 0,
-                    'pb' : 0,
-                    'pr' : 0,
-                    'pe' : 0,
-                    'pi' : 0,
-                    'rj' : 0,
-                    'rn' : 0,
-                    'rs' : 0,
-                    'ro' : 0,
-                    'rr' : 0,
-                    'sc' : 0,
-                    'sp' : 0,
-                    'se' : 0,
-                    'to' : 0
-                    }
+
 # 
 # retorno = []
 # for theme in THEME_CATEGORIES:
@@ -352,9 +344,14 @@ INDEX_CATEGORIES = {
 # # print(coor_matrix['bolsonaro'])
 # # print(len(coor_matrix['bolsonaro']))
 
-''' Novos '''
-# categories_timeline()
-categories_relation()
-# categories_source()
+''' --- Codigos para o js relacionado a categorias --- '''
+categoria = 'osmar terra'
+dias_anteriores = 30
+# get_categoria_timeline(categoria, dias_anteriores)
+# get_relacionamento_categorias(categoria)
+# get_fontes_informacao_categoria(categoria)
+# get_wordcloud(categoria)
 
-# categories_per_site()
+''' --- Codigos para o js relacionado a sites --- '''
+site = 'terra.com.br'
+categorias_por_site(site)
