@@ -254,7 +254,7 @@ def get_interval(data_inicial, data_final):
     cnx = connection.connection()
     cursor = cnx.cursor()
     
-    query = ("SELECT * FROM pessoas "
+    query = ("SELECT public_date FROM pessoas "
              "WHERE public_date BETWEEN %s AND %s")
     
 #     str_data_inicial = data_inicial.strftime("%Y-%m-%d")
@@ -263,8 +263,8 @@ def get_interval(data_inicial, data_final):
     cursor.execute(query, request_site)
     
     rows = cursor.fetchall()
-    print(len(rows))
-    print('aqui')
+#     print(len(rows))
+#     print('aqui')
     for i in rows:
         print(i)
     
@@ -273,6 +273,8 @@ def get_interval(data_inicial, data_final):
     
     cursor.close()
     cnx.close()
+    
+    return rows
     
 def get_interval_category(category, data_inicial, data_final):
     cnx = connection.connection()

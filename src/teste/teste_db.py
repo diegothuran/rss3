@@ -178,6 +178,51 @@ def get_categoria_timeline(categoria, dias_anteriores):
     print(datas_formatadas.keys())
     print(datas_formatadas.values())
 
+def get_timeline(dias_anteriores):
+    date_now = datetime.datetime.now()   
+#     str_now = date_now.strftime('%Y-%m-%d %H:%M:%S')
+    str_now = date_now.strftime('%Y-%m-%d')
+#     dias_anteriores = 30
+    datas = []
+    datas.append(str_now)
+    temp = 1
+    for i in range(dias_anteriores, 0, -1):
+        difference = datetime.timedelta(days=-temp)
+        data = date_now + difference
+        datas.append(data.strftime('%Y-%m-%d'))
+        temp += 1
+    datas.reverse()
+    # consulta ao banco
+    datas_categoria = relevancia_site_table.get_interval(datas[0], datas[-1])
+    # criando o dict
+    dict_datas = { i : 0 for i in datas}
+    # preenchendo o dict 
+    for data in datas_categoria:
+        categoria_por_data = data[0].strftime('%Y-%m-%d')
+        try:
+            dict_datas[categoria_por_data] += 1
+        except:
+            pass
+    # formatando o dict
+    datas_formatadas = {}
+    for element in dict_datas:
+        new_fmt = datetime.datetime.strptime(element, '%Y-%m-%d').strftime("%d-%m-%Y")
+        datas_formatadas[new_fmt] = dict_datas[element]
+    
+    print(dict_datas) 
+    print(datas_formatadas) 
+    print(datas_formatadas.keys())
+    print(datas_formatadas.values())
+    
+    soma = 0
+    for i in datas_formatadas.values():
+        soma += i
+        print(soma)
+    
+    print('soma final')
+    print(soma)
+
+
 
 def categorias_por_site(site):
     categorias = relevancia_site_table.get_categories_per_site(site)
@@ -345,13 +390,16 @@ def get_wordcloud(categoria):
 # # print(len(coor_matrix['bolsonaro']))
 
 ''' --- Codigos para o js relacionado a categorias --- '''
-categoria = 'osmar terra'
+# categoria = 'osmar terra'
 dias_anteriores = 30
 # get_categoria_timeline(categoria, dias_anteriores)
 # get_relacionamento_categorias(categoria)
 # get_fontes_informacao_categoria(categoria)
 # get_wordcloud(categoria)
 
-''' --- Codigos para o js relacionado a sites --- '''
-site = 'terra.com.br'
-categorias_por_site(site)
+''' timeline geral '''
+get_timeline(dias_anteriores)
+
+# ''' --- Codigos para o js relacionado a sites --- '''
+# site = 'terra.com.br'
+# categorias_por_site(site)
