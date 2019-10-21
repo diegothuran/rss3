@@ -51,7 +51,7 @@ nbconvert==5.3.1
 nbformat==4.4.0
 news-please==1.2.41
 newspaper3k==0.2.6
-nltk==3.3
+nltk==3.4.5
 notebook==5.6.0
 numpy==1.14.5
 pandas==0.23.3
